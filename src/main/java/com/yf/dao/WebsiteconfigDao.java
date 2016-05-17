@@ -28,7 +28,7 @@ public class WebsiteconfigDao extends DaoAdapter{
 	}
 	
 	/**
-	 * ±£´æÍøÕ¾ÅäÖÃĞÅÏ¢
+	 * ä¿å­˜ç½‘ç«™é…ç½®ä¿¡æ¯
 	 * @param websitconfig
 	 * @return
 	 */
