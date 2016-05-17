@@ -29,7 +29,7 @@ public class ImgDao extends DaoAdapter{
 	}
 	
 	/**
-	 * 根据id查询图片
+	 * 閫氳繃id鑾峰彇鍥剧墖淇℃伅
 	 * @param id
 	 * @return
 	 */
@@ -44,7 +44,7 @@ public class ImgDao extends DaoAdapter{
 	}
 	
 	/**
-	 * 图片信息
+	 * 淇濆瓨鍥剧墖淇℃伅
 	 * @param img
 	 * @return
 	 */

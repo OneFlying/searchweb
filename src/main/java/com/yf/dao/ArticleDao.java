@@ -45,7 +45,7 @@ public class ArticleDao extends DaoAdapter{
 	}*/
 
 	/**
-	 * ��������
+	 * 添加文章信息
 	 * guolejian
 	 * @param article
 	 * @return
@@ -65,8 +65,8 @@ public class ArticleDao extends DaoAdapter{
 	
 
 	/**
-	 * ɾ������
-	 * @param id �������idɾ��
+	 * 删除文章信息
+	 * @param id 
 	 * @return
 	 */
 	public int deleteArticle(String id){
@@ -83,7 +83,7 @@ public class ArticleDao extends DaoAdapter{
 	}
 	
 	/**
-	 * ����ɾ��
+	 * 批量删除文章信息
 	 * @param ids
 	 * @return
 	 */
@@ -108,8 +108,8 @@ public class ArticleDao extends DaoAdapter{
 		}
 	}
 	/**
-	 * ��ݹؼ�����Ѱ����
-	 * @param keywords �ؼ��� �ؼ����Զ��Ÿ��� a,b,c
+	 * 通过keywords查询文章信息
+	 * @param keywords 
 	 * @return
 	 */
 	public List<Article> searchArticleByKeys(String keywords){
@@ -128,8 +128,8 @@ public class ArticleDao extends DaoAdapter{
 	}
 	
 	/**
-	 * �������ȥ����
-	 * @param content Ҫ����������
+	 * 通过文章内容查询文章
+	 * @param content 
 	 * @return
 	 */
 	public List<Article> searchByContent(String content){
@@ -150,7 +150,7 @@ public class ArticleDao extends DaoAdapter{
 	}
 	
 	/**
-	 * ��ҳ��ȡ������Ϣ
+	 * 分页获取文章信息
 	 * @param searchEntity
 	 * @return
 	 */

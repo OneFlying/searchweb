@@ -31,7 +31,7 @@ public class UserDao extends DaoAdapter{
 	}
 	
 	/**
-	 * ±£´æÓÃ»§ĞÅÏ¢
+	 * ä¿å­˜ç”¨æˆ·ä¿¡æ¯
 	 * @param user
 	 * @return
 	 */
@@ -47,7 +47,7 @@ public class UserDao extends DaoAdapter{
 	}
 	
 	/**
-	 * É¾³ıÓÃ»§
+	 * æ ¹æ®idå·åˆ é™¤ç”¨æˆ·
 	 * @param id
 	 * @return
 	 */
@@ -64,7 +64,7 @@ public class UserDao extends DaoAdapter{
 	}
 	
 	/**
-	 * ĞŞ¸ÄÓÃ»§ĞÅÏ¢
+	 * æ›´æ–°ç”¨æˆ·ä¿¡æ¯
 	 * @param user
 	 * @return
 	 */
@@ -81,7 +81,7 @@ public class UserDao extends DaoAdapter{
 	}
 	
 	/**
-	 * ²éÑ¯ÓÃ»§
+	 * æŸ¥è¯¢ç”¨æˆ·
 	 * @return
 	 */
 	public List<User> searchUser(){
@@ -89,9 +89,9 @@ public class UserDao extends DaoAdapter{
 	}
 	
 	/**
-	 * ¸ù¾İÓÃ»§ÃûºÍÃÜÂëÅĞ¶ÏÓÃ»§ÊÇ·ñ´æÔÚ
-	 * @param username ÓÃ»§Ãû
-	 * @param password ÃÜÂë
+	 * è·å–ç™»å½•ç”¨æˆ·ä¿¡æ¯
+	 * @param username ç”¨æˆ·å
+	 * @param password å¯†ç 
 	 * @return
 	 */
 	public User checkLogin(String username,String password){
