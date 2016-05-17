@@ -19,7 +19,7 @@ public class LoginController {
 	private UserDao userDao;
 	
 	/**
-	 * ¼ì²âÓÃ»§µÇÂ¼ÊÇ·ñÕıÈ·
+	 * æ£€æµ‹ç”¨æˆ·ç™»å½•
 	 * @param username
 	 * @param password
 	 * @return
@@ -36,14 +36,14 @@ public class LoginController {
 			modelMap.put("url", "/admin/index");
 		}else{
 			modelMap.put("success", false);
-			modelMap.put("msg", "ÓÃ»§Ãû»òÃÜÂë´íÎó");
+			modelMap.put("msg", "ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯");
 		}
 		
 		return modelMap;
 	}
 	
 	/**
-	 * Ìø×ªµ½¹ÜÀíÒ³Ãæ
+	 * è·³è½¬åˆ°ç®¡ç†å‘˜é¡µé¢
 	 * @return
 	 */
 	@RequestMapping(value="/admin/index")

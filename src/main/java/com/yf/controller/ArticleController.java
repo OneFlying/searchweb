@@ -24,11 +24,11 @@ public class ArticleController {
 	private ArticleDao articleDao;
 	
 	/** 
-	 * ·ÖÒ³»ñÈ¡ÎÄÕÂĞÅÏ¢
-	 * @param rows »ñÈ¡ĞĞÊı
-	 * @param page µ±Ç°Ò³
-	 * @param title ¸ù¾İ±êÌâ²éÑ¯ÎÄÕÂ
-	 * @param content ¸ù¾İÄÚÈİ²éÑ¯ÎÄÕÂ
+	 * åˆ†é¡µè·å–æ–‡ç« ä¿¡æ¯
+	 * @param rows 
+	 * @param page 
+	 * @param title 
+	 * @param content 
 	 * @return
 	 */
 	@RequestMapping(value="/page",method=RequestMethod.GET)
@@ -59,10 +59,10 @@ public class ArticleController {
 	}
 	
 	/**
-	 * Ç°Ì¨Ò³ÃæËÑË÷
+	 * æœç´¢æ–‡ç« 
 	 * @param page
 	 * @param rows
-	 * @param keywords ËÑË÷¹Ø¼ü×Ö
+	 * @param keywords 
 	 * @return
 	 */
 	@RequestMapping(value="/search",method=RequestMethod.GET)
@@ -100,7 +100,7 @@ public class ArticleController {
 	}
 	
 	/**
-	 * ÅúÁ¿É¾³ıÎÄÕÂ
+	 * æ ¹æ®idåˆ é™¤æ–‡ç« ä¿¡æ¯
 	 * @param ids
 	 * @return
 	 */
@@ -114,10 +114,10 @@ public class ArticleController {
 		
 		if(res == ids.length){
 			modelMap.put("success",true);
-			modelMap.put("msg", "¹²É¾³ı"+res+"ÌõÊı¾İ");
+			modelMap.put("msg", "å…±åˆ é™¤"+res+"æ¡æ•°æ®");
 		}else if(res == 0){
 			modelMap.put("success", false);
-			modelMap.put("msg", "É¾³ıÊ§°Ü");
+			modelMap.put("msg", "åˆ é™¤å¤±è´¥");
 		}
 		
 		return modelMap;
