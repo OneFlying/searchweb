@@ -38,8 +38,14 @@ public class ArticleDao extends DaoAdapter{
 		};
 	}
 	
+
+/*	public Article getArticleById(String id){
+		String sql = "select * form article where id = ?";
+		
+	}*/
+
 	/**
-	 * ±£´æÎÄÕÂ
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * guolejian
 	 * @param article
 	 * @return
@@ -57,9 +63,10 @@ public class ArticleDao extends DaoAdapter{
 		}
 	}
 	
+
 	/**
-	 * É¾³ýÎÄÕÂ
-	 * @param id ¸ù¾ÝÎÄÕÂidÉ¾³ý
+	 * É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * @param id ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½idÉ¾ï¿½ï¿½
 	 * @return
 	 */
 	public int deleteArticle(String id){
@@ -76,7 +83,7 @@ public class ArticleDao extends DaoAdapter{
 	}
 	
 	/**
-	 * ÅúÁ¿É¾³ý
+	 * ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½
 	 * @param ids
 	 * @return
 	 */
@@ -101,8 +108,8 @@ public class ArticleDao extends DaoAdapter{
 		}
 	}
 	/**
-	 * ¸ù¾Ý¹Ø¼ü×ÖËÑÑ°ÎÄÕÂ
-	 * @param keywords ¹Ø¼ü×Ö ¹Ø¼ü×ÖÒÔ¶ººÅ¸ô¿ª a,b,c
+	 * ï¿½ï¿½Ý¹Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½Ñ°ï¿½ï¿½ï¿½ï¿½
+	 * @param keywords ï¿½Ø¼ï¿½ï¿½ï¿½ ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ a,b,c
 	 * @return
 	 */
 	public List<Article> searchArticleByKeys(String keywords){
@@ -121,8 +128,8 @@ public class ArticleDao extends DaoAdapter{
 	}
 	
 	/**
-	 * ¸ù¾ÝÄÚÈÝÈ¥ËÑË÷
-	 * @param content ÒªËÑË÷µÄÄÚÈÝ
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¥ï¿½ï¿½ï¿½ï¿½
+	 * @param content Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @return
 	 */
 	public List<Article> searchByContent(String content){
@@ -143,7 +150,7 @@ public class ArticleDao extends DaoAdapter{
 	}
 	
 	/**
-	 * ·ÖÒ³»ñÈ¡ÎÄÕÂÐÅÏ¢
+	 * ï¿½ï¿½Ò³ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	 * @param searchEntity
 	 * @return
 	 */

@@ -28,8 +28,4 @@ public class Websitconfig {
 	public void setLogourl(String logourl) {
 		this.logourl = logourl;
 	}
-	
-	
-	
-
 }
