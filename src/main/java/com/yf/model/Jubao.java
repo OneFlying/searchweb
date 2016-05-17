@@ -15,9 +15,9 @@ public class Jubao implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private String id;
-	private String articleid;//����ID
-	private String content;//�ٱ�����
-	private String datetime;//�ٱ�ʱ��
+	private String articleid;//文章id
+	private String content;//举报内容
+	private String datetime;//举报时间
 	public String getId() {
 		return id;
 	}
