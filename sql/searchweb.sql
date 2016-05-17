@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50155
 File Encoding         : 65001
 
-Date: 2016-05-17 10:13:20
+Date: 2016-05-17 11:23:55
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -60,6 +60,22 @@ CREATE TABLE `jubao` (
 
 -- ----------------------------
 -- Records of jubao
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `user`
+-- ----------------------------
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` varchar(50) COLLATE utf8_bin NOT NULL,
+  `username` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `password` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `role` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+-- Records of user
 -- ----------------------------
 
 -- ----------------------------
