@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:server="http://mina.apache.org/ftpserver/spring/v1"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
+	xmlns:dwra="http://www.directwebremoting.org/schema/spring-dwr-annotations"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    					http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    					http://www.springframework.org/schema/aop
+						http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context-3.0.xsd
+						http://www.springframework.org/schema/tx
+						http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+						http://www.directwebremoting.org/schema/spring-dwr
+    					http://www.directwebremoting.org/schema/spring-dwr-3.0.xsd
+    					http://www.directwebremoting.org/schema/spring-dwr-annotations    
+  						http://www.directwebremoting.org/schema/spring-dwr-annotations.xsd 
+                        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+                        http://www.springframework.org/schema/task
+						http://www.springframework.org/schema/task/spring-task-3.1.xsd 
+						http://mina.apache.org/ftpserver/spring/v1 
+						http://mina.apache.org/ftpserver/ftpserver-1.0.xsd">
+  	
+  	<!-- ftp server -->
+  	<!-- <server:server id="myServer"  max-logins="500" anon-enabled="false" max-login-failures="20" login-failure-delay="30">
+		<server:listeners>
+			<server:nio-listener name="default" port="2121" idle-timeout="60" implicit-ssl="false" local-address="127.0.0.1">
+				
+			</server:nio-listener>
+		</server:listeners>
+		<server:file-user-manager file="users.properties" encrypt-passwords="true" />
+	</server:server> -->
+	
+  	<!-- 注解支持，扫描器 -->
+	<context:component-scan base-package="com.yf.*">
+	</context:component-scan>
+    <!-- 配置注解驱动的Spring MVC Controller 的编程模型.注:此标签只在 Servlet MVC工作! -->
+    <mvc:annotation-driven />
+    <task:annotation-driven/>
+	
+	<bean id="yfDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:comp/env/jdbc/yf" />
+	</bean>	
+	
+	<!-- <bean id="yctxDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="url" value="jdbc:mysql://147.1.3.175:3306/jkzx?useUnicode=true&amp;characterEncoding=UTF-8"/>
+		<property name="username" value="root"/>
+		<property name="password" value="root"/>
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+	</bean> -->
+
+	<bean id="yfJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="yfDataSource" />
+	</bean>
+	
+	
+
+	<!-- 事务控制 -->
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" >
+		<property name="dataSource" ref="yfDataSource" />
+		<property name="globalRollbackOnParticipationFailure" value="false" />
+	</bean>
+	
+	<tx:annotation-driven transaction-manager="txManager" proxy-target-class="true" />
+	
+	
+   
+    <!-- json用法一 -->
+  	<bean
+    	class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+	    <property name="messageConverters">
+	      <list>
+	        <ref bean="mappingJacksonHttpMessageConverter" />
+	      </list>
+	    </property>
+  	</bean>
+  <bean id="mappingJacksonHttpMessageConverter"
+    class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" >
+  </bean>
+</beans>

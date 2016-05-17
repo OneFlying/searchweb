@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN"
+		"http://jetty.mortbay.org/configure.dtd">
+<Configure class="org.mortbay.jetty.webapp.WebAppContext">
+	<New id="dataSource" class="org.mortbay.jetty.plus.naming.Resource">
+		<Arg>java:comp/env/jdbc/yf</Arg>
+		<Arg>
+			<New class="com.mysql.jdbc.jdbc2.optional.MysqlDataSource">
+				<!-- <Set name="url">jdbc:mysql://147.1.3.175:3306/jkzx?useUnicode=true&amp;characterEncoding=UTF-8</Set> -->
+				<Set name="url">jdbc:mysql://localhost:3306/searchweb?useUnicode=true&amp;characterEncoding=UTF-8</Set>
+                <Set name="user">root</Set>
+                <Set name="password">root</Set>
+            </New>
+        </Arg>
+    </New>
+</Configure>
