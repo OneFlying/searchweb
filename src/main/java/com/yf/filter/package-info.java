@@ -1,5 +1,5 @@
 /**
- * ¹ıÂËÆ÷
+ * è¿‡æ»¤å™¨
  * <a href="#" target="_blank">a name</a>.
  * <p>
  * <h1>detail1:</h1>

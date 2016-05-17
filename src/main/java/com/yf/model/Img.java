@@ -3,7 +3,7 @@ package com.yf.model;
 import java.io.Serializable;
 
 /**
- * 跟文章关联的图片
+ * 涓婁紶鍥剧墖
  * @author 812934389@qq.com
  * 2016-5-16
  */
@@ -14,7 +14,7 @@ public class Img implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String id;
 	
-	private String url;//路径
+	private String url;//涓婁紶璺緞
 	public String getId() {
 		return id;
 	}

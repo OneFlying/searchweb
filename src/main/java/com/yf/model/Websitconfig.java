@@ -1,15 +1,15 @@
 package com.yf.model;
 
 /**
- * ÍøÕ¾ÅäÖÃ
+ * ç½‘ç«™é…ç½®
  * @author 812934389@qq.com
  * 2016-5-16
  */
 public class Websitconfig {
 	
 	private String id;//
-	private String title;//±êÌâ
-	private String logourl;//logoÂ·¾¶
+	private String title;//ç½‘ç«™åç§°
+	private String logourl;//logoè·¯å¾„
 	public String getId() {
 		return id;
 	}

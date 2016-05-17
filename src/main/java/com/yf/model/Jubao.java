@@ -3,7 +3,7 @@ package com.yf.model;
 import java.io.Serializable;
 
 /**
- * ¾Ù±¨ ÎÄÕÂ
+ * ä¸¾æŠ¥
  * @author 812934389@qq.com
  * 2016-5-16
  */
@@ -15,9 +15,9 @@ public class Jubao implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private String id;
-	private String articleid;//ÎÄÕÂID
-	private String content;//¾Ù±¨ÄÚÈÝ
-	private String datetime;//¾Ù±¨Ê±¼ä
+	private String articleid;//ï¿½ï¿½ï¿½ï¿½ID
+	private String content;//ï¿½Ù±ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String datetime;//ï¿½Ù±ï¿½Ê±ï¿½ï¿½
 	public String getId() {
 		return id;
 	}

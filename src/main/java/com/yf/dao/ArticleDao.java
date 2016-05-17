@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 import com.yf.model.Article;
 
 /**
- * Êý¾Ý¿â²Ù×÷
+ * æ–‡ç« 
  * @author 812934389@qq.com
  * 2016-5-16
  */

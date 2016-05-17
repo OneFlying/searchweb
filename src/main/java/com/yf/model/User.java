@@ -3,7 +3,7 @@ package com.yf.model;
 import java.io.Serializable;
 
 /**
- * 用户
+ * 鐢ㄦ埛
  * @author 812934389@qq.com
  * 2016-5-17
  */
@@ -14,9 +14,9 @@ public class User implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	private String id;//id
-	private String username;//用户名
-	private String password;//密码
-	private int role;//角色
+	private String username;//
+	private String password;//
+	private int role;//瑙掕壊
 	public String getId() {
 		return id;
 	}

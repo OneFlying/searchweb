@@ -3,19 +3,19 @@ package com.yf.model;
 import java.io.Serializable;
 
 /**
- * 
+ * 鏂囩珷
  * @author 812934389@qq.com
  * 2016-5-16
- * 提交文章
+ * 
  */
 public class Article implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private String id;//id
-	private String imgids;//图片ID  以逗号隔开
-	private String title;//标题
-	private String content;//内容
-	private String website;//网址
+	private String imgids;//涓婁紶鍥剧墖Id绠＄悊
+	private String title;//鏍囬
+	private String content;//鍐呭
+	private String website;//缃戝潃
 	public String getId() {
 		return id;
 	}
