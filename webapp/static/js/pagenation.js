@@ -94,7 +94,10 @@ PageNation.prototype = {
             $("#"+opts.pageId).children().remove();
             $("#"+opts.pageId).append($ul);
 
-            //var contenthtml = me.callback(data.rows);
+            var contenthtml = Page.initContent(data.list);
+            $("#"+opts.contentId).children().remove();
+            $("#"+opts.contentId).append(contenthtml);
+
         });
 
     },
@@ -134,7 +137,10 @@ PageNation.prototype = {
 
         $ul.append($next_page_li);
 
-        return $ul;
+        if(total_page != 0){
+            return $ul;
+        }
+
     },
     /*
     渲染导航条
