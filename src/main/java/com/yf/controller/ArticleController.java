@@ -75,24 +75,25 @@ public class ArticleController {
 		
 		SearchEntity searchEntity = new SearchEntity(Article.class);
 		searchEntity.addResultColumn("*");
-		searchEntity.setPage(page, rows);
+		
 		
 		if(keywords != null){
 			searchEntity.addSearchColumn("keywords", "%"+keywords+"%", " like ", false);
-			
+			searchEntity.setPage(page, rows);
 			List<Article> list = articleDao.pageArticle(searchEntity);
 			
 			if(list != null){
-				modelMap.put("rows", list);
-				modelMap.put("total", searchEntity.getTotal());
+				modelMap.put("list", list);
+				modelMap.put("rows", searchEntity.getTotal());
 			}else{
 				searchEntity.getSearchColumns().clear();
 				searchEntity.addSearchColumn("content", "%"+keywords+"%", " like ", false);
+				searchEntity.setPage(page, rows);
 				List<Article> res =  articleDao.pageArticle(searchEntity);
 				
 				if(res != null){
-					modelMap.put("rows", res);
-					modelMap.put("total", searchEntity.getTotal());
+					modelMap.put("list", res);
+					modelMap.put("rows", searchEntity.getTotal());
 				}
 			}
 		}
