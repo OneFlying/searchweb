@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yf.dao.SearchEntity;
@@ -81,6 +83,20 @@ public class WebsiteConfigController {
 		response.setContentType("text/html;charset=UTF-8"); 
 		headers.setContentType(MediaType.TEXT_PLAIN);
 		return new ResponseEntity<Map<String,Object>>(modelMap, headers, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/getinfo",method=RequestMethod.GET)
+	@ResponseBody
+	public ModelMap getWebsiteInfo(HttpServletRequest request){
+		
+		ModelMap modelMap = new ModelMap();
+		
+		Websitconfig wc = websiteConfigDao.getWebsitconfig();
+		
+		modelMap.put("wc", wc);
+		
+		return modelMap;
+		
 	}
 	
 }

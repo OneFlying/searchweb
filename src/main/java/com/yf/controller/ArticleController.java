@@ -35,7 +35,7 @@ public class ArticleController {
 	 */
 	@RequestMapping(value="/page",method=RequestMethod.GET)
 	@ResponseBody
-	public ModelMap pageArticle(int rows,int page,String title,String content){
+	public ModelMap pageArticle(int rows,int page,String title,String keywords){
 		
 		ModelMap modelMap = new ModelMap();
 		
@@ -44,16 +44,16 @@ public class ArticleController {
 		if(title != null){
 			searchEntity.addSearchColumn("title", "%"+title+"%", " like ", false);
 		}
-		if(content != null){
-			searchEntity.addSearchColumn("content", "%"+content+"%", " like ", false);
+		if(keywords != null){
+			searchEntity.addSearchColumn("keywords", "%"+keywords+"%", " like ", false);
 		}
 		searchEntity.setPage(page, rows);
 		
 		List<Article> list = articleDao.pageArticle(searchEntity);
 		
 		if(list != null){
-			modelMap.put("list", list);
-			modelMap.put("rows", searchEntity.getTotal());
+			modelMap.put("rows", list);
+			modelMap.put("total", searchEntity.getTotal());
 		}
 		
 		return modelMap;
