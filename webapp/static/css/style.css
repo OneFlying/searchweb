@@ -18,7 +18,7 @@ form表单
     line-height: 0;
 }
 
-.index_form > form > input[type=text]{
+.index_form > input[type=text]{
 
     width: 45%;
     height: 36px;
@@ -27,7 +27,7 @@ form表单
     vertical-align: middle;
 }
 
-.index_form > form > input[type=button]{
+.index_form > input[type=button]{
 
     font: 0.96em '微软雅黑';
     letter-spacing: 0.2em;
@@ -38,14 +38,14 @@ form表单
     vertical-align: middle;
     margin-left: -6px;
 }
-.index_form > form > span{
+.index_form > span{
     height: 36px;
     display: inline-block;
     line-height: 50px;
     vertical-align: middle;
 }
 
-.index_form > form > span > a{
+.index_form > span > a{
     font: 0.94em '微软雅黑';
 }
 
@@ -78,6 +78,7 @@ label{
 
 }
 .search_form > input[type='text']{
+
     width: 35%;
     height: 30px;
     padding:0 10px 0 10px;
@@ -85,6 +86,7 @@ label{
     vertical-align: middle;
 }
 .search_form > input[type='button']{
+
     font: 0.96em '微软雅黑';
     letter-spacing: 0.2em;
     height: 30px;
@@ -92,7 +94,7 @@ label{
     text-align: center;
     line-height: 0;/*这2句兼容ie高度不统一*/
     vertical-align: middle;
-    margin-left: -6px;
+    margin-left: -5px;
 }
 .content{
     margin-top: 50px;
@@ -158,7 +160,7 @@ label{
 }
 
 .content-ad{
-    border-left: 1px solid silver;
+    /*border-left: 1px solid silver;*/
 }
 
 #btn_submit{
@@ -280,6 +282,42 @@ label{
         font: 1.6em '微软雅黑';
     }
 
+    .index_form > input[type=text]{
+
+
+        border-radius: 0;
+        -webkit-border-radius:0;
+        -moz-border-radius:0;
+        -o-border-radius:0;
+
+        outline: none;
+        -webkit-outline:none;
+        appearance:none;
+        -webkit-appearance:none;
+    }
+
+    .index_form > input[type=button]{
+
+        border-radius: 0;
+        -webkit-border-radius:0;
+        -moz-border-radius:0;
+        -o-border-radius:0;
+
+    }
+    .search_form > input[type='text']{
+        /*去除手机输入框内阴影*/
+        outline: none;
+        -webkit-outline:none;
+        appearance:none;
+        -webkit-appearance:none;
+    }
+    .search_form > input[type='button']{
+        border-radius: 0;
+        -webkit-border-radius:0;
+        -moz-border-radius:0;
+        -o-border-radius:0;
+    }
+
 }
 
 
@@ -330,6 +368,44 @@ label{
         width: 80%;
     }
 
+    .index_form > input[type=text]{
+
+        border-radius: 0;
+        -webkit-border-radius:0;
+        -moz-border-radius:0;
+        -o-border-radius:0;
+
+        outline: none;
+        -webkit-outline:none;
+        appearance:none;
+        -webkit-appearance:none;
+    }
+    .index_form > input[type=button]{
+
+        border-radius: 0;
+        -webkit-border-radius:0;
+        -moz-border-radius:0;
+        -o-border-radius:0;
+
+    }
+    .search_form > input[type='text']{
+        border-radius: 0;
+        -webkit-border-radius:0;
+        -moz-border-radius:0;
+        -o-border-radius:0;
+        /*去除手机输入框内阴影*/
+        outline: none;
+        -webkit-outline:none;
+        appearance:none;
+        -webkit-appearance:none;
+    }
+    .search_form > input[type='button']{
+        border-radius: 0;
+        -webkit-border-radius:0;
+        -moz-border-radius:0;
+        -o-border-radius:0;
+    }
+
 }
 
 @media only screen and (min-width: 321px) and (max-width: 599px){
@@ -378,6 +454,44 @@ label{
         width: 100%;
         margin: 0;
     }
+
+    .index_form > input[type=text]{
+        border-radius: 0;
+        -webkit-border-radius:0;
+        -moz-border-radius:0;
+        -o-border-radius:0;
+
+        outline: none;
+        -webkit-outline:none;
+        appearance:none;
+        -webkit-appearance:none;
+    }
+    .index_form > input[type=button]{
+
+        border-radius: 0;
+        -webkit-border-radius:0;
+        -moz-border-radius:0;
+        -o-border-radius:0;
+
+    }
+    .search_form > input[type='text']{
+
+        border-radius: 0;
+        -webkit-border-radius:0;
+        -moz-border-radius:0;
+        -o-border-radius:0;
+        /*去除手机输入框内阴影*/
+        outline: none;
+        -webkit-outline:none;
+        appearance:none;
+        -webkit-appearance:none;
+    }
+    .search_form > input[type='button']{
+        border-radius: 0;
+        -webkit-border-radius:0;
+        -moz-border-radius:0;
+        -o-border-radius:0;
+    }
 }
 
 @media only screen and (max-width:320px) {
@@ -421,5 +535,42 @@ label{
     .info-container{
         width: 100%;
         margin: 0;
+    }
+
+    .index_form > input[type=text]{
+        border-radius: 0;
+        -webkit-border-radius:0;
+        -moz-border-radius:0;
+        -o-border-radius:0;
+
+        outline: none;
+        -webkit-outline:none;
+        appearance:none;
+        -webkit-appearance:none;
+    }
+    .index_form > input[type=button]{
+
+        border-radius: 0;
+        -webkit-border-radius:0;
+        -moz-border-radius:0;
+        -o-border-radius:0;
+
+    }
+    .search_form > input[type='text']{
+        border-radius: 0;
+        -webkit-border-radius:0;
+        -moz-border-radius:0;
+        -o-border-radius:0;
+        /*去除手机输入框内阴影*/
+        outline: none;
+        -webkit-outline:none;
+        appearance:none;
+        -webkit-appearance:none;
+    }
+    .search_form > input[type='button']{
+        border-radius: 0;
+        -webkit-border-radius:0;
+        -moz-border-radius:0;
+        -o-border-radius:0;
     }
 }
