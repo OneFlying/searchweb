@@ -22,6 +22,12 @@
 		src="${RESOUCE_STATIC_URL}/lib/jquery-easyui-1.3.5/jquery.easyui.min.js"></script>
 	<script type="text/javascript"
 		src="${RESOUCE_STATIC_URL}/lib/jquery-easyui-1.3.5/jquery.easyui.extend.js"></script>
+	<script type="text/javascript"
+		src="${RESOUCE_STATIC_URL}/lib/jquery.uploadify.js"></script>
+	<script type="text/javascript"
+		src="${RESOUCE_STATIC_URL}/js/jubao.js"></script>
+		<script type="text/javascript"
+		src="${RESOUCE_STATIC_URL}/js/webconfig.js"></script>
     <title>网站后台登录</title>
     <%@ include file="/resource.jsp" %>
    <style>
@@ -52,7 +58,14 @@
 	$.ajaxSetup({
 		cache : false
 	});
+	
 	$(function() {
+		var logourl = "${logourl}";
+		var tranlogourl = "${RESOUCE_STATIC_URL}"+logourl;
+		$('#img').attr('src',tranlogourl);
+		var title = "${title}";
+		//alert(title);
+		//alert($('#title').val());
 		//动态菜单数据
 		var treeData = [ {
 			text : "管理模块",
@@ -195,14 +208,13 @@
 	});
 </script>
 </head>
-
 <body class="easyui-layout" ondragstart="return false;">
 	<div region="north" class="north" title="" style="float:left">	
-		<div style="float:left">
-			<img alt="" src="${RESOUCE_STATIC_URL}/img/logo.png">
+		<div style="float:left" >
+			<img id="img" alt="" src="">
 		</div>
-		<div style="float:left">
-			<h1>网站后台管理</h1>	
+		<div style="float:left" >
+			<h1 id="title">网站后台管理</h1>	
 		</div>
 			
 	</div>
@@ -220,9 +232,7 @@
 		<div name="Other">关闭其他</div>
 		<div name="All">关闭所有</div>
 	</div>
-</body>
-</head>
-<body>
-
+	<%@ include file="/manager/webconfig.jsp"%>
+	<%@ include file="/manager/websiteconfig.jsp"%>
 </body>
 </html>

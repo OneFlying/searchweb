@@ -77,7 +77,13 @@
 	      </list>
 	    </property>
   	</bean>
-  <bean id="mappingJacksonHttpMessageConverter"
+  	<!-- 配置文件的上传 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 这个属性是设置上传文件的大小以比特为单位 -->
+		<property name="maxUploadSize" value="1024000"/>
+	</bean> 
+    
+    <bean id="mappingJacksonHttpMessageConverter"
     class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" >
-  </bean>
+    </bean>
 </beans>

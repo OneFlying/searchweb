@@ -1,5 +1,5 @@
-var ManagerUserLog = {
-		del:function(){//删除日志
+var JbglManager = {
+		del:function(){
 			var rows = $('#jbglgrid').datagrid('getChecked');
 			if(rows.length<=0){
 				$.messager.alert('提示','请选择进行删除！','info');
@@ -21,120 +21,50 @@ var ManagerUserLog = {
 						}
 					});
 				});
-		}	
-},
-/*endEditing : function(){
-	if (editIndex == undefined){return true;}
-
-	if ($('#jbglgrid').datagrid('validateRow', editIndex)){
-		$('#jbglgrid').datagrid('endEdit', editIndex);
-		editIndex = undefined;
-		return true;
-	} else {
-		return false;
-	}
-},
-edit:function(){
-	var rows = $('#jbglgrid').datagrid('getChecked');
-	if(rows.length<=0 || rows.length>1){
-		$.messager.alert('提示','请选择一个web服务进行编辑！','info');
-		return;
-	}
-	$('#webservice_add_win').window('open');
-	$('#webservice_add_win').panel({
-		title:'修改web服务配置',
-		onBeforeClose:function(){
-			$('#webservice_add_form').form('reset');
-		}
-	});
-	//$('#webservice_add_form').form('clear');
-	$('#webservice_add_form').form('load',rows[0]);
-	$("#tre").combotree('setValue',rows[0].webserviceVo.fayuanname);
-	$('#webservice_submit').unbind('click');
-	$('#webservice_submit').click(function(){
-		$('#webservice_add_form').form('submit',{
-			url:RESOUCE_SYSTEM_URL_JS+'/webservice/update',
-			success:function(data){
-				var dataJson = eval('(' + data + ')'); 
-				if(dataJson.success == true){
-					$('#webservice_add_win').window('close');
-					WebserviceManager.reload();
-				}else{
-					$.messager.alert('提示','修改失败，请重新进行修改！','info');
-				}
-			}
-		});
-	});
-
-},*/
+			}	
+		},
 /**
  * 加载表格数据
  */
 loadgrid : function(){
 	$('#jbglgrid').datagrid({
 		queryParams:{//搜索条件
-			type:-1,
 			operatime:"",
-			userRealName:"",
+			content:"",
 		},
-		toolbar: [/*{
-			text:'添加',
-			iconCls: 'icon-add',
+		toolbar: [{
+			text:'举报时间：<input class="easyui-textbox" type="text" id="starttime" value="" placeholder="请输入关键字" style="line-height:15px"/>',
+		},{
+			text:'查询',
+			iconCls: 'icon-search',
 			handler: function(){
-				$('#webservice_add_win').window('open');
-				$('#webservice_add_win').panel({
-					title:'添加web服务配置',
-				});
-				$('#webservice_submit').unbind('click');
-				$('#webservice_add_form').form('reset');
-				$('#webservice_submit').click(function(){
-					addWebservice();
-				});
+				var operatime = $('#starttime').val();
+				$('#jbglgrid').datagrid('load',{operatime:operatime,content:""});
 			}
 		},'-',{
-			text:'删除',
-			iconCls: 'icon-remove',
+			text:'举报内容：<input class="easyui-textbox" type="text" id="jubaocotnet" value="" placeholder="请输入关键字" style="line-height:15px"/>',
+		},{
+			text:'查询',
+			iconCls: 'icon-search',
 			handler: function(){
-				//$('#device_delete_win').window('open');
-				ManagerUserLog.del();
+				var content = $('#jubaocotnet').val();
+				$('#jbglgrid').datagrid('load',{operatime:"",content:content});
 			}
 		},/*'-',{
-			text:'修改',
-			iconCls: 'icon-edit',
-			handler: function(){
-				WebserviceManager.edit();
-			}
-		},*/'-','-',{
-			text:'操作类型：<select id="ds_type"><option value="-1">所有</option><option value="0">登陆注销</option><option value="1">配置管理</option><option value="2">会议管理</option><option value="15">设备状态</option><option value="16">数据导入</option></select>',
-		},{
-			text:'操作时间：<input class="easyui-textbox" type="text" id="searchtime" value="" placeholder="请输入关键字"/>',
+			text:'文章标题：<input class="easyui-textbox" type="text" id="searchname" value="" placeholder="请输入关键字"/>',
 		},{
 			text:'查询',
 			iconCls: 'icon-search',
 			handler: function(){
-				var type = $('#ds_type').val();
-				var operatime = $('#searchtime').val();
-				$('#jbglgrid').datagrid('load',{type:type,operatime:operatime,userRealName:""});
-			}
-		},'-',{
-			text:'操作用户姓名：<input class="easyui-textbox" type="text" id="searchname" value="" placeholder="请输入关键字"/>',
-		},{
-			text:'查询',
-			iconCls: 'icon-search',
-			handler: function(){
-				var userRealName = $('#searchname').val();
-				$('#jbglgrid').datagrid('load',{type:-1,operatime:"",userRealName:userRealName});
-			}
-		},{
+				var title = $('#searchname').val();
+				$('#jbglgrid').datagrid('load',{operatime:"",content:"",title:title});
+		},*/{
 			text:'返回',
 			iconCls:'icon-back',
 			handler:function(){
-				$('#jbglgrid').datagrid('load',{type:-1,operatime:"",userRealName:""});
+				$('#jbglgrid').datagrid('load',{operatime:"",content:""});
 			}
-		}/*,{
-			text:'<a href = "/jkzx/userlog/toexcel" style ="color:white">导出日志</a>',
-		}*/
-		],
+		}],
 		singleSelect:false,
 		selectOnCheck:true,
 		fitColumns:true,
@@ -142,31 +72,21 @@ loadgrid : function(){
 		pageSize:20,
 		pageList:[5,10,15,20],
 		striped:true,
-		url:RESOUCE_SYSTEM_URL_JS+'/userlog/getpage',
+		url:RESOUCE_SYSTEM_URL_JS+'/jubao/page',
 		method:'GET',
 		columns:[[
-		          {field:'id',title:'id',checkbox:true},
-		          {field:'type',title:'操作类型',width:30,align:'center',sortable:true,
-		        	  formatter: function(value, row, index) {
-		        		  if (value == 0) {
-		        			  return '登陆注销';
-		        		  } else if (value == 1) {
-		        			  return '配置管理';
-		        		  } else if (value == 2) {
-		        			  return '会议管理';
-		        		  } else if (value == 15) {
-		        			  return '设备状态';
-		        		  } else if (value == 16) {
-		        			  return '导入数据';
-		        		  } 
-		        	  }
+		          {
+		          	field:'id',title:'id',checkbox:true
 		          },
 		          {
-		        	  field:'userName',title:'操作用户名',align:'center',width:30,
+		          	field:'articleid',title:'举报标题',width:40,align:'center',sortable:true
 		          },
-		          {field:'deptName',title:'操作所属法院',width:70,align:'center',sortable:true,},
-				  {field:'operaTime',title:'操作时间',width:60,align:'center',sortable:true,},
-		          {field:'description',title:'操作描述',width:200,align:'center',sortable:true,},
+		          {
+		        	  field:'content',title:'举报内容',align:'center',width:90,
+		          },
+		          {
+		          	field:'datetime',title:'举报时间',width:30,align:'center',sortable:true
+		          }
 		          ]],
 		          rownumbers:true,
 		          pagination:true,
