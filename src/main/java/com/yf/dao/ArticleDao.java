@@ -38,11 +38,19 @@ public class ArticleDao extends DaoAdapter{
 		};
 	}
 	
-
-/*	public Article getArticleById(String id){
-		String sql = "select * form article where id = ?";
-		
-	}*/
+	/**
+	 * 根据id获取文章
+	 * @param id
+	 * @return
+	 */
+	public Article getArticleById(String id){
+		String sql = "select * from article where id = ?";
+		try {
+			return super.getJdbcTemplate().queryForObject(sql, articleRowMapper,id);
+		} catch (Exception e) {
+			return null;
+		}
+	}
 
 	/**
 	 * 添加文章信息
@@ -168,9 +176,7 @@ public class ArticleDao extends DaoAdapter{
 				
 				total = super.getJdbcTemplate().queryForInt(totleSql,searchEntity.getPageTotalSearchValues().toArray());
 			}
-			
 			searchEntity.setTotal(total);
-			
 			return super.getJdbcTemplate().query(sql, searchEntity.getSearchValues().toArray(),articleRowMapper);
 			
 			

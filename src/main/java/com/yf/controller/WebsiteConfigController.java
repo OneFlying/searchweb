@@ -54,27 +54,25 @@ public class WebsiteConfigController {
 	 * @param logourl
 	 * @return
 	 */
-	@RequestMapping(value="/save",method=RequestMethod.POST)
+	@RequestMapping(value="/update",method=RequestMethod.POST)
 	@ResponseBody
-	public ModelMap saveWebsiteConfig(String title,String logourl){
+	public ModelMap updateWebsiteConfig(Websitconfig websitconfig){
 		
 		ModelMap modelMap = new ModelMap();
 		
-		Websitconfig websitconfig = new Websitconfig();
-		websitconfig.setId(StringUtils.generateUuid());
-		websitconfig.setTitle(title);
-		websitconfig.setLogourl(logourl);
-		
-		int res = websiteConfigDao.saveWebSiteConfigInfo(websitconfig);
-		
+		Websitconfig websitconfig1 = websiteConfigDao.getWebsitconfig();
+		//websitconfig.setId(StringUtils.generateUuid());
+		websitconfig.setTitle(websitconfig.getTitle());		
+		int res = websiteConfigDao.updateWebsiteConfig(websitconfig1);
 		if(res != 0){
 			modelMap.put("success", true);
-			modelMap.put("msg", "保存配置信息成功");
+			modelMap.put("msg", "修改信息成功");
 		}else{
 			modelMap.put("success", false);
-			modelMap.put("msg", "保存配置失败");
+			modelMap.put("msg", "修改配置失败");
 		}
 		
 		return modelMap;
 	}
+	
 }

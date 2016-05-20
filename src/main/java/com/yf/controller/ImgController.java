@@ -12,11 +12,16 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.yf.dao.ImgDao;
+import com.yf.dao.WebsiteconfigDao;
 import com.yf.model.Img;
+import com.yf.model.Websitconfig;
 import com.yf.utils.StringUtils;
 
 @Controller
@@ -25,6 +30,8 @@ public class ImgController {
 
 	@Resource(name="imgDao")
 	private ImgDao imgDao;
+	@Resource
+	private WebsiteconfigDao websiteconfigDao;
 	/**
 	 * 上传文件
 	 * @param request
@@ -32,7 +39,7 @@ public class ImgController {
 	 * @throws Exception
 	 */
 	@RequestMapping("/upload")
-	public ModelMap uploadImg(HttpServletRequest request) throws Exception
+	public ModelAndView uploadImg(HttpServletRequest request) throws Exception
 	{
 		ModelMap modelMap = new ModelMap();
 		
@@ -64,10 +71,10 @@ public class ImgController {
 		//拿到项目的部署路径
 		String path = request.getSession().getServletContext().getRealPath("/");
 		
-		String realPath = path+"/upload/"+fileName+suffix;
+		String realPath = path+"/static/upload/"+fileName+suffix;
 		
 		//url访问的路径
-		String urlPath = "${RESOUCE_SYSTEM_URL}/upload/"+fileName+suffix;
+		String urlPath = "/upload/"+fileName+suffix;
 		
 		OutputStream out = new FileOutputStream(new File(realPath));
 		
@@ -82,17 +89,21 @@ public class ImgController {
 		Img img = new Img();
 		img.setId(StringUtils.generateUuid());
 		img.setUrl(urlPath);
-		
+		Websitconfig websitconfig = websiteconfigDao.getWebsitconfig();
 		int ret = imgDao.saveImg(img);
-		
+		websitconfig.setLogourl(urlPath);
+		int num = websiteconfigDao.updateWebsiteConfig(websitconfig);
 		if(ret != 0){
-			modelMap.put("success", true);
-			modelMap.put("msg", "上传成功");
+			System.out.println("上传成功");
 		}else{
-			modelMap.put("success", false);
-			modelMap.put("msg", "上传失败");
+			System.out.println("上传失败");
 		}
-		return modelMap;
+		ModelAndView modelAndView = new ModelAndView();
+		Websitconfig websitconfig1 = websiteconfigDao.getWebsitconfig();
+		modelAndView.addObject("logourl",websitconfig1.getLogourl());
+		modelAndView.addObject("title",websitconfig1.getTitle());
+		modelAndView.setViewName("admin");
+		return modelAndView;
 	}
 	
 	@RequestMapping("/index")

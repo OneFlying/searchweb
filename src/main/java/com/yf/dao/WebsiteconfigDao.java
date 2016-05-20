@@ -77,7 +77,8 @@ public class WebsiteconfigDao extends DaoAdapter{
 			if(searchEntity.getSearchValues().size() < 0){
 				total = super.getJdbcTemplate().queryForInt(totalSql);
 			}else{
-				total = super.getJdbcTemplate().queryForInt(totalSql,searchEntity.getSearchValues().toArray());
+				//total = super.getJdbcTemplate().queryForInt(totalSql,searchEntity.getSearchValues().toArray());
+				total = super.getJdbcTemplate().queryForInt(totalSql,searchEntity.getPageTotalSearchValues().toArray());
 			}
 			
 			searchEntity.setTotal(total);
@@ -88,5 +89,14 @@ public class WebsiteconfigDao extends DaoAdapter{
 			// TODO: handle exception
 			return null;
 		}
+	}
+	public Websitconfig getWebsitconfig(){
+		String sql = "select * from websitconfig";
+		try {
+			return super.getJdbcTemplate().queryForObject(sql, websiteRowMapper);
+		} catch (Exception e) {
+			return null;
+		}
+		
 	}
 }
