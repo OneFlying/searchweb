@@ -151,25 +151,26 @@ public class ArticleDao extends DaoAdapter{
 	
 	/**
 	 * 分页获取文章信息
+	 * @param <E>
 	 * @param searchEntity
 	 * @return
 	 */
-	public List<Article> pageArticle(SearchEntity searchEntity){
+	public <E> List<Article> pageArticle(SearchEntity searchEntity){
 		
 		try {
 			
 			String sql = searchEntity.toSql();
 			String totleSql = searchEntity.toPageTotalSql();
 			int total = 0;
-			if(searchEntity.getPageTotalSearchValues().size()<0){
+			if(searchEntity.getPageTotalSearchValues().size()<= 0){
 				total = super.getJdbcTemplate().queryForInt(totleSql);
 			}else{
 				total = super.getJdbcTemplate().queryForInt(sql,searchEntity.getPageTotalSearchValues().toArray());
 			}
 			
 			searchEntity.setTotal(total);
-			
-			return super.getJdbcTemplate().query(sql, searchEntity.getPageTotalSearchValues().toArray(),articleRowMapper);
+			List list = searchEntity.getPageTotalSearchValues();
+			return super.getJdbcTemplate().query(sql, searchEntity.getSearchValues().toArray(),articleRowMapper);
 			
 			
 		} catch (Exception e) {

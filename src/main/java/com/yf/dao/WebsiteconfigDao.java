@@ -2,6 +2,7 @@ package com.yf.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -43,6 +44,49 @@ public class WebsiteconfigDao extends DaoAdapter{
 		} catch (Exception e) {
 			// TODO: handle exception
 			return 0;
+		}
+	}
+	
+	/**
+	 * 修改网页配置信息
+	 * @param websitconfig
+	 * @return
+	 */
+	public int updateWebsiteConfig(Websitconfig websitconfig){
+		
+		try {
+			
+			String sql = "update websitconfig set title=?,logourl=? where id=?";
+			return super.getJdbcTemplate().update(sql,websitconfig.getTitle(),websitconfig.getLogourl(),websitconfig.getId());
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			return 0;
+		}
+	}
+	/**
+	 * 分页获取网页配置信息
+	 * @param searchEntity
+	 * @return
+	 */
+	public List<Websitconfig> pageWebsitconfig(SearchEntity searchEntity){
+		try {
+			String sql = searchEntity.toSql();
+			String totalSql = searchEntity.toPageTotalSql();
+			int total = 0;
+			if(searchEntity.getSearchValues().size() < 0){
+				total = super.getJdbcTemplate().queryForInt(totalSql);
+			}else{
+				total = super.getJdbcTemplate().queryForInt(totalSql,searchEntity.getSearchValues().toArray());
+			}
+			
+			searchEntity.setTotal(total);
+			
+			return super.getJdbcTemplate().query(sql, searchEntity.getSearchValues().toArray(),websiteRowMapper);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			return null;
 		}
 	}
 }
