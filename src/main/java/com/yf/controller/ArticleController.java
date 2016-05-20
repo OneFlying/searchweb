@@ -9,12 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 
 import com.yf.dao.ArticleDao;
 import com.yf.dao.SearchEntity;
 import com.yf.model.Article;
+import com.yf.utils.StringUtils;
 
 @Controller
 @RequestMapping("/article")
@@ -121,5 +123,52 @@ public class ArticleController {
 		}
 		
 		return modelMap;
+	}
+	
+	/**
+	 * 保存上传的文章信息
+	 * @param title
+	 * @param content
+	 * @param website
+	 * @param keywords
+	 * @param imageurl
+	 * @return
+	 */
+	@RequestMapping(value="/save",method=RequestMethod.POST)
+	public String saveArticle(String title,String content,String website,String keywords,String imageurl){
+		
+		ModelMap modelMap = new ModelMap();
+		Article article = new Article();
+		
+		article.setId(StringUtils.generateUuid());
+		article.setContent(content);
+		article.setWebsite(website);
+		article.setImgids(imageurl);
+		article.setKeywords(keywords);
+		article.setTitle(title);
+		
+		int res = articleDao.saveArticle(article);
+		
+		if(res != 0){
+			return "index";
+		}else{
+			return "index";
+		}
+		
+		
+	}
+	
+	@RequestMapping("/index")
+	public String skipToArticle(){
+		return "article";
+	}
+	
+	@RequestMapping("/list")
+	public ModelAndView skipToListArticle(String keywords){
+		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("keywords", keywords);
+		modelAndView.setViewName("listArticle");
+		return modelAndView;
 	}
 }
