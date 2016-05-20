@@ -77,7 +77,7 @@ public class ArticleController {
 		searchEntity.addResultColumn("*");
 		
 		
-		if(keywords != null){
+		if(StringUtils.isNotBlank(keywords)){
 			searchEntity.addSearchColumn("keywords", "%"+keywords+"%", " like ", false);
 			searchEntity.setPage(page, rows);
 			List<Article> list = articleDao.pageArticle(searchEntity);
@@ -159,10 +159,19 @@ public class ArticleController {
 		
 	}
 	
+	/**
+	 * 跳转到编写文章也
+	 */
 	@RequestMapping("/index")
 	public String skipToArticle(){
 		return "article";
 	}
+	
+	/**
+	 * 跳转到文章详情页
+	 * @param keywords
+	 * @return
+	 */
 	
 	@RequestMapping("/list")
 	public ModelAndView skipToListArticle(String keywords){
@@ -170,6 +179,23 @@ public class ArticleController {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("keywords", keywords);
 		modelAndView.setViewName("listArticle");
+		return modelAndView;
+	}
+	
+	/**
+	 * 跳转到文章详情页
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping("/info")
+	public ModelAndView skipAricitleInfo(String id){
+		
+		ModelAndView modelAndView = new ModelAndView();
+		Article article = articleDao.getArticleById(id);
+		
+		modelAndView.addObject("article", article);
+		modelAndView.setViewName("articleinfo");
+		
 		return modelAndView;
 	}
 }
