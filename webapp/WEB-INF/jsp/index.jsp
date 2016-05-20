@@ -4,10 +4,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>剑三搜索</title>
 <%@ include file="/resource.jsp" %>
 
@@ -23,17 +22,17 @@
             <img src="${RESOUCE_STATIC_URL}/img/index_logo.png"/>
         </div>
     </div>
-    
+
     <!--搜索框-->
     <div class="row">
         <div class="index_form">
-            <form>
-                <input type="text" name="name" value="">
-                <input id="btn" type="button" name="name" value="搜索一下">
+            <%-- <form> --%>
+                <input type="text" value="">
+                <input id="btn" type="button" value="搜索一下">
                 <span class="">
                     <a href="${RESOUCE_SYSTEM_URL}/article/index">上传文章</a>
                 </span>
-            </form>
+            <%-- </form> --%>
 
         </div>
     </div>
@@ -44,13 +43,39 @@
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
 <script type="text/javascript">
 
+    $(document).ready(function(){
+
+        var url = RESOUCE_SYSTEM_URL_JS+"/websiteconfig/getinfo";
+
+        $.get(url,function(data){
+            var obj = data.wc;
+            $("title").text(obj.title);
+            $(".logo>img").attr("src","${RESOUCE_STATIC_URL}"+obj.logourl);
+        });
+    });
+
+    $(document).on("keydown",function(event){
+
+        if(event.keyCode == 13){
+            var text = $("input[type='text']").val();
+            //alert(RESOUCE_SYSTEM_URL_JS+"/article/list");
+
+            //alert(RESOUCE_SYSTEM_URL_JS+"/article/list?keywords="+text);
+            location.href = RESOUCE_SYSTEM_URL_JS+"/article/list?keywords="+text;
+
+
+        }
+
+    });
+
 
     $("#btn").unbind('click');
     $("#btn").bind("click",function(){
         //获取要搜寻的关键字
         var keywords = $("input[type='text']").val();
         window.location.href="${RESOUCE_SYSTEM_URL}/article/list?keywords="+keywords;
-    })
+    });
+
 </script>
 </body>
 </html>

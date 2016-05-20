@@ -4,10 +4,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>书写文章</title>
 <%@ include file="/resource.jsp" %>
 
@@ -23,7 +22,7 @@
 <body>
 
     <div class="container">
-        <form role="form" action="${RESOUCE_SYSTEM_URL}/article/save" method="post">
+        <form role="form" id="form" action="${RESOUCE_SYSTEM_URL}/article/save" method="post">
             <div class="form-group">
                 <label for="title">标题:</label>
                 <input id="title" class="form-control" type="text" name="title" value="">
@@ -45,7 +44,7 @@
             </div>
             <input type="hidden" id="img" name="imageurl" value=""/>
 
-            <button type="submit" onclick="setImg()" class="btn btn-default btn-primary btn-size" name="button">提交</button>
+            <button type="button" onclick="setImg()" class="btn btn-default btn-primary btn-size" name="button">提交</button>
             <button type="button" onclick="back()" class="btn btn-default btn-primary btn-size" name="button">返回</button>
         </form>
 
@@ -65,7 +64,6 @@
 
     //alert(res);
     function setImg() {
-
         var res = UM.getEditor('myEditor').getContent();
 
         var objE = document.createElement("div");
@@ -79,7 +77,17 @@
                 var path = $(el).attr("src");
                 $("#img").val(path);
             }
-        });;
+        });
+
+        var res = $("#title").val();
+
+        if(!res){
+            alert("请输入标题");
+            return false;
+        }
+        //var url = RESOUCE_SYSTEM_URL_JS+"/index";
+
+        $("#form").submit();
 
     }
 
@@ -87,11 +95,6 @@
     function back(){
         window.location.href = "${RESOUCE_SYSTEM_URL}/index";
     }
-
-
-
-
-
 
 
 </script>

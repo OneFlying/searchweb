@@ -4,10 +4,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>剑三搜索</title>
 <%@ include file="/resource.jsp" %>
 
@@ -36,11 +35,11 @@
     <div class="container content">
 
         <div class="row">
-            <div id="page_content" class="col-xs-12 col-sm-8 col-md-8 ">
+            <div id="page_content" class="col-xs-11 col-sm-8 col-md-8 ">
 
             </div>
 
-            <div class="col-md-4 col-sm-4 content-ad">
+            <div class="col-xs-1 col-md-4 col-sm-4 content-ad">
              	   广告
             </div>
         </div>
@@ -97,6 +96,15 @@
 
     var pageNation = new PageNation(opts,param);
 
+    $(document).keydown(function(event) {
+        if (event.keyCode == 13) {
+            var keywords = $("input[type='text']").val();
+            keywords = $("input[type=text]").val();
+            param.keywords = keywords;
+            pageNation.initPage(opts,param);
+        }
+    });
+
     $("#btn").unbind('click');
     $("#btn").bind('click',function(event) {
         /* Act on the event */
@@ -109,7 +117,16 @@
 </script>
 <script type="text/javascript">
 
+    $(document).ready(function(){
 
+        var url = RESOUCE_SYSTEM_URL_JS+"/websiteconfig/getinfo";
+
+        $.get(url,function(data){
+            var obj = data.wc;
+            $("title").text(obj.title);
+            $(".nav-brand-logo>img").attr("src","${RESOUCE_STATIC_URL}"+obj.logourl);
+        });
+    });
 
 </script>
 </body>

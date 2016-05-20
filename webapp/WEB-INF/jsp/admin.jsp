@@ -25,6 +25,8 @@
 	<script type="text/javascript"
 		src="${RESOUCE_STATIC_URL}/lib/jquery.uploadify.js"></script>
 	<script type="text/javascript"
+		src="${RESOUCE_STATIC_URL}/js/article.js"></script>
+    <script type="text/javascript"
 		src="${RESOUCE_STATIC_URL}/js/jubao.js"></script>
 	<script type="text/javascript"
 		src="${RESOUCE_STATIC_URL}/js/webconfig.js"></script>
@@ -58,7 +60,7 @@
 	$.ajaxSetup({
 		cache : false
 	});
-	
+
 	$(function() {
 		var logourl = "${logourl}";
 		var tranlogourl = "${RESOUCE_STATIC_URL}"+logourl;
@@ -69,7 +71,8 @@
 		//动态菜单数据
 		var treeData = [ {
 			text : "管理模块",
-			children : [ {
+			children : [
+            {
 				text : "网站基本管理",
 				attributes : {
 					url : "",
@@ -87,14 +90,9 @@
 					url : "",
 					type : 'JBGL'
 				}
-			}/* ,{
-				text : "退出",
-				attributes : {
-					url : '${RESOUCE_SYSTEM_URL}/logout',
-					type : 'LOGOUT'
-				}
-			} */] 
-		} ];
+			}
+	       ]
+       }];
 
 		//实例化树形菜单
 		$("#tree").tree({
@@ -174,7 +172,7 @@
 		$("#tabsMenu").menu({
 			onClick : function(item) {
 				CloseTab(this, item.name);
-				
+
 			}
 		});
 
@@ -209,19 +207,20 @@
 </script>
 </head>
 <body class="easyui-layout" ondragstart="return false;">
-	<div region="north" class="north" title="" style="float:left">	
+	<div region="north" class="north" title="" style="float:left">
 		<div style="float:left" >
 			<img id="img" alt="" src="">
 		</div>
 		<div style="float:left" >
-			<h1 id="title">网站后台管理</h1>	
+			<h1 id="title">网站后台管理</h1>
 		</div>
+
 		 <div class="north-logout">
             <a href="${RESOUCE_SYSTEM_URL}/logout" >
                 <img src="${RESOUCE_STATIC_URL}/img/logout.png"/>
                 <span>退出</span>
             </a>
-        </div>s	
+        </div>
 	</div>
 	<div region="center" title="内容">
 		<div class="easyui-tabs" fit="true" border="false" id="tabs">
