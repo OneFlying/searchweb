@@ -87,13 +87,13 @@
 					url : "",
 					type : 'JBGL'
 				}
-			},{
+			}/* ,{
 				text : "退出",
 				attributes : {
 					url : '${RESOUCE_SYSTEM_URL}/logout',
 					type : 'LOGOUT'
 				}
-			}] 
+			} */] 
 		} ];
 
 		//实例化树形菜单
@@ -148,7 +148,7 @@
 					break;
 				case 'LOGOUT':
 					$.get('${RESOUCE_SYSTEM_URL}/logout', function(data) {
-						location.reload(true);
+						//location.reload(true);
 					});
 					break;
 				default:
@@ -216,7 +216,12 @@
 		<div style="float:left" >
 			<h1 id="title">网站后台管理</h1>	
 		</div>
-			
+		 <div class="north-logout">
+            <a href="${RESOUCE_SYSTEM_URL}/logout" >
+                <img src="${RESOUCE_STATIC_URL}/img/logout.png"/>
+                <span>退出</span>
+            </a>
+        </div>s	
 	</div>
 	<div region="center" title="内容">
 		<div class="easyui-tabs" fit="true" border="false" id="tabs">
