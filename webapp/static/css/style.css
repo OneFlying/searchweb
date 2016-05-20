@@ -116,6 +116,16 @@ label{
     text-decoration: underline;
     color: #0000CC;
     font-size: 1.1em;
+    cursor: pointer;
+}
+.content-adjust{
+    margin-left: 0px;
+}
+.img-adjust{
+    margin-left: 0px;
+}
+.img-adjust > img{
+    width: 120%;
 }
 /*修饰文字*/
 .dec_word{
@@ -132,6 +142,44 @@ label{
     color: #008000;
 }
 
+.content-navbar-bottom{
+    margin-top: 40px;
+    margin-bottom: 0;
+}
+.content-jubao{
+    display: block;
+    color: #777777;
+    text-decoration: none;
+    padding-top: 15px;
+}
+.content-jubao:hover{
+    color: #484848;
+    text-decoration: none;
+}
+
+.content-ad{
+    border-left: 1px solid silver;
+}
+
+#btn_submit{
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    padding: 6px 20px;
+    border: 1px solid lightblue;
+    letter-spacing: 0.2em;
+    font-size: 16px;
+
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+         -o-border-radius: 5px;
+
+    background-color: #2EA5C6;
+    color: #fff;
+    cursor: pointer;
+}
 /*
 分页导航条
 ------------------------------------*/
@@ -179,7 +227,33 @@ label{
 .page-show{
     display: inline-block;
 }
-
+/*
+文章详细页
+--------------------*/
+.info-container{
+    margin-top: 50px;
+    margin-bottom:50px;
+    width: 60%;
+    box-shadow: -2px 0 5px 0 rgba(0,0,0,0.3),2px 0 5px 0 rgba(0,0,0,0.3);
+    -webkit-box-shadow:-2px 0 5px 0 rgba(0,0,0,0.3),2px 0 5px 0 rgba(0,0,0,0.3);
+       -moz-box-shadow:-2px 0 5px 0 rgba(0,0,0,0.3),2px 0 5px 0 rgba(0,0,0,0.3);
+        -ms-box-shadow:-2px 0 5px 0 rgba(0,0,0,0.3),2px 0 5px 0 rgba(0,0,0,0.3);
+         -o-box-shadow:-2px 0 5px 0 rgba(0,0,0,0.3),2px 0 5px 0 rgba(0,0,0,0.3);
+}
+.info-title{
+    font-size: 1.3em;
+    height: 60px;
+    line-height: 60px;
+    padding-left: 20px;
+}
+.info-container > div > hr{
+    margin-top: 0;
+    /*border-color: rgba(0,0,0,0.7);
+    box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.5);*/
+}
+#article_content{
+    padding: 0 20px;
+}
 
 /*
 针对移动端
@@ -207,6 +281,8 @@ label{
     }
 
 }
+
+
 
 @media only screen and (min-width: 600px) and (max-width: 768px){
     .content{
@@ -249,6 +325,11 @@ label{
         vertical-align: middle;
         border: none;
     }
+
+    .info-container{
+        width: 80%;
+    }
+
 }
 
 @media only screen and (min-width: 321px) and (max-width: 599px){
@@ -292,6 +373,11 @@ label{
         vertical-align: middle;
         border: none;
     }
+
+    .info-container{
+        width: 100%;
+        margin: 0;
+    }
 }
 
 @media only screen and (max-width:320px) {
@@ -331,5 +417,9 @@ label{
         font-size: 1.5em;
         vertical-align: middle;
         border: none;
+    }
+    .info-container{
+        width: 100%;
+        margin: 0;
     }
 }
