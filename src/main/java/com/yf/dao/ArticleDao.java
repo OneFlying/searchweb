@@ -37,20 +37,6 @@ public class ArticleDao extends DaoAdapter{
 			}
 		};
 	}
-	
-	/**
-	 * 根据id获取文章
-	 * @param id
-	 * @return
-	 */
-	public Article getArticleById(String id){
-		String sql = "select * from article where id = ?";
-		try {
-			return super.getJdbcTemplate().queryForObject(sql, articleRowMapper,id);
-		} catch (Exception e) {
-			return null;
-		}
-	}
 
 	/**
 	 * 添加文章信息
@@ -185,6 +171,23 @@ public class ArticleDao extends DaoAdapter{
 			return null;
 		}
 		
+	}
+	
+	/**
+	 * 根据id号获取文章信息
+	 * @param id
+	 * @return
+	 */
+	public Article getArticleById(String id){
+		try {
+			
+			String sql = "select * from article where id = ?";
+			return super.getJdbcTemplate().queryForObject(sql,articleRowMapper,id);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			return null;
+		}
 	}
 
 }
