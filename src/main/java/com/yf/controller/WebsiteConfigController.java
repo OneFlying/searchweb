@@ -1,7 +1,12 @@
 package com.yf.controller;
 
 import java.util.List;
+import java.util.Map;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 
 import com.yf.dao.SearchEntity;
 import com.yf.dao.WebsiteconfigDao;
@@ -56,13 +62,13 @@ public class WebsiteConfigController {
 	 */
 	@RequestMapping(value="/update",method=RequestMethod.POST)
 	@ResponseBody
-	public ModelMap updateWebsiteConfig(Websitconfig websitconfig){
+	public ResponseEntity<Map<String, Object>> updateWebsiteConfig(HttpServletResponse response,Websitconfig websitconfig){
 		
 		ModelMap modelMap = new ModelMap();
 		
 		Websitconfig websitconfig1 = websiteConfigDao.getWebsitconfig();
 		//websitconfig.setId(StringUtils.generateUuid());
-		websitconfig.setTitle(websitconfig.getTitle());		
+		websitconfig1.setTitle(websitconfig.getTitle());		
 		int res = websiteConfigDao.updateWebsiteConfig(websitconfig1);
 		if(res != 0){
 			modelMap.put("success", true);
@@ -71,8 +77,10 @@ public class WebsiteConfigController {
 			modelMap.put("success", false);
 			modelMap.put("msg", "修改配置失败");
 		}
-		
-		return modelMap;
+		HttpHeaders headers = new HttpHeaders();
+		response.setContentType("text/html;charset=UTF-8"); 
+		headers.setContentType(MediaType.TEXT_PLAIN);
+		return new ResponseEntity<Map<String,Object>>(modelMap, headers, HttpStatus.OK);
 	}
 	
 }

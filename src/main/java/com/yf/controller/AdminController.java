@@ -16,13 +16,22 @@ public class AdminController {
 	
 	@Resource
 	private WebsiteconfigDao websiteconfigDao;
-	@RequestMapping(value="/",method=RequestMethod.GET)
+	@RequestMapping(value="/admin",method=RequestMethod.GET)
 	public ModelAndView manager(){
 		ModelAndView modelAndView = new ModelAndView();
 		Websitconfig websitconfig = websiteconfigDao.getWebsitconfig();
 		modelAndView.addObject("logourl",websitconfig.getLogourl());
 		modelAndView.addObject("title",websitconfig.getTitle());
 		modelAndView.setViewName("admin");
+		return modelAndView;
+	}
+	@RequestMapping(value="/",method=RequestMethod.GET)
+	public ModelAndView index(){
+		ModelAndView modelAndView = new ModelAndView();
+		Websitconfig websitconfig = websiteconfigDao.getWebsitconfig();
+		modelAndView.addObject("logourl",websitconfig.getLogourl());
+		modelAndView.addObject("title",websitconfig.getTitle());
+		modelAndView.setViewName("login");
 		return modelAndView;
 	}
 }

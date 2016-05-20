@@ -30,10 +30,9 @@ public class LoginController {
 		ModelMap modelMap = new ModelMap();
 		
 		User user = userDao.checkLogin(username, password);
-		
 		if(user != null){
 			modelMap.put("success", true);
-			modelMap.put("url", "/admin/index");
+			modelMap.put("url", "/admin");
 		}else{
 			modelMap.put("success", false);
 			modelMap.put("msg", "用户名或密码错误");
