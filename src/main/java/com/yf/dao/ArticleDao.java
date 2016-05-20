@@ -155,7 +155,7 @@ public class ArticleDao extends DaoAdapter{
 	 * @param searchEntity
 	 * @return
 	 */
-	public <E> List<Article> pageArticle(SearchEntity searchEntity){
+	public List<Article> pageArticle(SearchEntity searchEntity){
 		
 		try {
 			
@@ -165,11 +165,12 @@ public class ArticleDao extends DaoAdapter{
 			if(searchEntity.getPageTotalSearchValues().size()<= 0){
 				total = super.getJdbcTemplate().queryForInt(totleSql);
 			}else{
-				total = super.getJdbcTemplate().queryForInt(sql,searchEntity.getPageTotalSearchValues().toArray());
+				
+				total = super.getJdbcTemplate().queryForInt(totleSql,searchEntity.getPageTotalSearchValues().toArray());
 			}
 			
 			searchEntity.setTotal(total);
-			List list = searchEntity.getPageTotalSearchValues();
+			
 			return super.getJdbcTemplate().query(sql, searchEntity.getSearchValues().toArray(),articleRowMapper);
 			
 			
