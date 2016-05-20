@@ -51,7 +51,7 @@
 
     </div>
 
-<script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/util/xmlUtil.js"></script>
+<script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/util/HtmlUtil.js"></script>
 <script type="text/javascript">
     //实例化编辑器
     var um = UM.getEditor('myEditor');

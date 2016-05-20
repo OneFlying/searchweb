@@ -36,68 +36,11 @@
     <div class="container content">
 
         <div class="row">
-            <div class="col-xs-12 col-sm-8 col-md-8">
-                <ul class="article">
-                    <li>
-                        <a href="#wode">测试用的fasfasdfas</a>
-                        <div class="row">
-                            <div class="col-xs-3 col-md-2 col-sm-2">
-                                <img src="" alt="" />
-                            </div>
-                            <div class="col-xs-9 col-md-10 col-sm-10">
-                                <span class="dec_word">
-					                                测试用的测试用的测试测试用的测试用的测试测试用的测试用的测试测试用的测试用的测试
-					                                测试用的测试用的测试测试用的测试用的测试测试用的测试用的测试测试用的测试用的测试
-					                                测试用的测试用的测试测试用的测试用的测试测试用的测试用的测试
-					                                测试用的测试用的测试测试用的测试用的测试
-					                                测试用的测试用的测试测试用的测试用的测试测试用的测试用的测试
-                                </span>
-                                <a class="website" href="#">网址链接</a>
-                            </div>
-                        </div>
-                    </li>
+            <div id="page_content" class="col-xs-12 col-sm-8 col-md-8 ">
 
-                    <li>
-                        <a href="#wode">测试用的fasfasdfas</a>
-                        <div class="row">
-                            <div class="col-xs-3 col-md-2 col-sm-2">
-                                <img src="" alt="" />
-                            </div>
-                            <div class="col-xs-9 col-md-10 col-sm-10">
-                                <span class="dec_word">
-					                                测试用的测试用的测试测试用的测试用的测试测试用的测试用的测试测试用的测试用的测试
-					                                测试用的测试用的测试测试用的测试用的测试测试用的测试用的测试测试用的测试用的测试
-					                                测试用的测试用的测试测试用的测试用的测试测试用的测试用的测试
-					                                测试用的测试用的测试测试用的测试用的测试
-					                                测试用的测试用的测试测试用的测试用的测试测试用的测试用的测试
-                                </span>
-                                <a class="website" href="#">网址链接</a>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li>
-                        <a href="#wode">测试用的fasfasdfas</a>
-                        <div class="row">
-                            <%-- <div class="col-xs-3 col-md-2 col-sm-2">
-                                <img src="" alt="" />
-                            </div> --%>
-                            <div class="col-xs-12 col-md-12 col-sm-12">
-                                <span class="dec_word">
-					                                测试用的测试用的测试测试用的测试用的测试测试用的测试用的测试测试用的测试用的测试
-					                                测试用的测试用的测试测试用的测试用的测试测试用的测试用的测试测试用的测试用的测试
-					                                测试用的测试用的测试测试用的测试用的测试测试用的测试用的测试
-					                                测试用的测试用的测试测试用的测试用的测试
-					                                测试用的测试用的测试测试用的测试用的测试测试用的测试用的测试
-                                </span>
-                                <a class="website" href="#">网址链接</a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
             </div>
 
-            <div class="col-md-4 col-sm-4">
+            <div class="col-md-4 col-sm-4 content-ad">
              	   广告
             </div>
         </div>
@@ -115,6 +58,7 @@
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/pagenation.js"></script>
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/page.js"></script>
+<script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/util/HtmlUtil.js"></script>
 
 <script type="text/javascript">
 
@@ -122,6 +66,9 @@
      var keywords = "<%=keywords%>";
 
     //Page.initpage();
+
+
+
 
     //var screen_width;
     //监听屏幕宽度变化做出判断
@@ -138,17 +85,31 @@
     }
     var opts = {
         page:1,
-        rows:4,
+        rows:10,
         url:"${RESOUCE_SYSTEM_URL}/article/search",
         pageId:'_pageNation',
+        contentId:'page_content',
         screen_width:screen_width
     };
-
 
     var param = {page:'1',rows:'10',keywords:keywords};
 
 
     var pageNation = new PageNation(opts,param);
+
+    $("#btn").unbind('click');
+    $("#btn").bind('click',function(event) {
+        /* Act on the event */
+        keywords = $("input[type=text]").val();
+        param.keywords = keywords;
+        pageNation.initPage(opts,param);
+
+    });
+
+</script>
+<script type="text/javascript">
+
+
 
 </script>
 </body>
