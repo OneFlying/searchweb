@@ -46,7 +46,18 @@ loadgrid : function(){
 				$('#websitconfig_add_form').form('load',rows[0]);
 				$('#websitconfig_submit').unbind('click');
 				$('#websitconfig_submit').click(function(){
-					alert('修改');
+					$('#websitconfig_add_form').form('submit',{
+						url:RESOUCE_SYSTEM_URL_JS+'/websiteconfig/update',
+						success:function(data){
+							var dataJson = eval('(' + data + ')'); 
+							if(dataJson.success == true){
+								$('#websitconfig_add_win').window('close');
+								WzjbglManager.reload();
+							}else{
+								$.messager.alert('提示',dataJson.msg,'info');
+							}
+						}
+					});
 					});
 				}
 			}],

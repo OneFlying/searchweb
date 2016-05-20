@@ -26,7 +26,7 @@
 		src="${RESOUCE_STATIC_URL}/lib/jquery.uploadify.js"></script>
 	<script type="text/javascript"
 		src="${RESOUCE_STATIC_URL}/js/jubao.js"></script>
-		<script type="text/javascript"
+	<script type="text/javascript"
 		src="${RESOUCE_STATIC_URL}/js/webconfig.js"></script>
     <title>网站后台登录</title>
     <%@ include file="/resource.jsp" %>
