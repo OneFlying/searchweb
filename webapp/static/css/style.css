@@ -1,0 +1,335 @@
+/*首页logo
+------------------------------
+*/
+.logo{
+    text-align: center;
+    padding-top: 100px;
+}
+.logo > img{
+    width: 25%;
+}
+
+/*
+form表单
+-----------------------------
+*/
+.index_form{
+    text-align: center;
+    line-height: 0;
+}
+
+.index_form > form > input[type=text]{
+
+    width: 45%;
+    height: 36px;
+    padding:0 10px 0 10px;
+    line-height: 0;/*这2句兼容ie高度不统一*/
+    vertical-align: middle;
+}
+
+.index_form > form > input[type=button]{
+
+    font: 0.96em '微软雅黑';
+    letter-spacing: 0.2em;
+    height: 36px;
+    padding:0 10px 0 10px;
+    text-align: center;
+    line-height: 0;/*这2句兼容ie高度不统一*/
+    vertical-align: middle;
+    margin-left: -6px;
+}
+.index_form > form > span{
+    height: 36px;
+    display: inline-block;
+    line-height: 50px;
+    vertical-align: middle;
+}
+
+.index_form > form > span > a{
+    font: 0.94em '微软雅黑';
+}
+
+/*
+文章编写
+*/
+.btn-size{
+    padding: 0.7% 3% 0.7% 3%;
+    letter-spacing: 0.8em;
+    font: 1.0em '微软雅黑';
+    text-align: center;
+}
+
+label{
+    font: 0.94em '微软雅黑';
+}
+
+/*
+搜索列表
+*/
+.nav-brand-logo{
+    line-height: 50px;
+}
+.nav-brand-logo > img{
+    width: 10%;
+    height:40px;
+}
+
+.search_form{
+
+}
+.search_form > input[type='text']{
+    width: 35%;
+    height: 30px;
+    padding:0 10px 0 10px;
+    line-height: 0;/*这2句兼容ie高度不统一*/
+    vertical-align: middle;
+}
+.search_form > input[type='button']{
+    font: 0.96em '微软雅黑';
+    letter-spacing: 0.2em;
+    height: 30px;
+    padding:0 10px 0 10px;
+    text-align: center;
+    line-height: 0;/*这2句兼容ie高度不统一*/
+    vertical-align: middle;
+    margin-left: -6px;
+}
+.content{
+    margin-top: 50px;
+}
+
+/*
+内容部分
+------------------------------------*/
+/*修饰ul*/
+.article{
+    display: block;
+    width: 100%;
+    list-style: none;
+    padding: 0;
+
+}
+.article > li{
+    margin-top: 15px;
+}
+.article > li >a{
+    text-decoration: underline;
+    color: #0000CC;
+    font-size: 1.1em;
+}
+/*修饰文字*/
+.dec_word{
+    font-size: 0.85em;
+    letter-spacing: 0.1em;
+}
+/*修饰链接网址*/
+.website{
+    text-decoration: none;
+    color: #008000;
+}
+.website:hover{
+    text-decoration: none;
+    color: #008000;
+}
+
+/*
+分页导航条
+------------------------------------*/
+.pagenation{
+
+}
+
+.pagenation > ul{
+    padding: 0;
+    display: inline-block;
+    list-style: none;
+}
+.pagenation > ul > li{
+    display: inline-block;
+    padding: 0;
+}
+
+
+.pagenation > ul > li > a.active{
+    display: block;
+    text-decoration: none;
+    border: none;
+    padding: 5px 10px;
+    color: #000;
+}
+.pagenation > ul > li > a{
+    display: block;
+    text-decoration: none;
+    border: 1px solid rgba(178,178,178,.3);
+    padding: 5px 10px;
+    color: #0000CC;
+    margin-right: 5px;
+    font-family: '微软雅黑';
+}
+.pagenation > ul > li > a:active{
+    color: red;
+}
+.pagenation > ul > li > a:hover{
+    border-color: #3C90F3;
+    cursor: pointer;
+}
+.page-hidden{
+    display: none;
+}
+.page-show{
+    display: inline-block;
+}
+
+
+/*
+针对移动端
+*/
+@media only screen and (min-width: 769px) and (max-width: 800px){
+    .content{
+        margin-top: 115px;
+    }
+    .nav-brand-logo{
+        display: block;
+    }
+    .search_form{
+        display: block;
+        width: 100%;
+    }
+    .search_form > input[type='text']{
+        width: 75%;
+        height:60px;
+        font-size: 1.6em;
+    }
+    .search_form > input[type='button']{
+        width: 25%;
+        height: 60px;
+        font: 1.6em '微软雅黑';
+    }
+
+}
+
+@media only screen and (min-width: 600px) and (max-width: 768px){
+    .content{
+        margin-top: 100px;
+    }
+    .nav-brand-logo{
+        display: block;
+    }
+    .search_form{
+        display: block;
+        width: 100%;
+    }
+    .search_form > input[type='text']{
+        width: 75%;
+        height:50px;
+        font-size: 1.5em;
+    }
+    .search_form > input[type='button']{
+        width: 25%;
+        height: 50px;
+        font: 1.5em '微软雅黑';
+    }
+
+    /*修饰导航条*/
+    .pagenation{
+        text-align: -webkit-left;
+        text-align: left;
+    }
+    .pagenation > ul > li > span{
+        display: block;
+        margin:auto 10px auto 10px;
+        vertical-align: middle;
+        font: 1.3em '微软雅黑';
+        letter-spacing: 0.3em;
+        line-height: 1px;
+    }
+    .pagenation > ul > li > a{
+        text-decoration: none;
+        font-size: 1.5em;
+        vertical-align: middle;
+        border: none;
+    }
+}
+
+@media only screen and (min-width: 321px) and (max-width: 599px){
+
+    .content{
+        margin-top: 100px;
+    }
+    .nav-brand-logo{
+        display: block;
+    }
+    .search_form{
+        display: block;
+        width: 100%;
+    }
+    .search_form > input[type='text']{
+        width: 75%;
+        height: 40px;
+    }
+    .search_form > input[type='button']{
+        width: 25%;
+        height: 40px;
+        /*font-size: 0.8em;*/
+    }
+
+    /*修饰导航条*/
+    .pagenation{
+        text-align: -webkit-center;
+        text-align: center;
+    }
+    .pagenation > ul > li > span{
+        display: block;
+        margin:auto 10px auto 10px;
+        vertical-align: middle;
+        font: 1.3em '微软雅黑';
+        letter-spacing: 0.3em;
+        line-height: 1px;
+    }
+    .pagenation > ul > li > a{
+        text-decoration: none;
+        font-size: 1.5em;
+        vertical-align: middle;
+        border: none;
+    }
+}
+
+@media only screen and (max-width:320px) {
+    .content{
+        margin-top: 90px;
+    }
+    .nav-brand-logo{
+        display: block;
+    }
+    .search_form{
+        display: block;
+        width: 100%;
+    }
+    .search_form > input[type='text']{
+        width: 75%;
+    }
+    .search_form > input[type='button']{
+        width: 25%;
+        font-size: 0.8em;
+    }
+
+    /*修饰导航条*/
+    .pagenation{
+        text-align: -webkit-center;
+        text-align: center;
+    }
+    .pagenation > ul > li > span{
+        display: block;
+        margin:auto 10px auto 10px;
+        vertical-align: middle;
+        font: 1.3em '微软雅黑';
+        letter-spacing: 0.3em;
+        line-height: 1px;
+    }
+    .pagenation > ul > li > a{
+        text-decoration: none;
+        font-size: 1.5em;
+        vertical-align: middle;
+        border: none;
+    }
+}
