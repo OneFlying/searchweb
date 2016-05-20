@@ -30,7 +30,9 @@ import com.yf.dao.JubaoDao;
 import com.yf.dao.SearchEntity;
 import com.yf.model.Article;
 import com.yf.model.Jubao;
+import com.yf.utils.StringUtils;
 import com.yf.utils.FileUtils;
+
 
 
 @Controller
@@ -44,6 +46,8 @@ public class JubaoController {
 	@ResponseBody
 	public ResponseEntity<Map<String, Object>> add(HttpServletRequest request,HttpServletResponse response,Jubao jubao){
 		ModelMap modelMap = new ModelMap();
+		jubao.setId(StringUtils.generateUuid());
+		jubao.setDatetime(StringUtils.getCurTimeFormat());
 		boolean ret = jubaoDao.add(jubao);
 		if(ret){
 			modelMap.put("success", ret);
