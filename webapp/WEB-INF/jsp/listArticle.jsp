@@ -118,7 +118,7 @@
 
 <script type="text/javascript">
 
-    // var keywords = "<%=keywords%>";
+    var keywords = "<%=keywords%>";
     //Page.initpage();
 
     //var screen_width;
@@ -137,12 +137,12 @@
     var opts = {
         page:1,
         rows:4,
-        url:"${RESOUCE_SYSTEM_URL}/article/page",
+        url:"${RESOUCE_SYSTEM_URL}/article/search",
         pageId:'_pageNation',
         screen_width:screen_width
     };
 
-    var param = {page:'1',rows:'10'};
+    var param = {page:'1',rows:'1',keywords:keywords};
 
     var pageNation = new PageNation(opts,param);
 
