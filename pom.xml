@@ -53,6 +53,27 @@
 			<version>2.2</version>
 		</dependency>
 		<!-- json -->
+		<!-- ueditor -->
+		<dependency>
+			<groupId>com.baidu.ueditor</groupId>			
+			<artifactId>ueditor</artifactId>			
+			<version>1.2.2</version>			
+			<scope>system</scope>			
+			<systemPath>${basedir}/webapp/WEB-INF/lib/ueditor-mini.jar</systemPath>	
+		</dependency>
+		<!-- 配置ueditor结束 -->
+		<!-- 文件上传 -->
+		<dependency>
+		    <groupId>commons-fileupload</groupId>
+		    <artifactId>commons-fileupload</artifactId>
+		    <version>1.2.2</version>
+		</dependency>
+		
+		<dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+        </dependency>
 		
 		<dependency>
 			<groupId>org.springframework.data</groupId>
@@ -134,7 +155,7 @@
 					<jettyEnvXml>${basedir}/src/test/resources/jetty-env.xml</jettyEnvXml>
 					<connectors>
 						<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
-							<port>8124</port>
+							<port>80</port>
 							<maxIdleTime>60000</maxIdleTime>
 						</connector>
 					</connectors>
