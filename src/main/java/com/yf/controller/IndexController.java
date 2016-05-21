@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class IndexController {
 
-	@RequestMapping("/index")
+	@RequestMapping("/")
 	public String skipToIndex(){
 		return "index";
 	}

@@ -91,8 +91,8 @@ public class LoginController {
 	 * 跳转到管理员页面
 	 * @return
 	 */
-	@RequestMapping(value="/admin/index")
-	public String skipToAdmin(){
-		return "admin";
-	}
+//	@RequestMapping(value="/admin/index")
+//	public String skipToAdmin(){
+//		return "admin";
+//	}
 }
