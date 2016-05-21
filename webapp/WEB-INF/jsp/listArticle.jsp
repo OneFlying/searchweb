@@ -19,7 +19,7 @@
 <body>
 
     <div class="navbar navbar-default navbar-fixed-top">
-        <a class="nav-brand-logo" href="${RESOUCE_SYSTEM_URL}/index">
+        <a class="nav-brand-logo" href="${RESOUCE_SYSTEM_URL}/">
             <img src="${RESOUCE_STATIC_URL}/img/index_logo.png"/>
         </a>
         <span class="search_form">

@@ -93,7 +93,7 @@
 
     //返回首页
     function back(){
-        window.location.href = "${RESOUCE_SYSTEM_URL}/index";
+        window.location.href = "${RESOUCE_SYSTEM_URL}/";
     }
 
 
