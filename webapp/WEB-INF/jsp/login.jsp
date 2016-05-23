@@ -13,30 +13,19 @@
 </head>
 <body>
     <div class="login">
-        <div class="login_header">
-            <img src="" id="img" />
-            <span>网站管理员登录</span>
-        </div>
         <div class="login_content">
             <div class="login_content_header">
-               	 网站登录
+               	 后台管理
             </div>
             <div class="login_content_form">
                 <form role="form" action="" method="">
                     <div class="login_section">
-                        <label for="">用户名：</label>
                         <input type="text" placeholder="请输入用户名" id="username" name="username" />
                     </div>
                     <div class="login_section">
-                        <label for="">密&nbsp;&nbsp;&nbsp;&nbsp;码：</label>
                         <input type="password" placeholder="请输入密码" id="password" name="password" />
                     </div>
-                    <div class="login_checkbox">
-                        <label>
-                            <input id="remberpass" name="remberpass" type="checkbox" >记住密码
-                        </label>
-                    </div>
-                    <button type="button" onclick="Login.login();">登录</button>
+                    <button type="button" onclick="Login.login();">登&nbsp;&nbsp;录</button>
                 </form>
             </div>
         </div>

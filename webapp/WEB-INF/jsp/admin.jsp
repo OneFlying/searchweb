@@ -207,12 +207,10 @@
 </script>
 </head>
 <body class="easyui-layout" ondragstart="return false;">
-	<div region="north" class="north" title="" style="float:left">
-		<div style="float:left" >
+	<div region="north" class="north" title="">
+		<div class="north-title">
 			<img id="img" alt="" src="">
-		</div>
-		<div style="float:left" >
-			<h1 id="title">网站后台管理</h1>
+			<span id="title">网站后台管理</span>
 		</div>
 
 		 <div class="north-logout">

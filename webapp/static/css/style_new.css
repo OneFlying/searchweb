@@ -12,11 +12,7 @@ html,body {
     user-select: none;
 }
 body {
-    background: url("../img/backimg.png") center center no-repeat;
-    -webkit-background-size: 100% 100%;
-    -moz-background-size: 100% 100%;
-    -o-background-size: 100% 100%;
-    background-size: 100% 100%;
+    background: #e9e9e9;
 }
 input::-ms-clear {
     display: none;
@@ -65,48 +61,29 @@ input::-webkit-input-placeholder {
     text-shadow: 1px 1px 0 rgba(0,0,0,.50),0 0 3px #333;
 }
 .login .login_content {
-    width: 320px;
+    width: 322px;
     margin: 30px auto;
-    border: 1px solid #67D4E8;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    border-radius: 15px;
-    -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.75),0 0 2px rgba(0,0,0,1);
-    -moz-box-shadow: inset 0 0 2px rgba(0,0,0,.75),0 0 2px rgba(0,0,0,1);
-    box-shadow: inset 0 0 2px rgba(0,0,0,.75),0 0 2px rgba(0,0,0,1);
+    border: 1px solid #dddddd;
 }
 .login .login_content .login_content_header {
-    background: #1F6C8F;
+    background: #f7f7f7;
     height: 60px;
     width: 320px;
     line-height: 55px;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    -moz-border-radius-topleft: 15px;
-    -moz-border-radius-topright: 15px;
-    -webkit-border-top-left-radius: 15px;
-    -webkit-border-top-right-radius: 15px;
     font-size: 20px;
-    color: #ffffff;
-    text-shadow: 1px 1px 0 rgba(0,0,0,.75),0 0 3px rgba(0,0,0,.75);
-    border-bottom: 1.5px solid #dddddd;
+    color: #666;
 }
 .login .login_content .login_content_form {
-    background: rgba(56,124,145,.75);
+    background: #ffffff;
     width: 320px;
     height: 270px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    -moz-border-radius-bottomleft: 15px;
-    -moz-border-radius-bottomright: 15px;
-    -webkit-border-bottom-left-radius: 15px;
-    -webkit-border-bottom-right-radius: 15px;
-    padding-top: 5px;
+    padding-top: 20px;
 }
 .login .login_content .login_content_form .login_section {
     padding: 5px 0;
     width: 280px;
-    margin: auto auto;
+    margin: 0 20px;
+    position: relative;
 }
 .login .login_content .login_content_form .login_section > label {
     display: block;
@@ -117,17 +94,15 @@ input::-webkit-input-placeholder {
 }
 .login .login_content .login_content_form .login_section > input[type="text"],
 .login .login_content .login_content_form .login_section > input[type="password"] {
-    background: rgb(41,94,113);
-    border: 1px solid #97B4BD;
+    background: transparent;
+    border: 1px solid #ddd;
     display: block;
-    padding: 10px 5px;
-    width: 270px;
+    padding: 10px 0 10px 5px;
+    width: 100%;
     line-height: 0.8;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
     font-size: 16px;
-    color: #ffffff;
+    color: #666;
+    margin: 5px auto;
 }
 .login .login_content .login_content_form .login_checkbox {
     width: 280px;
@@ -157,44 +132,13 @@ input::-webkit-input-placeholder {
     width: 280px;
     height: 45px;
     font-size: 18px;
-    margin-top: 10px;
-    letter-spacing: 5px;
+    margin-top: 20px;
     color: #ffffff;
-    background: linear-gradient(top, #60CEFC, #0877AA);
-    background: -ms-linear-gradient(top, #60CEFC, #0877AA);
-    background: -o-linear-gradient(top, #60CEFC, #0877AA);
-    background: -moz-linear-gradient(top, #60CEFC, #0877AA);
-    background: -webkit-linear-gradient(top, #60CEFC, #0877AA);
-    border: 1px solid #2EE8F2;
-    border-bottom: 1px solid #03C1E5;
-
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-
-    text-shadow: 0 0 2px #000;
-    -webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, .50);
-    -moz-box-shadow: 0px 3px 6px rgba(0, 0, 0, .50);
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, .50);
-
-    -webkit-transition: all 500ms;
-    -moz-transition: all 500ms;
-    -ms-transition: all 500ms;
-    -o-transition: all 500ms;
-    transition: all 500ms;
+    background: #3f89ec;
+    border: none;
 }
 .login .login_content .login_content_form  button:hover {
-    background: linear-gradient(top, #0877AA, #60CEFC);
-    background: -ms-linear-gradient(top, #0877AA, #60CEFC);
-    background: -o-linear-gradient(top, #0877AA, #60CEFC);
-    background: -moz-linear-gradient(top, #0877AA, #60CEFC);
-    background: -webkit-linear-gradient(top, #0877AA, #60CEFC);
-
-    -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,.50);
-    -moz-box-shadow: inset 0 0 3px rgba(0,0,0,.50);
-    box-shadow: inset 0 0 3px rgba(0,0,0,.50);
-    border-bottom: 1px solid #2EE8F2;
-    border-top: 1px solid #03C1E5;
+	
 }
 
 

@@ -89,12 +89,15 @@ PageNation.prototype = {
             }else{
                 $ul = me.renderPageNation(total_page,opts,param);
             }
+            
+            console.log($ul);
 
             //加载导航条
             $("#"+opts.pageId).children().remove();
             $("#"+opts.pageId).append($ul);
 
             var contenthtml = Page.initContent(data.list);
+            console.log(contenthtml);
             $("#"+opts.contentId).children().remove();
             $("#"+opts.contentId).append(contenthtml);
 

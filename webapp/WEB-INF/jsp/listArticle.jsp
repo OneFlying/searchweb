@@ -18,7 +18,7 @@
 </head>
 <body>
 
-    <div class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar navbar-default navbar-fixed-top" style="padding-bottom: .3em;">
         <a class="nav-brand-logo" href="${RESOUCE_SYSTEM_URL}/">
             <img src="${RESOUCE_STATIC_URL}/img/index_logo.png"/>
         </a>
@@ -35,12 +35,12 @@
     <div class="container content">
 
         <div class="row">
-            <div id="page_content" class="col-xs-11 col-sm-8 col-md-8 ">
+            <div id="page_content" class="col-xs-12 col-sm-6 col-md-8">
 
             </div>
 
-            <div class="col-xs-1 col-md-4 col-sm-4 content-ad">
-             	   广告
+            <div class="col-xs-12 col-md-4" style="min-height: 200px;margin-top:.3em;">
+            	<div>广告</div>
             </div>
         </div>
 
@@ -63,6 +63,7 @@
 
 
      var keywords = "<%=keywords%>";
+     console.log(keywords);
 
     //Page.initpage();
 
@@ -85,7 +86,7 @@
     var opts = {
         page:1,
         rows:10,
-        url:"${RESOUCE_SYSTEM_URL}/article/search",
+        url:RESOUCE_SYSTEM_URL_JS+"/article/search",
         pageId:'_pageNation',
         contentId:'page_content',
         screen_width:screen_width

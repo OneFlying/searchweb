@@ -33,7 +33,6 @@
                     <a href="${RESOUCE_SYSTEM_URL}/article/index">上传文章</a>
                 </span>
             <%-- </form> --%>
-
         </div>
     </div>
 
@@ -42,9 +41,7 @@
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/lib/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
 <script type="text/javascript">
-
     $(document).ready(function(){
-
         var url = RESOUCE_SYSTEM_URL_JS+"/websiteconfig/getinfo";
 
         $.get(url,function(data){
@@ -53,29 +50,20 @@
             $(".logo>img").attr("src","${RESOUCE_STATIC_URL}"+obj.logourl);
         });
     });
-
-    $(document).on("keydown",function(event){
-
-        if(event.keyCode == 13){
-            var text = $("input[type='text']").val();
-            //alert(RESOUCE_SYSTEM_URL_JS+"/article/list");
-
-            //alert(RESOUCE_SYSTEM_URL_JS+"/article/list?keywords="+text);
-            location.href = RESOUCE_SYSTEM_URL_JS+"/article/list?keywords="+text;
-
-
-        }
-
-    });
-
-
-    $("#btn").unbind('click');
     $("#btn").bind("click",function(){
         //获取要搜寻的关键字
         var keywords = $("input[type='text']").val();
         window.location.href="${RESOUCE_SYSTEM_URL}/article/list?keywords="+keywords;
+        return false;
     });
-
+    $(document).on('keyup',function(event) {
+    	event.preventDefault();
+    	if (event.keyCode == 13) {
+    		var keywords = $("input[type=text]").val();
+            window.location.href="${RESOUCE_SYSTEM_URL}/article/list?keywords="+keywords;
+    	}
+    	return false;
+    });
 </script>
 </body>
 </html>
