@@ -14,6 +14,7 @@ import com.yf.annotation.Table;
 @Table(name="article")
 public class Article implements Serializable{
 
+	
 	private static final long serialVersionUID = 1L;
 	private String id;//id
 	private String imgids;//上传图片Id管理
@@ -21,6 +22,15 @@ public class Article implements Serializable{
 	private String keywords;//关键字 以逗号隔开最多5个
 	private String content;//内容
 	private String website;//网址
+	private int count;//搜索次数
+	
+	@Column(name="count")
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
 	
 	@Column(name="keywords")
 	public String getKeywords() {
