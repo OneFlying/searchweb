@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1, user-scalable=no">
 <%
 	Article article = (Article)request.getAttribute("article");
 
@@ -28,8 +28,8 @@
     <%-- <div class="">
         <a href="${RESOUCE_SYSTEM_URL}/index">返回</a>
     </div> --%>
-    <div class="navbar navbar-default navbar-fixed-top" style="padding-bottom: .3em;">
-        <a class="nav-brand-logo" href="${RESOUCE_SYSTEM_URL}/">
+    <div class="navbar navbar-default" style="padding-bottom: .3em;">
+        <a style="margin-left:12.5%;" class="nav-brand-logo" href="${RESOUCE_SYSTEM_URL}/">
             <img src="${RESOUCE_STATIC_URL}/img/index_logo.png"/>
         </a>
         <span class="search_form">

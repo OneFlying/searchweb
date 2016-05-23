@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1, user-scalable=no">
 <title>剑三搜索</title>
 <%@ include file="/resource.jsp" %>
 
@@ -105,6 +105,19 @@
 
 
     </div>
+
+<!--底部-->
+<div class="navbar navbar-default navbar-bottom content-footer">
+    <div class="container">
+        <div class="row">
+            <div class="content-footer-notice">
+                <a href="${RESOUCE_SYSTEM_URL}/aboutus">关于我们</a>|
+                <a href="${RESOUCE_SYSTEM_URL}/agreement">使用协议</a>|
+                <a href="${RESOUCE_SYSTEM_URL}/law">法律声明</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/lib/jquery-1.11.1.min.js"></script>

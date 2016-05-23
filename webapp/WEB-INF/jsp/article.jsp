@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1, user-scalable=no">
 <title>书写文章</title>
 <%@ include file="/resource.jsp" %>
 
@@ -20,6 +20,16 @@
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
 </head>
 <body>
+
+    <div class="navbar navbar-default" style="padding-bottom: .3em;">
+        <a class="nav-brand-logo" href="${RESOUCE_SYSTEM_URL}/">
+            <img src="${RESOUCE_STATIC_URL}/img/index_logo.png"/>
+        </a>
+        <%-- <span class="search_form">
+            <input type="text" name="name" value="">
+            <a id="btn" href="#"><i class="glyphicon glyphicon-search"></i></a>
+        </span> --%>
+    </div>
 
     <div class="container">
         <form role="form" id="form" action="${RESOUCE_SYSTEM_URL}/article/save" method="post">
@@ -45,7 +55,7 @@
             <input type="hidden" id="img" name="imageurl" value=""/>
 
             <button type="button" onclick="setImg()" class="btn btn-default btn-primary btn-size" name="button">提交</button>
-            <button type="button" onclick="back()" class="btn btn-default btn-primary btn-size" name="button">返回</button>
+            <%-- <button type="button" onclick="back()" class="btn btn-default btn-primary btn-size" name="button">返回</button> --%>
         </form>
 
     </div>
