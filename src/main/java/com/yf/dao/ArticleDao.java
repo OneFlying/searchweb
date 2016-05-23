@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.yf.model.Article;
+import com.yf.utils.RowMapperUtil;
 
 /**
  * 文章
@@ -26,13 +27,16 @@ public class ArticleDao extends DaoAdapter{
 
 			public Article mapRow(ResultSet rs, int rowNum) throws SQLException {
 				// TODO Auto-generated method stub
-				Article article = new Article();
-				article.setId(rs.getString("id"));
-				article.setTitle(rs.getString("title"));
-				article.setContent(rs.getString("content"));
-				article.setWebsite(rs.getString("website"));
-				article.setImgids(rs.getString("imgids"));
-				article.setKeywords(rs.getString("keywords"));
+//				Article article = new Article();
+//				article.setId(rs.getString("id"));
+//				article.setTitle(rs.getString("title"));
+//				article.setContent(rs.getString("content"));
+//				article.setWebsite(rs.getString("website"));
+//				article.setImgids(rs.getString("imgids"));
+//				article.setKeywords(rs.getString("keywords"));
+//				return article;
+				Article article = (Article)RowMapperUtil.getRowMapper(Article.class, rs, "");
+			
 				return article;
 			}
 		};
@@ -188,6 +192,19 @@ public class ArticleDao extends DaoAdapter{
 			// TODO: handle exception
 			return null;
 		}
+	}
+	
+	/**
+	 * 修改文章的搜索次数
+	 * @param id
+	 * @param count
+	 */
+	public void updateArticleCount(String id,int count){
+		
+		String sql = "update article set count=? where id = ?";
+		
+		super.getJdbcTemplate().update(sql,count,id);
+		
 	}
 
 }
