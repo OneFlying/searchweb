@@ -1,28 +1,7 @@
 var WzjbglManager = {
-		del:function(){
-			var rows = $('#wzjbglgrid').datagrid('getChecked');
-			if(rows.length<=0){
-				$.messager.alert('提示','请选择进行删除！','info');
-				return;
-			}else{
-				var idArry = new Array();
-				$(rows).each(function(index,item){
-					idArry.push(item.id);
-
-				});
-				$.messager.defaults={ok:"确定",cancel:"取消"}; 
-				$.messager.confirm('温馨提示', '是否要删除该信息？', function(r){
-					$.get(RESOUCE_SYSTEM_URL_JS+'/userlog/del',{ids:idArry},function(data){
-						if(data.success){
-							$.messager.alert('提示','删除成功','info');
-							ManagerUserLog.reload();
-						}else{
-							$.messager.alert('警告','删除失败','warning');
-						}
-					});
-				});
-			}	
-		},
+/*clearAddWebservice:function(){
+	$('#websitconfig_add_win').window('close');
+},*/
 /**
  * 加载表格数据
  */
@@ -75,12 +54,15 @@ loadgrid : function(){
 		          	field:'id',title:'id',checkbox:true
 		          },
 		          {
-		          	field:'title',title:'网站标题',width:40,align:'center',sortable:true
+		          	field:'title',title:'<font color="black" size="2px">网站标题</font>',width:40,align:'center',sortable:true,
+		          	formatter : function(value,row,index){
+				        return '<font color="black" size="2px" >'+value+'</font>';
+				      }
 		          },
 		          {
-		        	field:'content',title:'上传logo',align:'center',width:90,
+		        	field:'content',title:'<font color="black" size="2px">上传logo</font>',align:'center',width:90,
 		        	formatter: function(value, row, index) { 
-		        		return '<input type="button" id="uploadPic" onclick="uploadPic()" value="上传图片"/>';
+		        		return '<input type="button" id="uploadPic" onclick="uploadPic()" style="height:25px;width:70px;font-size:12px;line-height:3px,color="black" value="上传图片"/>';
 		        	}
 		          }
 		          ]],
@@ -91,9 +73,9 @@ loadgrid : function(){
 	var page = $('#wzjbglgrid').datagrid('getPager');
 	$(page).pagination({
 		pageNumber:1,
-		beforePageText: '第',//页数文本框前显示的汉字 
-		afterPageText: '页    共 {pages} 页', 
-		displayMsg: '当前显示 {from} - {to} 条记录   共 {total} 条记录', 
+		beforePageText: '<font color="black" size="2px" >第</font>',//页数文本框前显示的汉字 
+		afterPageText: '<font color="black" size="2px" >页    共 {pages} 页</font>', 
+		displayMsg: '<font color="black" size="2px" >当前显示 {from} - {to} 条记录   共 {total} 条记录</font>', 
 	});
 },
 reload:function(){//重新加载，保持在当前页

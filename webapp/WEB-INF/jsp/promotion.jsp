@@ -7,7 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>书写文章</title>
+<title>新增推广</title>
 <%@ include file="/resource.jsp" %>
 
 <link rel="stylesheet" href="${RESOUCE_STATIC_URL}/lib/bootstrap-3.3.5-dist/css/bootstrap.css">
@@ -22,30 +22,26 @@
 <body>
 
     <div class="container">
-        <form role="form" id="form" action="${RESOUCE_SYSTEM_URL}/article/save" method="post">
+        <form role="form" id="form" action="${RESOUCE_SYSTEM_URL}/promotion/add" method="post">
             <div class="form-group">
-                <label for="title">标题:</label>
-                <input id="title" class="form-control" type="text" name="title" value="">
+                <label for="keywords">推广价格:</label>
+                <input id="price" class="form-control" type="text" name="price" value="">
             </div>
-            <%-- <div class="form-group">
-                <label for="keywords">关键字:</label>
-                <input id="keywords" class="form-control" type="text" name="keywords" value="">
-            </div> --%>
             <div class="form-group">
                 <label for="website">网址链接:</label>
-                <input id="website" class="form-control" type="text" name="website" value="">
+                <input id="website" class="form-control" type="text" name="url" value="">
             </div>
-
             <div class="form-group">
                 <!--style给定宽度可以影响编辑器的最终宽度-->
-                <script type="text/plain" id="myEditor" name="content" style="width:100%;height:300px;" >
+                <script type="text/plain" id="myEditor" name="content" style="width:100%;height:40%" id="content">
 
                 </script>
             </div>
             <input type="hidden" id="img" name="imageurl" value=""/>
-
-            <button type="button" onclick="setImg()" class="btn btn-default btn-primary btn-size" name="button">提交</button>
-            <button type="button" onclick="back()" class="btn btn-default btn-primary btn-size" name="button">返回</button>
+            <div align="center">
+                <button type="button" onclick="setImg()" class="btn btn-default btn-primary btn-size" name="button">提交</button>
+                <button type="button" onclick="backTO()" class="btn btn-default btn-primary btn-size" name="button">取消</button>
+            <div>
         </form>
 
     </div>
@@ -53,6 +49,7 @@
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/util/HtmlUtil.js"></script>
 <script type="text/javascript">
     //实例化编辑器
+    //action="${RESOUCE_SYSTEM_URL}/promotion/add"
     var um = UM.getEditor('myEditor');
     um.addListener('blur',function(){
         $('#focush2').html('编辑器失去焦点了')
@@ -68,9 +65,9 @@
 
         var objE = document.createElement("div");
 
-     	objE.innerHTML = res;
+        objE.innerHTML = res;
 
-     	var obj = objE.childNodes;
+        var obj = objE.childNodes;
 
         var rt = $(obj).find('img').each(function(index, el) {
             if(index == 0){
@@ -78,22 +75,34 @@
                 $("#img").val(path);
             }
         });
-
-        var res = $("#title").val();
+       /* var price = $("#price").val();
+        var url = $("#website").val();
+        var content = $("#content").val();
+        var imageurl = $("#img").val();*/
+        /*var res = $("#title").val();
 
         if(!res){
             alert("请输入标题");
             return false;
-        }
+        }*/
         //var url = RESOUCE_SYSTEM_URL_JS+"/index";
 
-        $("#form").submit();
+         $("#form").submit();
+        /*$.post("${RESOUCE_SYSTEM_URL}/promotion/add",{price:price,url:url,content:content,imageurl:imageurl},function(data){
+            if(data.success){
+                alert(data.msg);
+                location.href = RESOUCE_SYSTEM_URL_JS + data.url;
+            }else{
+                alert(data.msg);
+                return;
+            }
+        });*/
 
     }
 
     //返回首页
-    function back(){
-        window.location.href = "${RESOUCE_SYSTEM_URL}/";
+    function backTO(){
+        window.location.href = "${RESOUCE_SYSTEM_URL}/admin";
     }
 
 

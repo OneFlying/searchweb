@@ -43,7 +43,7 @@ loadgrid : function(){
 
 		},'-',
 		{
-			text:'文章标题：<input class="easyui-textbox" type="text" id="article-content" value="" placeholder="请输入关键字" style="line-height:15px"/>',
+			text:'文章标题：<input class="easyui-textbox" type="text" style="margin-top: -2px;" id="article-content" value="" placeholder="请输入关键字" style="line-height:15px"/>',
 		},{
 			text:'查询',
 			iconCls: 'icon-search',
@@ -53,7 +53,7 @@ loadgrid : function(){
 			}
 		},'-',
 		{
-			text:'关键字：<input class="easyui-textbox" type="text" id="article-key" value="" placeholder="请输入关键字" style="line-height:15px"/>',
+			text:'关键字：<input class="easyui-textbox" type="text" id="article-key" style="margin-top: -2px;" value="" placeholder="请输入关键字" style="line-height:15px"/>',
 		},{
 			text:'查询',
 			iconCls: 'icon-search',
@@ -82,25 +82,34 @@ loadgrid : function(){
 		          	field:'id',title:'id',checkbox:true
 		          },
 		          {
-		          	field:'title',title:'文章标题',width:40,align:'center',sortable:true
+		          	field:'title',title:'<font color="black" size="2px">文章标题</font>',width:40,align:'center',sortable:true,
+		          	 formatter : function(value,row,index){
+				        return '<font color="black" size="2px" >'+value+'</font>';
+				      }
 		          },
 		          {
-		        	field:'keywords',title:'关键字',align:'center',width:40,
+		        	field:'keywords',title:'<font color="black" size="2px">关键字</font>',align:'center',width:40,
+		        	 formatter : function(value,row,index){
+				        return '<font color="black" size="2px" >'+value+'</font>';
+				      }
 		          },
 		          {
-		          	field:'website',title:'链接网址',width:30,align:'center',sortable:true
+		          	field:'website',title:'<font color="black" size="2px">链接网址</font>',width:30,align:'center',sortable:true,
+		          	 formatter : function(value,row,index){
+				        return '<font color="black" size="2px" >'+value+'</font>';
+				      }
 				  }
 		          ]],
 		          rownumbers:true,
 		          pagination:true,
 		          pagePosition:'bottom'
 	});
-	var page = $('#jbglgrid').datagrid('getPager');
-	$(page).pagination({
+	var page = $('#wzglgrid').datagrid('getPager');
+		$(page).pagination({
 		pageNumber:1,
-		beforePageText: '第',//页数文本框前显示的汉字
-		afterPageText: '页    共 {pages} 页',
-		displayMsg: '当前显示 {from} - {to} 条记录   共 {total} 条记录',
+		beforePageText: '<font color="black" size="2px" >第</font>',//页数文本框前显示的汉字 
+		afterPageText: '<font color="black" size="2px" >页    共 {pages} 页</font>', 
+		displayMsg: '<font color="black" size="2px" >当前显示 {from} - {to} 条记录   共 {total} 条记录</font>', 
 	});
 },
 reload:function(){//重新加载，保持在当前页

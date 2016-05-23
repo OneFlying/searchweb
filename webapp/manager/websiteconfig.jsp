@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<script type="text/javascript">
+	function clearAddWebservice(){
+		$('#websitconfig_add_win').window('close');
+	}
+</script>
 <div id="websitconfig_add_win" class="easyui-dialog" title="修改网站名称" style="width:290px;height:140px;background-color:rgba(0,0,0,0.09)"
         data-options="modal:true,closed:true,collapsible:false,minimizable:false,maximizable:false">
 	<form enctype="multipart/form-data" class="easyui-form" id="websitconfig_add_form"  method="post" style="margin-top:20px">	

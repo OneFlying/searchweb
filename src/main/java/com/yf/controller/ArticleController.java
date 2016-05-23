@@ -129,9 +129,9 @@ public class ArticleController {
 	 * @return
 	 */
 	@RequestMapping(value="/save",method=RequestMethod.POST)
-	public String saveArticle(String title,String content,String website,String keywords,String imageurl){
+	public ModelAndView saveArticle(String title,String content,String website,String keywords,String imageurl){
 		
-		ModelMap modelMap = new ModelMap();
+		ModelAndView modelAndView = new ModelAndView();
 		Article article = new Article();
 		
 		article.setId(StringUtils.generateUuid());
@@ -142,12 +142,8 @@ public class ArticleController {
 		article.setTitle(title);
 		
 		int res = articleDao.saveArticle(article);
-		
-		if(res != 0){
-			return "index";
-		}else{
-			return "index";
-		}
+		modelAndView.setViewName("redirect:/");
+		return modelAndView;
 		
 		
 	}

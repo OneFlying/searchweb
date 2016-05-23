@@ -8,16 +8,22 @@
     <meta name="renderer" content="webkit" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <%@ include file="/resource.jsp"%>
-    <link rel="stylesheet"
-		href="${RESOUCE_STATIC_URL}/lib/bootstrap-3.0.3-dist/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="${RESOUCE_STATIC_URL}/lib/bootstrap-3.3.5-dist/css/bootstrap.css">
+	<link rel="stylesheet" href="${RESOUCE_STATIC_URL}/css/style.css">
+	<link href="${RESOUCE_STATIC_URL}/umeditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+	<script type="text/javascript" src="${RESOUCE_STATIC_URL}/lib/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="${RESOUCE_STATIC_URL}/umeditor/umeditor.config.js"></script>
+	<script type="text/javascript" charset="utf-8" src="${RESOUCE_STATIC_URL}/umeditor/umeditor.min.js"></script>
+	<script type="text/javascript" src="lang/zh-cn/zh-cn.js"></script>
+	<script type="text/javascript" src="${RESOUCE_STATIC_URL}/lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+  <!--   <link rel="stylesheet"
+		href="${RESOUCE_STATIC_URL}/lib/bootstrap-3.0.3-dist/dist/css/bootstrap.min.css" /> -->
 	<link rel="stylesheet" type="text/css"
-		href="${RESOUCE_STATIC_URL}/lib/jquery-easyui-1.3.5/themes/black/easyui.css" />
+		href="${RESOUCE_STATIC_URL}/lib/jquery-easyui-1.3.5/themes/default/easyui.css" />
 	<link rel="stylesheet" type="text/css"
 		href="${RESOUCE_STATIC_URL}/lib/jquery-easyui-1.3.5/themes/icon.css" />
 	<link rel="stylesheet" type="text/css"
 		href="${RESOUCE_STATIC_URL}/css/manager.css" />
-	<script type="text/javascript"
-		src="${RESOUCE_STATIC_URL}/lib/jQuery/jquery1.9-min.js"></script>
 	<script type="text/javascript"
 		src="${RESOUCE_STATIC_URL}/lib/jquery-easyui-1.3.5/jquery.easyui.min.js"></script>
 	<script type="text/javascript"
@@ -30,6 +36,8 @@
 		src="${RESOUCE_STATIC_URL}/js/jubao.js"></script>
 	<script type="text/javascript"
 		src="${RESOUCE_STATIC_URL}/js/webconfig.js"></script>
+	<script type="text/javascript"
+		src="${RESOUCE_STATIC_URL}/js/promotion.js"></script>
     <title>网站后台登录</title>
     <%@ include file="/resource.jsp" %>
    <style>
@@ -90,6 +98,12 @@
 					url : "",
 					type : 'JBGL'
 				}
+			}, {
+				text : "推广管理",
+				attributes : {
+					url : "",
+					type : 'TGGL'
+				}
 			}
 	       ]
        }];
@@ -143,6 +157,17 @@
 										content : '<div id="jbglgrid" style="height:auto;"></div>'
 									});
 					JbglManager.loadgrid();
+					break;
+				case 'TGGL':
+					$('#tabs')
+							.tabs(
+									'add',
+									{
+										title : text,
+										closable : true,
+										content : '<div id="tgglgrid" style="height:auto;"></div>'
+									});
+					TgglManager.loadgrid();
 					break;
 				case 'LOGOUT':
 					$.get('${RESOUCE_SYSTEM_URL}/logout', function(data) {

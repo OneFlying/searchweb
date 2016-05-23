@@ -1,28 +1,4 @@
 var JbglManager = {
-		del:function(){
-			var rows = $('#jbglgrid').datagrid('getChecked');
-			if(rows.length<=0){
-				$.messager.alert('提示','请选择进行删除！','info');
-				return;
-			}else{
-				var idArry = new Array();
-				$(rows).each(function(index,item){
-					idArry.push(item.id);
-
-				});
-				$.messager.defaults={ok:"确定",cancel:"取消"}; 
-				$.messager.confirm('温馨提示', '是否要删除该信息？', function(r){
-					$.get(RESOUCE_SYSTEM_URL_JS+'/userlog/del',{ids:idArry},function(data){
-						if(data.success){
-							$.messager.alert('提示','删除成功','info');
-							ManagerUserLog.reload();
-						}else{
-							$.messager.alert('警告','删除失败','warning');
-						}
-					});
-				});
-			}	
-		},
 /**
  * 加载表格数据
  */
@@ -33,7 +9,7 @@ loadgrid : function(){
 			content:"",
 		},
 		toolbar: [{
-			text:'举报时间：<input class="easyui-textbox" type="text" id="starttime" value="" placeholder="请输入关键字" style="line-height:15px"/>',
+			text:'举报时间：<input class="easyui-textbox" type="text" style="margin-top: -3px;" id="starttime" value="" placeholder="请输入关键字" style="line-height:15px"/>',
 		},{
 			text:'查询',
 			iconCls: 'icon-search',
@@ -42,7 +18,7 @@ loadgrid : function(){
 				$('#jbglgrid').datagrid('load',{operatime:operatime,content:""});
 			}
 		},'-',{
-			text:'举报内容：<input class="easyui-textbox" type="text" id="jubaocotnet" value="" placeholder="请输入关键字" style="line-height:15px"/>',
+			text:'举报内容：<input class="easyui-textbox" type="text" id="jubaocotnet" style="margin-top: -3px;" value="" placeholder="请输入关键字" style="line-height:15px"/>',
 		},{
 			text:'查询',
 			iconCls: 'icon-search',
@@ -79,13 +55,22 @@ loadgrid : function(){
 		          	field:'id',title:'id',checkbox:true
 		          },
 		          {
-		          	field:'articleid',title:'举报标题',width:40,align:'center',sortable:true
+		          	field:'articleid',title:'<font color="black" size="2px">举报标题</font>',width:40,align:'center',sortable:true,
+		          	  	formatter : function(value,row,index){
+				        	return '<font color="black" size="2px" >'+value+'</font>';
+				      	}
 		          },
 		          {
-		        	  field:'content',title:'举报内容',align:'center',width:90,
+		        	  field:'content',title:'<font color="black" size="2px">举报内容</font>',align:'center',width:90,
+		        	  formatter : function(value,row,index){
+				        return '<font color="black" size="2px" >'+value+'</font>';
+				      }
 		          },
 		          {
-		          	field:'datetime',title:'举报时间',width:30,align:'center',sortable:true
+		          	field:'datetime',title:'<font color="black" size="2px">举报时间</font>',width:30,align:'center',sortable:true,
+		          	formatter : function(value,row,index){
+				        return '<font color="black" size="2px" >'+value+'</font>';
+				      }
 		          }
 		          ]],
 		          rownumbers:true,
@@ -95,9 +80,9 @@ loadgrid : function(){
 	var page = $('#jbglgrid').datagrid('getPager');
 	$(page).pagination({
 		pageNumber:1,
-		beforePageText: '第',//页数文本框前显示的汉字 
-		afterPageText: '页    共 {pages} 页', 
-		displayMsg: '当前显示 {from} - {to} 条记录   共 {total} 条记录', 
+		beforePageText: '<font color="black" size="2px" >第</font>',//页数文本框前显示的汉字 
+		afterPageText: '<font color="black" size="2px" >页    共 {pages} 页</font>', 
+		displayMsg: '<font color="black" size="2px" >当前显示 {from} - {to} 条记录   共 {total} 条记录</font>', 
 	});
 },
 reload:function(){//重新加载，保持在当前页
