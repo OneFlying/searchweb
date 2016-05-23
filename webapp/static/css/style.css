@@ -1,3 +1,7 @@
+
+body{
+    font-family: arial;
+}
 /*首页logo
 ------------------------------
 */
@@ -31,6 +35,19 @@ form表单
     -webkit-appearance: none;
 }
 
+.index_form > a{
+
+    display: inline-block;
+    line-height: 36px;
+    background: #3385ff;
+    border: 1px solid #2d78f4;
+    vertical-align: middle;
+    padding:0 10px 0 10px;
+    height: 36px;
+    margin-left: -6px;
+    color: white;
+}
+
 .index_form > input[type=text]:focus {
 	border: 1px solid #bbb;
 }
@@ -50,15 +67,32 @@ form表单
 }
 .index_form > span{
     height: 36px;
-    display: inline-block;
+    display: block;
     line-height: 50px;
     vertical-align: middle;
 }
 
 .index_form > span > a{
-    font: 0.94em '微软雅黑';
+    font: 0.94em arial;
 }
 
+/*
+修饰声明
+------------------------*/
+.notice{
+    margin-top: 200px;
+}
+.notice > div{
+    color: #999999;
+}
+.notice > div > a{
+    color: #999999;
+    margin-right: 5px;
+    font: 14px arial;
+}
+.notice > div > a:hover{
+    text-decoration: none;
+}
 /*
 文章编写
 */
@@ -84,8 +118,14 @@ label{
     height: 4em;
 }
 
+#res_total{
+    display: block;
+    margin-top: 10px;
+    color: #999;
+    font-size: 12px;
+}
 .search_form{
-	
+
 }
 .search_form > input[type='text']{
     width: 35%;
@@ -97,6 +137,18 @@ label{
     -webkit-appearance: none;
     border: 1px solid #ddd;
     box-shadow: none;
+}
+
+.search_form > a{
+    display: inline-block;
+    line-height: 30px;
+    background: #3385ff;
+    border: 1px solid #2d78f4;
+    vertical-align: middle;
+    padding:0 0.625em 0 0.625em;
+    height: 30px;
+    margin-left: -6px;
+    color: white;
 }
 .search_form > input[type='button']{
     font: 0.96em '微软雅黑';
@@ -115,9 +167,30 @@ label{
 }
 .content{
     margin-top: 60px;
-    margin-left: 0em !important;
+    margin-left: 4.5em !important;
 }
 
+.rel-search{
+    margin: 10px 0 10px 0;
+    padding: 0;
+}
+.relevant-search{
+    font-size: 16px;
+    font-weight: bold;
+}
+.relevant-search-res{
+    margin-top: 8px;
+}
+.relevant-search-res > table{
+    width: 440px;
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+}
+.relevant-search-res > table > tbody > tr > td > a{
+    text-decoration: underline;
+    color: #0000CC;
+}
 /*
 内容部分
 ------------------------------------*/
@@ -151,9 +224,23 @@ label{
 .dec_word{
     font-size: 0.85em;
     letter-spacing: 0.1em;
+
+    /*让文本自动换行*/
+    word-break: normal;
+    width: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow: hidden;
+
 }
 /*修饰链接网址*/
 .website{
+    /*让文本自动换行*/
+    word-break: normal;
+    width: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow: hidden;
     text-decoration: none;
     color: #008000;
 }
@@ -279,6 +366,9 @@ label{
 针对移动端
 */
 @media only screen and (min-width: 769px) and (max-width: 800px){
+    .index_form > input[type=text]{
+        width: 70%;
+    }
     .content{
         margin-top: 115px;
     }
@@ -286,14 +376,15 @@ label{
         display: block;
     }
     .search_form{
-        display: block;
-        width: 100%;
+        /*display: block;
+        width: 100%;*/
     }
     .search_form > input[type='text']{
-        width: 75%;
+        /*width: 75%;
         height:60px;
-        font-size: 1.6em;
+        font-size: 1.6em;*/
     }
+
     .search_form > input[type='button']{
         width: 25%;
         height: 60px;
@@ -340,7 +431,10 @@ label{
 
 
 
-@media only screen and (min-width: 600px) and (max-width: 768px){
+@media only screen and (min-width: 601px) and (max-width: 768px){
+    .index_form > input[type=text]{
+        width: 60%;
+    }
     .content{
         margin-top: 100px;
     }
@@ -352,10 +446,15 @@ label{
         width: 100%;
     }
     .search_form > input[type='text']{
-        width: 75%;
+        /*width: 75%;
         height:50px;
-        font-size: 1.5em;
+        font-size: 1.5em;*/
     }
+    .search_form > a{
+        /*width: 25%;
+        height: 50px;*/
+    }
+
     .search_form > input[type='button']{
         width: 25%;
         height: 50px;
@@ -426,7 +525,10 @@ label{
 
 }
 
-@media only screen and (min-width: 321px) and (max-width: 599px){
+@media only screen and (min-width: 321px) and (max-width: 600px){
+    .index_form > input[type=text]{
+        width: 80%;
+    }
 
     .content{
         margin-top: 100px;
@@ -439,8 +541,13 @@ label{
         width: 100%;
     }
     .search_form > input[type='text']{
-        width: 75%;
-        height: 40px;
+        width: 90%;
+        /*height: 40px;*/
+    }
+    .search_form > a{
+        width: 10%;
+        /*height: 40px;
+        line-height: 40px;*/
     }
     .search_form > input[type='button']{
         width: 25%;
@@ -513,6 +620,9 @@ label{
 }
 
 @media only screen and (max-width:320px) {
+    .index_form > input[type=text]{
+        width: 80%;
+    }
     .content{
         margin-top: 90px;
     }
@@ -521,10 +631,14 @@ label{
     }
     .search_form{
         display: block;
+
         width: 100%;
     }
     .search_form > input[type='text']{
-        width: 75%;
+        width: 90%;
+    }
+    .search_form > a{
+        width: 10%;
     }
     .search_form > input[type='button']{
         width: 25%;
