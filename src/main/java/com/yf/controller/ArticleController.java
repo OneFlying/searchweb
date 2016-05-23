@@ -78,23 +78,16 @@ public class ArticleController {
 		
 		
 		if(StringUtils.isNotBlank(keywords)){
-			searchEntity.addSearchColumn("keywords", "%"+keywords+"%", " like ", false);
+			searchEntity.addSearchColumn("content", "%"+keywords+"%", " like ", false);
 			searchEntity.setPage(page, rows);
+			searchEntity.setOrderBy(" order by count desc");
 			List<Article> list = articleDao.pageArticle(searchEntity);
 			
 			if(list != null){
+				
 				modelMap.put("list", list);
 				modelMap.put("rows", searchEntity.getTotal());
-			}else{
-				searchEntity.getSearchColumns().clear();
-				searchEntity.addSearchColumn("content", "%"+keywords+"%", " like ", false);
-				searchEntity.setPage(page, rows);
-				List<Article> res =  articleDao.pageArticle(searchEntity);
-				
-				if(res != null){
-					modelMap.put("list", res);
-					modelMap.put("rows", searchEntity.getTotal());
-				}
+
 			}
 		}
 		
@@ -192,6 +185,9 @@ public class ArticleController {
 		
 		ModelAndView modelAndView = new ModelAndView();
 		Article article = articleDao.getArticleById(id);
+		
+		int count = article.getCount()+1;		
+		articleDao.updateArticleCount(id, count);
 		
 		modelAndView.addObject("article", article);
 		modelAndView.setViewName("articleinfo");
