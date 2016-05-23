@@ -24,28 +24,82 @@
         </a>
         <span class="search_form">
             <input type="text" name="name" value="">
-            <input id="btn" type="button" name="name" value="搜索一下">
+            <a id="btn" href="#"><i class="glyphicon glyphicon-search"></i></a>
+            <%-- <input id="btn" type="button" name="name" value="搜索一下"> --%>
         </span>
-
     </div>
 
     <%-- <div class="content">
 
     </div> --%>
     <div class="container content">
-
-        <div class="row">
+        <div class="row rel-search">
+            <div class="col-sm-6 col-md-8">
+                <span id="res_total"></span>
+            </div>
+            <span id="res_total"></span>
+        </div>
+        <div class="row rel-search">
             <div id="page_content" class="col-xs-12 col-sm-6 col-md-8">
 
             </div>
 
-            <div class="col-xs-12 col-md-4" style="min-height: 200px;margin-top:.3em;">
+            <div class="col-xs-12 col-md-4" style="border-left:1px solid silver;min-height: 200px;margin-top:.3em;">
             	<div>广告</div>
             </div>
         </div>
 
-        <div class="row">
-            <div class="pagenation" id="_pageNation">
+        <div class="row rel-search">
+            <div class="col-xs-12 col-sm-6 col-md-8">
+                <div class="relevant-search">
+                    <span>相关搜索</span>
+                </div>
+                <div class="relevant-search-res">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="#">相关连接1</a>
+                                </td>
+                                <td>
+                                    <a href="#">相关连接1</a>
+                                </td>
+                                <td>
+                                    <a href="#">相关连接1</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#">相关连接1</a>
+                                </td>
+                                <td>
+                                    <a href="#">相关连接1</a>
+                                </td>
+                                <td>
+                                    <a href="#">相关连接1</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#">相关连接1</a>
+                                </td>
+                                <td>
+                                    <a href="#">相关连接1</a>
+                                </td>
+                                <td>
+                                    <a href="#">相关连接1</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="row rel-search">
+            <div class="col-xs-12 col-sm-6 col-md-8">
+                <div class="pagenation" id="_pageNation">
+                </div>
             </div>
         </div>
 
@@ -63,12 +117,6 @@
 
 
      var keywords = "<%=keywords%>";
-     console.log(keywords);
-
-    //Page.initpage();
-
-
-
 
     //var screen_width;
     //监听屏幕宽度变化做出判断

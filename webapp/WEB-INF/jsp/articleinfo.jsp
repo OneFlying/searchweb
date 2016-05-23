@@ -28,6 +28,16 @@
     <%-- <div class="">
         <a href="${RESOUCE_SYSTEM_URL}/index">返回</a>
     </div> --%>
+    <div class="navbar navbar-default navbar-fixed-top" style="padding-bottom: .3em;">
+        <a class="nav-brand-logo" href="${RESOUCE_SYSTEM_URL}/">
+            <img src="${RESOUCE_STATIC_URL}/img/index_logo.png"/>
+        </a>
+        <span class="search_form">
+            <input type="text" name="name" value="">
+            <a id="btn" href="#"><i class="glyphicon glyphicon-search"></i></a>
+        </span>
+    </div>
+
     <div class="container info-container">
         <div class="row">
             <div class="info-title">
@@ -81,7 +91,22 @@
             });
 
         });
-    })
+    });
+
+    $("#btn").bind("click",function(){
+        //获取要搜寻的关键字
+        var keywords = $("input[type='text']").val();
+        window.location.href="${RESOUCE_SYSTEM_URL}/article/list?keywords="+keywords;
+        return false;
+    });
+    $(document).on('keyup',function(event) {
+    	event.preventDefault();
+    	if (event.keyCode == 13) {
+    		var keywords = $("input[type=text]").val();
+            window.location.href="${RESOUCE_SYSTEM_URL}/article/list?keywords="+keywords;
+    	}
+    	return false;
+    });
 
 
 </script>

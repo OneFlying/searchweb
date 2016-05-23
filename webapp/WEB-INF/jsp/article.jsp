@@ -27,10 +27,10 @@
                 <label for="title">标题:</label>
                 <input id="title" class="form-control" type="text" name="title" value="">
             </div>
-            <div class="form-group">
+            <%-- <div class="form-group">
                 <label for="keywords">关键字:</label>
                 <input id="keywords" class="form-control" type="text" name="keywords" value="">
-            </div>
+            </div> --%>
             <div class="form-group">
                 <label for="website">网址链接:</label>
                 <input id="website" class="form-control" type="text" name="website" value="">

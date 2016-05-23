@@ -28,7 +28,8 @@
         <div class="index_form">
             <%-- <form> --%>
                 <input type="text" value="">
-                <input id="btn" type="button" value="搜索一下">
+                <a id="btn" href="#"><i class="glyphicon glyphicon-search"></i></a>
+                <%-- <input id="btn" type="button" value="搜索一下"> --%>
                 <span class="">
                     <a href="${RESOUCE_SYSTEM_URL}/article/index">上传文章</a>
                 </span>
@@ -36,6 +37,13 @@
         </div>
     </div>
 
+    <div class="row notice">
+        <div class="text-center">
+            <a href="${RESOUCE_SYSTEM_URL}/aboutus">关于我们</a>|
+            <a href="${RESOUCE_SYSTEM_URL}/agreement">使用协议</a>|
+            <a href="${RESOUCE_SYSTEM_URL}/law">法律声明</a>
+        </div>
+    </div>
 </div>
 
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/lib/jquery-1.11.1.min.js"></script>
