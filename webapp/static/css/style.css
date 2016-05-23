@@ -34,7 +34,9 @@ form表单
     outline: none;
     -webkit-appearance: none;
 }
-
+.index_form > input[type=text]:focus {
+	border: 1px solid #bbb;
+}
 .index_form > a{
 
     display: inline-block;
@@ -48,9 +50,7 @@ form表单
     color: white;
 }
 
-.index_form > input[type=text]:focus {
-	border: 1px solid #bbb;
-}
+
 
 .index_form > input[type=button]{
     font: 0.96em '微软雅黑';
@@ -182,7 +182,7 @@ label{
     margin-top: 8px;
 }
 .relevant-search-res > table{
-    width: 440px;
+    width: 100%;
     display: table;
     border-collapse: separate;
     border-spacing: 2px;
@@ -265,9 +265,31 @@ label{
 }
 
 .content-ad{
-    /*border-left: 1px solid silver;*/
+    border-left:1px solid silver;
 }
 
+.content-footer{
+
+    margin-bottom: 0em !important;
+}
+
+@media only screen and (min-width: 801px){
+    .content-footer > .container{
+        margin:0;
+        padding: 0;
+        margin-left: 7em;
+    }
+}
+.content-footer-notice{
+    text-align: left;
+    margin-top: 12px;
+    color: #999;
+    margin-left: 0;
+}
+.content-footer-notice > a{
+    color: #999;
+    margin-right: 5px;
+}
 #btn_submit{
     display: inline-block;
     margin-top: 10px;
@@ -373,7 +395,7 @@ label{
         margin-top: 115px;
     }
     .nav-brand-logo{
-        display: block;
+        /*display: block;*/
     }
     .search_form{
         /*display: block;
@@ -439,10 +461,10 @@ label{
         margin-top: 100px;
     }
     .nav-brand-logo{
-        display: block;
+        /*display: inline-block;*/
     }
     .search_form{
-        display: block;
+        /*display: inline-block;*/
         width: 100%;
     }
     .search_form > input[type='text']{
@@ -532,6 +554,15 @@ label{
 
     .content{
         margin-top: 100px;
+        margin-left: 0em !important;
+        padding: 0;
+    }
+    /*.content-ad{
+        border-left:none;
+        border-top:1px solid silver;
+    }*/
+    .content-footer-notice{
+        text-align: center;
     }
     .nav-brand-logo{
         display: block;
@@ -625,6 +656,15 @@ label{
     }
     .content{
         margin-top: 90px;
+        margin-left: 0em !important;
+        padding: 0;
+    }
+    /*.content-ad{
+        border-left: none;
+        border-top:1px solid silver;
+    }*/
+    .content-footer-notice{
+        text-align: center;
     }
     .nav-brand-logo{
         display: block;
