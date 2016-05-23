@@ -79,6 +79,7 @@ PageNation.prototype = {
         var param = $.extend(exetramParam,opts.page,opts.rows);
         $.get(opts.url,param,function(data){
 
+            $("#res_total").text("为您找的结果约"+data.rows+"个")
             //获取总页数
             var total_page = Math.ceil(data.rows/opts.rows);//也总页数
             //alert(parseInt(options.screen_width));
@@ -89,15 +90,13 @@ PageNation.prototype = {
             }else{
                 $ul = me.renderPageNation(total_page,opts,param);
             }
-            
-            console.log($ul);
 
             //加载导航条
             $("#"+opts.pageId).children().remove();
             $("#"+opts.pageId).append($ul);
 
             var contenthtml = Page.initContent(data.list);
-            console.log(contenthtml);
+            
             $("#"+opts.contentId).children().remove();
             $("#"+opts.contentId).append(contenthtml);
 
