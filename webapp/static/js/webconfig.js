@@ -62,7 +62,7 @@ loadgrid : function(){
 		          {
 		        	field:'content',title:'<font color="black" size="2px">上传logo</font>',align:'center',width:90,
 		        	formatter: function(value, row, index) { 
-		        		return '<input type="button" id="uploadPic" onclick="uploadPic()" style="height:25px;width:70px;font-size:12px;line-height:3px,color="black" value="上传图片"/>';
+		        		return '<input type="button" id="uploadPic" onclick="uploadPic()" style="height:27px;width:70px;font-size:12px;line-height:0px;margin-top:-7px;color:black" value="上传图片"/>';
 		        	}
 		          }
 		          ]],
