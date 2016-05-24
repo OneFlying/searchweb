@@ -24,6 +24,18 @@ public class Promotion implements Serializable{
 	private String url;
 	//点击量
 	private int usecount;
+	
+	//标题
+	private String title;
+	
+	
+	@Column(name="title")
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	@Column(name="id")
 	public String getId() {
 		return id;
