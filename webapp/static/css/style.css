@@ -31,12 +31,13 @@ form表单
     line-height: 0;/*这2句兼容ie高度不统一*/
     vertical-align: middle;
     border: 1px solid #ddd;
-    outline: none;
-    -webkit-appearance: none;
+    /*outline: none;*/
+    /*-webkit-appearance: none;*/
 }
-.index_form > input[type=text]:focus {
-	border: 1px solid #bbb;
-}
+/*.index_form > input[type=text]:focus {
+	border: 1px solid #4791FF;
+}*/
+
 .index_form > a{
 
     display: inline-block;
@@ -220,6 +221,11 @@ label{
 .img-adjust > img{
     width: 120%;
 }
+.promotion{
+    display: block;
+    background: #FFFAFA;
+    margin-top: 0 !important;
+}
 /*修饰文字*/
 .dec_word{
     font-size: 0.85em;
@@ -248,7 +254,13 @@ label{
     text-decoration: none;
     color: #008000;
 }
-
+.nav-shadow{
+    box-shadow: 2px 0 1px 0 rgba(0,0,0,0.7);
+    -webkit-box-shadow: 2px 0 1px 0 rgba(0,0,0,0.7);
+    -moz-box-shadow: 2px 0 1px 0 rgba(0,0,0,0.7);
+    -o-box-shadow: 2px 0 1px 0 rgba(0,0,0,0.7);
+    -ms-box-shadow: 2px 0 1px 0 rgba(0,0,0,0.7);
+}
 .content-navbar-bottom{
     margin-top: 40px;
     margin-bottom: 0;
