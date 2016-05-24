@@ -35,7 +35,7 @@
         <form role="form" id="form" action="${RESOUCE_SYSTEM_URL}/article/save" method="post">
             <div class="form-group">
                 <label for="title">标题:</label>
-                <input id="title" class="form-control" type="text" name="title" value="">
+                <input id="title" placeholder="请输入标题" class="form-control" type="text" name="title" value="">
             </div>
             <%-- <div class="form-group">
                 <label for="keywords">关键字:</label>
@@ -43,7 +43,7 @@
             </div> --%>
             <div class="form-group">
                 <label for="website">网址链接:</label>
-                <input id="website" class="form-control" type="text" name="website" value="">
+                <input id="website" placeholder="请输入网址链接" class="form-control" type="text" name="website" value="">
             </div>
 
             <div class="form-group">
@@ -61,7 +61,15 @@
     </div>
 
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/util/HtmlUtil.js"></script>
+<script type="text/javascript" src="${RESOUCE_STATIC_URL}/lib/jquery.enplaceholder.js"></script>
 <script type="text/javascript">
+
+    $(document).ready(function(){
+
+        $("input").placeholder();
+
+    });
+
     //实例化编辑器
     var um = UM.getEditor('myEditor');
     um.addListener('blur',function(){

@@ -24,9 +24,15 @@
     <div class="container">
         <form role="form" id="form" action="${RESOUCE_SYSTEM_URL}/promotion/add" method="post">
             <div class="form-group">
+                <label for="website">标题:</label>
+                <input id="website" class="form-control" type="text" name="title" value="">
+            </div>
+
+            <div class="form-group">
                 <label for="keywords">推广价格:</label>
                 <input id="price" class="form-control" type="text" name="price" value="">
             </div>
+
             <div class="form-group">
                 <label for="website">网址链接:</label>
                 <input id="website" class="form-control" type="text" name="url" value="">

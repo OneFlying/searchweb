@@ -125,6 +125,7 @@
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/pagenation.js"></script>
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/page.js"></script>
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/util/HtmlUtil.js"></script>
+<script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/util/CompatibleStyle.js"></script>
 
 <script type="text/javascript">
 
@@ -162,6 +163,7 @@
         if (event.keyCode == 13) {
             var keywords = $("input[type='text']").val();
             keywords = $("input[type=text]").val();
+            $("title").text(keywords);
             param.keywords = keywords;
             pageNation.initPage(opts,param);
         }
@@ -171,6 +173,8 @@
     $("#btn").bind('click',function(event) {
         /* Act on the event */
         keywords = $("input[type=text]").val();
+
+        $("title").text(keywords);
         param.keywords = keywords;
         pageNation.initPage(opts,param);
 
@@ -181,11 +185,16 @@
 
     $(document).ready(function(){
 
+        /*兼容浏览器点击数据框outline*/
+        CompStyle.lineStyle();
+
+        $("title").text("<%=keywords%>");
+
         var url = RESOUCE_SYSTEM_URL_JS+"/websiteconfig/getinfo";
 
         $.get(url,function(data){
             var obj = data.wc;
-            $("title").text(obj.title);
+            //$("title").text(obj.title);
             $(".nav-brand-logo>img").attr("src","${RESOUCE_STATIC_URL}"+obj.logourl);
         });
     });

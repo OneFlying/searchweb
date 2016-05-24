@@ -36,6 +36,9 @@
             <input type="text" name="name" value="">
             <a id="btn" href="#"><i class="glyphicon glyphicon-search"></i></a>
         </span>
+        <span class="">
+            <a href="${RESOUCE_SYSTEM_URL}/article/index">上传文章</a>
+        </span>
     </div>
 
     <div class="container info-container">
@@ -68,9 +71,22 @@
     </div>
 
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/util/HtmlUtil.js"></script>
+<script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/util/CompatibleStyle.js"></script>
 <script type="text/javascript">
 
     $(document).ready(function(){
+
+        CompStyle.lineStyle();
+
+        var url = RESOUCE_SYSTEM_URL_JS+"/websiteconfig/getinfo";
+
+        $.get(url,function(data){
+            var obj = data.wc;
+            //$("title").text(obj.title);
+            $(".nav-brand-logo>img").attr("src","${RESOUCE_STATIC_URL}"+obj.logourl);
+        });
+
+
         $("#modal").fancybox({
             'hideOnContentClick': true
         });

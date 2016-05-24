@@ -48,8 +48,13 @@
 
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/lib/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/util/CompatibleStyle.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
+
+        /*兼容浏览器点击数据框outline*/
+        CompStyle.lineStyle();
+
         var url = RESOUCE_SYSTEM_URL_JS+"/websiteconfig/getinfo";
 
         $.get(url,function(data){
