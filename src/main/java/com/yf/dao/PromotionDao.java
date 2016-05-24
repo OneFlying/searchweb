@@ -28,6 +28,7 @@ public class PromotionDao extends DaoAdapter{
 				promotion.setPrice(rs.getString("price"));
 				promotion.setUrl(rs.getString("url"));
 				promotion.setUsecount(rs.getInt("usecount"));
+				promotion.setTitle(rs.getString("title"));
 				return promotion;
 			}
 		};
@@ -38,8 +39,8 @@ public class PromotionDao extends DaoAdapter{
 	 * @return
 	 */
 	public boolean add(Promotion promotion){
-		String sql = "insert into promotion (id,content,usecount,imgids,price,url) values(?,?,?,?,?,?)";
-		int num = super.getJdbcTemplate().update(sql, promotion.getId(),promotion.getContent(),promotion.getUsecount(),promotion.getImgids(),promotion.getPrice(),promotion.getUrl());
+		String sql = "insert into promotion (id,content,usecount,imgids,price,url,title) values(?,?,?,?,?,?,?)";
+		int num = super.getJdbcTemplate().update(sql, promotion.getId(),promotion.getContent(),promotion.getUsecount(),promotion.getImgids(),promotion.getPrice(),promotion.getUrl(),promotion.getTitle());
 		if(num>0){
 			return true;
 		}else{
@@ -52,8 +53,8 @@ public class PromotionDao extends DaoAdapter{
 	 * @return
 	 */
 	public boolean update(Promotion promotion){
-		String sql = "update promotion set id =?,content=?,usecount=?,imgids=?,price=?,url=? where id=?";
-		int num = super.getJdbcTemplate().update(sql,promotion.getId(),promotion.getContent(),promotion.getUsecount(),promotion.getImgids(),promotion.getPrice(),promotion.getUrl(),promotion.getId());
+		String sql = "update promotion set id =?,content=?,usecount=?,imgids=?,price=?,url=?,title=? where id=?";
+		int num = super.getJdbcTemplate().update(sql,promotion.getId(),promotion.getContent(),promotion.getUsecount(),promotion.getImgids(),promotion.getPrice(),promotion.getUrl(),promotion.getTitle(),promotion.getId());
 		if(num>0){
 			return true;
 		}else{
@@ -137,6 +138,27 @@ public class PromotionDao extends DaoAdapter{
 			return true;
 		}else{
 			return false;
+		}
+	}
+	
+	/**
+	 * 根据内容获取获取推广内容
+	 * @param content
+	 * @return
+	 */
+	public List<Promotion> getPromotionsByContent(String content){
+		
+		try {
+			
+			content = "%"+content+"%";
+			
+			String sql = "select * from promotion where content like ? order by price desc";
+			
+			return super.getJdbcTemplate().query(sql, promotionMapper,content);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			return null;
 		}
 	}
 }
