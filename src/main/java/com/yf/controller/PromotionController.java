@@ -119,7 +119,7 @@ public class PromotionController {
 		SearchEntity searchEntity = new SearchEntity(Promotion.class);
 		searchEntity.addResultColumn("*");
 		if(!price.equals("")){
-			searchEntity.addSearchColumn("price", price, " LIKE ", false);
+			searchEntity.addSearchColumn("price", "%"+price+"%", " LIKE ", false);
 		}
 		searchEntity.setPage(page, rows);
 		List<Promotion> list = promotionDao.page(searchEntity);		
