@@ -39,9 +39,10 @@ public class PromotionController {
 	@Resource
 	private WebsiteconfigDao websiteconfigDao;
 	@RequestMapping(value="/add",method=RequestMethod.POST)
-	public ModelAndView add(HttpServletResponse response,String price,String content,String imageurl,String url){
+	public ModelAndView add(HttpServletResponse response,String price,String content,String imageurl,String url,String title){
 		ModelAndView modelAndView = new ModelAndView();
 		Promotion promotin = new Promotion();
+		promotin.setTitle(title);
 		promotin.setContent(content);
 		promotin.setImgids(imageurl);
 		promotin.setUrl(url);
@@ -131,4 +132,5 @@ public class PromotionController {
 	public String toPromotion(){
 		return "promotion";
 	}
+	
 }

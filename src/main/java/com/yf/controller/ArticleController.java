@@ -1,5 +1,6 @@
 package com.yf.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -14,8 +15,10 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.annotation.Resource;
 
 import com.yf.dao.ArticleDao;
+import com.yf.dao.PromotionDao;
 import com.yf.dao.SearchEntity;
 import com.yf.model.Article;
+import com.yf.model.Promotion;
 import com.yf.utils.StringUtils;
 
 @Controller
@@ -24,6 +27,9 @@ public class ArticleController {
 
 	@Resource(name="articleDao")
 	private ArticleDao articleDao;
+	
+	@Resource(name="promotionDao")
+	private PromotionDao promotionDao;
 	
 	/** 
 	 * 分页获取文章信息
@@ -83,8 +89,17 @@ public class ArticleController {
 			searchEntity.setOrderBy(" order by count desc");
 			List<Article> list = articleDao.pageArticle(searchEntity);
 			
-			if(list != null){
+			List<Promotion> plist = promotionDao.getPromotionsByContent(keywords);
+			
+			
+			if((plist != null)&&(list != null)){
+				List<Article> newList = this.warpList(plist, list);
+				modelMap.put("list", newList);
+				modelMap.put("rows", searchEntity.getTotal());
 				
+				return modelMap;
+			}else if(list != null){
+				 
 				modelMap.put("list", list);
 				modelMap.put("rows", searchEntity.getTotal());
 
@@ -181,13 +196,53 @@ public class ArticleController {
 		
 		ModelAndView modelAndView = new ModelAndView();
 		Article article = articleDao.getArticleById(id);
-		
-		int count = article.getCount()+1;		
-		articleDao.updateArticleCount(id, count);
-		
-		modelAndView.addObject("article", article);
-		modelAndView.setViewName("articleinfo");
-		
+		Promotion promotion = promotionDao.getPromotionById(id);
+		if(promotion != null){
+			
+			Article article2 = new Article();
+			article2.setId(promotion.getId());
+			article2.setContent(promotion.getContent());
+			article2.setTitle(promotion.getTitle());
+			article2.setImgids(promotion.getImgids());
+			article2.setWebsite(promotion.getUrl());
+			
+			modelAndView.addObject("article", article2);
+			modelAndView.setViewName("articleinfo");
+			
+			return modelAndView;			
+		}else if(article != null){
+			modelAndView.addObject("article", article);
+			modelAndView.setViewName("articleinfo");
+			int count = article.getCount()+1;		
+			articleDao.updateArticleCount(id, count);		
+		}
 		return modelAndView;
+	
+	}
+	
+	/**
+	 * 包装list
+	 * @param plist
+	 * @param list
+	 * @return
+	 */
+	private List<Article> warpList(List<Promotion> plist,List<Article> list){
+		
+		List<Article> newList = new ArrayList<Article>();
+		
+		for(int i = 0;i<2;i++){
+			Promotion p = plist.get(i);
+			Article article = new Article();
+			article.setId(p.getId());
+			article.setContent(p.getContent());
+			article.setImgids(p.getImgids());
+			article.setTitle(p.getTitle());
+			article.setWebsite(p.getUrl());
+			
+			newList.add(article);
+		}
+		newList.addAll(list);
+		
+		return newList;
 	}
 }
