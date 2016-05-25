@@ -1,28 +1,60 @@
 var GgglManager = {
-		del:function(){
-			var rows = $('#ggglgrid').datagrid('getChecked');
-			if(rows.length<=0){
-				$.messager.alert('提示','请选择进行删除！','info');
-				return;
-			}else{
-				var idArry = new Array();
-				$(rows).each(function(index,item){
-					idArry.push(item.id);
+	edit:function(){
+		var rows = $('#ggglgrid').datagrid('getChecked');
+		if(rows.length<=0 || rows.length>1){
+			$.messager.alert('提示','请选择一行数据进行编辑！','info');
+			return;
+		}
+		$('#advert_add_win').window('open');
+		$('#advert_add_win').panel({
+			title:'修改广告信息',
+		});
+		$('#advert_add_form').form('clear');
+		$('#advert_add_form').form('load',rows[0]);
+		$('#advert_submit').unbind('click');
+		$('#advert_submit').click(function(){
 
+			$('#advert_add_form').form('submit',{
+				url:RESOUCE_SYSTEM_URL_JS+'/advert/update',
+				success:function(data){
+					var dataJson = eval('(' + data + ')');
+					if(dataJson.success == true){
+						$('#advert_add_win').window('close');
+						GgglManager.reload();
+					}else{
+						$.messager.alert('提示',dataJson.msg,'info');
+					}
+				}
+			});
+
+		});
+
+	},
+
+	del:function(){
+		var rows = $('#ggglgrid').datagrid('getChecked');
+		if(rows.length<=0){
+			$.messager.alert('提示','请选择进行删除！','info');
+			return;
+		}else{
+			var idArry = new Array();
+			$(rows).each(function(index,item){
+				idArry.push(item.id);
+
+			});
+			$.messager.defaults={ok:"确定",cancel:"取消"};
+			$.messager.confirm('温馨提示', '是否要删除该信息？', function(r){
+				$.get(RESOUCE_SYSTEM_URL_JS+'/advert/del',{ids:idArry},function(data){
+					if(data.success){
+						$.messager.alert('提示','删除成功','info');
+						GgglManager.reload();
+					}else{
+						$.messager.alert('警告','删除失败','warning');
+					}
 				});
-				$.messager.defaults={ok:"确定",cancel:"取消"};
-				$.messager.confirm('温馨提示', '是否要删除该信息？', function(r){
-					$.get(RESOUCE_SYSTEM_URL_JS+'/advert/del',{ids:idArry},function(data){
-						if(data.success){
-							$.messager.alert('提示','删除成功','info');
-							GgglManager.reload();
-						}else{
-							$.messager.alert('警告','删除失败','warning');
-						}
-					});
-				});
-			}
-		},
+			});
+		}
+	},
 /**
  * 加载表格数据
  */
@@ -32,8 +64,9 @@ loadgrid : function(){
 			desc:"",
 			content:"",
 		},
-		toolbar: [{
-        text:'添加',
+		toolbar: [
+		{
+        			text:'添加',
 					iconCls: 'icon-add',
 					handler: function(){
 						//window.location.href = RESOUCE_SYSTEM_URL_JS + '/promotion/index'
@@ -49,6 +82,15 @@ loadgrid : function(){
                              clearAddAdvert();
 						});
 					}
+		},'-',
+		{
+				text:'修改',
+				iconCls: 'icon-remove',
+				handler: function(){
+					//$('#device_delete_win').window('open');
+					GgglManager.edit();
+				}
+
 		},'-',
 		{
 				text:'删除',
