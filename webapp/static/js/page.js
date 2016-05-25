@@ -200,31 +200,28 @@ var Page = {
 
         var $tbody = $("<tbody></tbody>");
 
-        var res = Math.ceil(list.length/3);
-        var flag = true;
+        // var res = Math.ceil(list.length/3);
+        // var flag = true;
         var t=0;
-        for(var i=0;i<res;i++){
+        for(var i=0;i<3;i++){
             var $tr = $("<tr></tr>");
 
             /*
             展现数据有问题
             */
-            for(var k=t;k<list.length;k++,t++){
+            for(var k=0;k<3;k++,t++){
 
+                
+                if(list[t] != undefined){
+                    var $td = $("<td></td>");
+                    var $a = $("<a></a>");
+                    var key = list[t].keywords;
 
-                if((k>=3*(i+1))&&(k<list.length-1)){
-
-                    break;
+                    $a.attr("href",RESOUCE_SYSTEM_URL_JS+"/article/list?keywords="+key);
+                    $a.text(key);
+                    $td.append($a);
+                    $tr.append($td);
                 }
-                var $td = $("<td></td>");
-                var $a = $("<a></a>");
-                console.log(k);
-                var key = list[k].keywords;
-
-                $a.attr("href",RESOUCE_SYSTEM_URL_JS+"/article/list?keywords="+key);
-                $a.text(key);
-                $td.append($a);
-                $tr.append($td);
 
             }
             $tbody.append($tr);
