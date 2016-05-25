@@ -50,8 +50,8 @@ public class AdvertDao extends DaoAdapter{
 	public int update(Advert advert){
 		
 		try {
-			
-			String sql = "update advert set title=?,desc=?,price=?,logourl=?,adurl=? where id=?";
+			//desc见反引号是因为与数据库关键字冲突了 转义下
+			String sql = "update advert set title=?,`desc`=?,price=?,logourl=?,adurl=? where id=?";
 			return super.getJdbcTemplate().update(sql,advert.getTitle(),advert.getDesc(),advert.getPrice(),advert.getLogourl(),advert.getAdurl(),advert.getId());
 		} catch (Exception e) {
 			// TODO: handle exception
