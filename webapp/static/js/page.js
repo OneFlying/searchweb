@@ -179,5 +179,58 @@ var Page = {
         });
 
         return res.substring(0,200)+"...";
+    },
+    getRelSearchData : function(keywords){
+
+        var url = RESOUCE_SYSTEM_URL_JS+"/relsearch/list";
+        var param = {keywords:keywords};
+        $.get(url,param,function(data){
+
+            if(data.success){
+
+                var tableHtml = Page.renderRelSearch(data.list);
+                $("table").append(tableHtml);
+            }else{
+
+            }
+
+        });
+    },
+    renderRelSearch : function(list){
+
+        var $tbody = $("<tbody></tbody>");
+
+        var res = Math.ceil(list.length/3);
+        var flag = true;
+        var t=0;
+        for(var i=0;i<res;i++){
+            var $tr = $("<tr></tr>");
+
+            /*
+            展现数据有问题
+            */
+            for(var k=t;k<list.length;k++,t++){
+
+
+                if((k>=3*(i+1))&&(k<list.length-1)){
+
+                    break;
+                }
+                var $td = $("<td></td>");
+                var $a = $("<a></a>");
+                console.log(k);
+                var key = list[k].keywords;
+
+                $a.attr("href",RESOUCE_SYSTEM_URL_JS+"/article/list?keywords="+key);
+                $a.text(key);
+                $td.append($a);
+                $tr.append($td);
+
+            }
+            $tbody.append($tr);
+        }
+
+        return $tbody;
     }
+
 }
