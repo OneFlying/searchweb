@@ -89,7 +89,7 @@ public class RelSearchDao extends DaoAdapter{
 		try {
 			
 			String sql = "update relsearch set count=? where keywords=?";
-			return super.getJdbcTemplate().update(sql,keyword,count);
+			return super.getJdbcTemplate().update(sql,count,keyword);
 			
 		} catch (Exception e) {
 			// TODO: handle exception
