@@ -39,7 +39,7 @@ public class LoginController {
 		if(user != null){
 			request.getSession().setAttribute("curUser", user);
 			modelMap.put("success", true);
-			modelMap.put("url", "/admin");
+			modelMap.put("url", "/sdedfjukdxflkdj");
 		}else{
 			modelMap.put("success", false);
 			modelMap.put("msg", "用户名或密码错误");
