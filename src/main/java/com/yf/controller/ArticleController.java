@@ -16,9 +16,11 @@ import javax.annotation.Resource;
 
 import com.yf.dao.ArticleDao;
 import com.yf.dao.PromotionDao;
+import com.yf.dao.RelSearchDao;
 import com.yf.dao.SearchEntity;
 import com.yf.model.Article;
 import com.yf.model.Promotion;
+import com.yf.model.RelSearch;
 import com.yf.utils.StringUtils;
 
 @Controller
@@ -30,6 +32,9 @@ public class ArticleController {
 	
 	@Resource(name="promotionDao")
 	private PromotionDao promotionDao;
+	
+	@Resource(name="relSearchDao")
+	private RelSearchDao relSearchDao;
 	
 	/** 
 	 * 分页获取文章信息
@@ -82,6 +87,19 @@ public class ArticleController {
 		SearchEntity searchEntity = new SearchEntity(Article.class);
 		searchEntity.addResultColumn("*");
 		
+		RelSearch relSearch = relSearchDao.getRelSearchByKey(keywords);
+		//如果是第一次则添加
+		if(relSearch == null){
+			RelSearch rels = new RelSearch();
+			rels.setId(StringUtils.generateUuid());
+			rels.setKeywords(keywords);
+			rels.setCount(0);
+			
+			relSearchDao.saveKeyWords(rels);
+		}else{
+			
+			relSearchDao.updateRel(keywords, relSearch.getCount()+1);
+		}
 		
 		if(StringUtils.isNotBlank(keywords)){
 			searchEntity.addSearchColumn("content", "%"+keywords+"%", " like ", false);
