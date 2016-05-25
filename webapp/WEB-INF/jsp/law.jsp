@@ -15,11 +15,32 @@
 </head>
 <body>
 
-法律声明
+<div class="container law-container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-4 col-md-4 text-right">
+            <img src="" alt="" />
+        </div>
+        <div class="col-xs-12 col-sm-8 col-md-8">
+            <div class="law-content">
+                <span>法律声明</span>
+                
+            </div>
+        </div>
+    </div>
+</div>
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/lib/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
 <script type="text/javascript">
+    $(document).ready(function(){
 
+        var url = RESOUCE_SYSTEM_URL_JS+"/websiteconfig/getinfo";
+
+        $.get(url,function(data){
+            var obj = data.wc;
+            //$("title").text(obj.title);
+            $("img").attr("src","${RESOUCE_STATIC_URL}"+obj.logourl);
+        });
+    });
 </script>
 </body>
 </html>
