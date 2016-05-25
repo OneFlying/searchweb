@@ -38,6 +38,8 @@
 		src="${RESOUCE_STATIC_URL}/js/webconfig.js"></script>
 	<script type="text/javascript"
 		src="${RESOUCE_STATIC_URL}/js/promotion.js"></script>
+    <script type="text/javascript"
+		src="${RESOUCE_STATIC_URL}/js/advert.js"></script>
     <title>网站后台登录</title>
     <%@ include file="/resource.jsp" %>
    <style>
@@ -104,7 +106,13 @@
 					url : "",
 					type : 'TGGL'
 				}
-			}
+			},{
+                text : "广告管理",
+                attributes : {
+                    url : "",
+                    type : 'GGGL'
+                }
+            }
 	       ]
        }];
 
@@ -168,6 +176,18 @@
 										content : '<div id="tgglgrid" style="height:auto;"></div>'
 									});
 					TgglManager.loadgrid();
+					break;
+
+                case 'GGGL':
+                    $('#tabs')
+							.tabs(
+									'add',
+									{
+										title : text,
+										closable : true,
+										content : '<div id="ggglgrid" style="height:auto;"></div>'
+									});
+					GgglManager.loadgrid();
 					break;
 				case 'LOGOUT':
 					$.get('${RESOUCE_SYSTEM_URL}/logout', function(data) {
@@ -261,5 +281,7 @@
 	</div>
 	<%@ include file="/manager/webconfig.jsp"%>
 	<%@ include file="/manager/websiteconfig.jsp"%>
+    <%@ include file="/manager/upload.jsp"%>
+
 </body>
 </html>

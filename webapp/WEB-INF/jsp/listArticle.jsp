@@ -44,65 +44,8 @@
             <div id="page_content" class="col-xs-12 col-md-8"></div>
 
             <!--右侧广告部分-->
-            <div class="col-xs-12 col-md-4 ad-content" style="border-left:1px solid silver;min-height: 200px;margin-top:.3em;">
-            	<div class="row">
-            	    <div class="col-sm-4 col-md-4">
-            	        <div class="ad-item">
-            	            <img src="${RESOUCE_STATIC_URL}/img/index_logo.png"/>
-                            <a href="#">网页logo</a>
-                            <span>
-                                这是一个广告位的测试效果
-                            </span>
-            	        </div>
-            	    </div>
-                    <div class="col-sm-4 col-md-4">
-                        <div class="ad-item">
-            	            <img src="${RESOUCE_STATIC_URL}/img/logo.png"/>
-                            <a href="#">网页logo</a>
-                            <span>
-                                这是一个广告位的测试效果
-                            </span>
-            	        </div>
-                    </div>
-                    <div class="col-sm-4 col-md-4">
-                        <div class="ad-item">
-            	            <img src="${RESOUCE_STATIC_URL}/img/logo.png"/>
-                            <a href="#">网页logo</a>
-                            <span>
-                                这是一个广告位的测试效果
-                            </span>
-            	        </div>
-                    </div>
-            	</div>
-                <div class="row">
-            	    <div class="col-sm-4 col-md-4">
-            	        <div class="ad-item">
-            	            <img src="${RESOUCE_STATIC_URL}/img/logo.png"/>
-                            <a href="#">网页logo</a>
-                            <span>
-                                这是一个广告位的测试效果
-                            </span>
-            	        </div>
-            	    </div>
-                    <div class="col-sm-4 col-md-4">
-                        <div class="ad-item">
-            	            <img src="${RESOUCE_STATIC_URL}/img/logo.png"/>
-                            <a href="#">网页logo</a>
-                            <span>
-                                这是一个广告位的测试效果
-                            </span>
-            	        </div>
-                    </div>
-                    <div class="col-sm-4 col-md-4">
-                        <div class="ad-item">
-            	            <img src="${RESOUCE_STATIC_URL}/img/logo.png"/>
-                            <a href="#">网页logo</a>
-                            <span>
-                                这是一个广告位的测试效果
-                            </span>
-            	        </div>
-                    </div>
-            	</div>
+            <div id="ad" class="col-xs-12 col-md-4 ad-content" style="border-left:1px solid silver;min-height: 200px;margin-top:.3em;">
+
             </div>
         </div>
 
@@ -157,6 +100,7 @@
      $("input[type='text']").val(keywords);
 
      Page.getRelSearchData(keywords);
+     Page.getAdertInfo(keywords,"ad");
     //var screen_width;
     //监听屏幕宽度变化做出判断
 
@@ -193,6 +137,7 @@
             param.keywords = keywords;
             pageNation.initPage(opts,param);
             Page.getRelSearchData(keywords);
+            Page.getAdertInfo(keywords,"ad");
         }
     });
 
@@ -205,6 +150,7 @@
         param.keywords = keywords;
         pageNation.initPage(opts,param);
         Page.getRelSearchData(keywords);
+        Page.getAdertInfo(keywords,"ad");
 
     });
 
