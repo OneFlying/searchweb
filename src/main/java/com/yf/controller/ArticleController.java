@@ -171,7 +171,7 @@ public class ArticleController {
 		article.setContent(content);
 		article.setWebsite(website);
 		article.setImgids(imageurl);
-		article.setKeywords(keywords);
+		article.setKeywords("keywords");
 		article.setTitle(title);
 		
 		int res = articleDao.saveArticle(article);
