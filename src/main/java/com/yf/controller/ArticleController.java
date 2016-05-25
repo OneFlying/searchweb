@@ -110,13 +110,13 @@ public class ArticleController {
 			List<Promotion> plist = promotionDao.getPromotionsByContent(keywords);
 			
 			
-			if((plist != null)&&(list != null)){
+			if(((plist != null)&&(plist.size()!=0))&&((list != null)&&(list.size()!=0))){
 				List<Article> newList = this.warpList(plist, list);
 				modelMap.put("list", newList);
 				modelMap.put("rows", searchEntity.getTotal());
 				
 				return modelMap;
-			}else if(list != null){
+			}else if((list != null)&&(list.size()!=0)){
 				 
 				modelMap.put("list", list);
 				modelMap.put("rows", searchEntity.getTotal());
