@@ -16,6 +16,27 @@ body{
 }
 
 /*
+尾部声明
+------------------------*/
+.law-container{
+    margin-top: 30px;
+}
+
+.law-container > div > div > img{
+    height: 6em;
+}
+.law-content{
+    margin-top: 30px;
+}
+.law-content > span{
+    display: block;
+    background:#D9E5F5;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 5px 0 5px 10px;
+    /*line-height: 2em;*/
+}
+/*
 form表单
 -----------------------------
 */
