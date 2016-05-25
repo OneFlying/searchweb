@@ -40,7 +40,7 @@
     <div class="row notice">
         <div class="text-center">
             <a href="${RESOUCE_SYSTEM_URL}/aboutus">关于我们</a>|
-            <a href="${RESOUCE_SYSTEM_URL}/agreement">使用协议</a>|
+            <a href="${RESOUCE_SYSTEM_URL}/agreement">使用规则</a>|
             <a href="${RESOUCE_SYSTEM_URL}/law">法律声明</a>
         </div>
     </div>

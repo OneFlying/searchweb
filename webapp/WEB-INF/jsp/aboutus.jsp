@@ -15,7 +15,11 @@
 </head>
 <body>
 
-关于我们
+    <div class="container">
+        <div class="row">
+            关于我们
+        </div>
+    </div>
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/lib/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
 <script type="text/javascript">
