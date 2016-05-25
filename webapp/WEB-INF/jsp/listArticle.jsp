@@ -57,7 +57,7 @@
                 <div class="relevant-search-res">
                     <table>
                         <tbody>
-                            <tr>
+                            <%-- <tr>
                                 <td>
                                     <a href="#">相关连接1</a>
                                 </td>
@@ -89,7 +89,7 @@
                                 <td>
                                     <a href="#">相关连接1</a>
                                 </td>
-                            </tr>
+                            </tr> --%>
                         </tbody>
                     </table>
                 </div>
@@ -132,6 +132,8 @@
 
      var keywords = "<%=keywords%>";
 
+
+     Page.getRelSearchData(keywords);
     //var screen_width;
     //监听屏幕宽度变化做出判断
 
@@ -166,6 +168,7 @@
             $("title").text(keywords);
             param.keywords = keywords;
             pageNation.initPage(opts,param);
+            Page.getRelSearchData(keywords);
         }
     });
 
@@ -177,6 +180,7 @@
         $("title").text(keywords);
         param.keywords = keywords;
         pageNation.initPage(opts,param);
+        Page.getRelSearchData(keywords);
 
     });
 
