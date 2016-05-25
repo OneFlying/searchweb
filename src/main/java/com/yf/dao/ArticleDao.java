@@ -51,9 +51,9 @@ public class ArticleDao extends DaoAdapter{
 	public int saveArticle(Article article){
 		try {
 			
-			String sql = "insert into article values(?,?,?,?,?,?)";
+			String sql = "insert into article(id,title,content,website,imgids,count) values(?,?,?,?,?,?)";
 			
-			return super.getJdbcTemplate().update(sql,article.getId(),article.getTitle(),article.getContent(),article.getWebsite(),article.getImgids(),article.getKeywords());
+			return super.getJdbcTemplate().update(sql,article.getId(),article.getTitle(),article.getContent(),article.getWebsite(),article.getImgids(),article.getCount());
 			
 		} catch (Exception e) {
 			// TODO: handle exception
