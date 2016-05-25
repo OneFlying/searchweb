@@ -28,7 +28,7 @@ loadgrid : function(){
 					$('#websitconfig_add_form').form('submit',{
 						url:RESOUCE_SYSTEM_URL_JS+'/websiteconfig/update',
 						success:function(data){
-							var dataJson = eval('(' + data + ')'); 
+							var dataJson = eval('(' + data + ')');
 							if(dataJson.success == true){
 								$('#websitconfig_add_win').window('close');
 								WzjbglManager.reload();
@@ -61,7 +61,7 @@ loadgrid : function(){
 		          },
 		          {
 		        	field:'content',title:'<font color="black" size="2px">上传logo</font>',align:'center',width:90,
-		        	formatter: function(value, row, index) { 
+		        	formatter: function(value, row, index) {
 		        		return '<input type="button" id="uploadPic" onclick="uploadPic()" style="height:27px;width:70px;font-size:12px;line-height:0px;margin-top:-7px;color:black" value="上传图片"/>';
 		        	}
 		          }
@@ -73,9 +73,9 @@ loadgrid : function(){
 	var page = $('#wzjbglgrid').datagrid('getPager');
 	$(page).pagination({
 		pageNumber:1,
-		beforePageText: '<font color="black" size="2px" >第</font>',//页数文本框前显示的汉字 
-		afterPageText: '<font color="black" size="2px" >页    共 {pages} 页</font>', 
-		displayMsg: '<font color="black" size="2px" >当前显示 {from} - {to} 条记录   共 {total} 条记录</font>', 
+		beforePageText: '<font color="black" size="2px" >第</font>',//页数文本框前显示的汉字
+		afterPageText: '<font color="black" size="2px" >页    共 {pages} 页</font>',
+		displayMsg: '<font color="black" size="2px" >当前显示 {from} - {to} 条记录   共 {total} 条记录</font>',
 	});
 },
 reload:function(){//重新加载，保持在当前页
@@ -85,4 +85,4 @@ reload:function(){//重新加载，保持在当前页
 function uploadPic(){
 	//alert('2345');
 	$('#webconfig_add_win').window('open');
-} 
+}

@@ -189,6 +189,7 @@ var Page = {
             if(data.success){
 
                 var tableHtml = Page.renderRelSearch(data.list);
+                $("table").children().remove();
                 $("table").append(tableHtml);
             }else{
 
@@ -211,7 +212,7 @@ var Page = {
             */
             for(var k=0;k<3;k++,t++){
 
-                
+
                 if(list[t] != undefined){
                     var $td = $("<td></td>");
                     var $a = $("<a></a>");
@@ -228,6 +229,51 @@ var Page = {
         }
 
         return $tbody;
+    },
+    getAdertInfo : function(keywords,divId){
+        var url = RESOUCE_SYSTEM_URL_JS+"/advert/list";
+        var param = {keywords:keywords};
+        $.get(url,param,function(data){
+            $("#"+divId).children().remove();
+            Page.renderAdvert(data.list,divId)
+        });
+    },
+    renderAdvert : function(list,divId){
+        var t=0;
+        for(var i=0;i<3;i++){
+            var $rowDiv = $("<div></div>");
+            $rowDiv.addClass('row');
+            for(var k=0;k<3;k++,t++){
+
+                if(list[t] != undefined){
+
+                    var $topDiv = $("<div></div>");
+                    $topDiv.addClass('col-sm-4 col-md-4');
+
+                    var $div = $("<div></div>");
+                    $div.addClass('ad-item');
+
+                    var $img = $("<img/>");
+                    $img.attr("src",list[t].logourl);
+
+                    var $a = $("<a></a>");
+                    $a.attr("href",list[t].adurl);
+                    $a.text(list[t].title);
+
+                    var $span = $("<span></span>");
+                    $span.text(list[t].desc);
+
+                    $div.append($img);
+                    $div.append($a);
+                    $div.append($span);
+
+                    $topDiv.append($div);
+
+                    $rowDiv.append($topDiv);
+                }
+            }
+            $("#"+divId).append($rowDiv);
+        }
     }
 
 }
