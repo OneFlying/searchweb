@@ -19,7 +19,7 @@
 </head>
 <body>
 
-    <div class="navbar navbar-default navbar-fixed-top" style="padding-bottom: .3em;">
+    <div class="navbar navbar-default navbar-fixed-top" style="padding-bottom: .3em;,">
         <a class="nav-brand-logo" href="${RESOUCE_SYSTEM_URL}/">
             <img src="${RESOUCE_STATIC_URL}/img/index_logo.png"/>
         </a>
@@ -40,7 +40,7 @@
             </div>
             <span id="res_total"></span>
         </div>
-        <div class="row rel-search">
+        <div class="row rel-search"  id="height-over" style="min-height:465px">
             <!--搜索内容展示部分-->
             <div id="page_content" class="col-xs-12 col-md-8"></div>
 
@@ -51,7 +51,7 @@
         </div>
 
         <!--相关搜索-->
-        <div class="row rel-search">
+        <div class="row rel-search" style="min-height:100px" >
             <div class="col-xs-12 col-sm-6 col-md-8">
                 <div class="relevant-search">
                     <span>相关搜索</span>
@@ -96,8 +96,10 @@
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/util/keywords.js"></script>
 
 <script type="text/javascript">
-
-
+// style="min-height:459px"
+   //  var Bheight = window.screen.height ;
+    // alert(Bheight); 
+     //$('#height-over').style.height = 100+'px';
      var keywords = "<%=keywords%>";
      $("input[type='text']").val(keywords);
 
