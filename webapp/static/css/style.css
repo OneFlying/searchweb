@@ -185,6 +185,9 @@ form表单
 }
 .notice > div > span{
     display: block;
+}
+.notice > div > span > span{
+    display: inline-block;
     color: #999999;
     margin-right: 5px;
     font: 14px arial;
@@ -421,6 +424,10 @@ label{
 .evaluate{
 
 }
+.evaluate > div{
+    font-weight: bold;
+    font-size: 16px;
+}
 .evaluate > ul{
     padding: 0;
     list-style: none;
@@ -540,6 +547,15 @@ label{
     height: 60px;
     line-height: 60px;
     padding-left: 20px;
+
+}
+.info-time{
+    padding-left: 20px;
+    font-style: italic;
+    display: block;
+    font-size: 14px;
+    color: #666666;
+    margin-bottom: 10px;
 }
 .info-container > div > hr{
     margin-top: 0;
