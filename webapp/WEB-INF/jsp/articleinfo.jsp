@@ -53,6 +53,20 @@
         <div class="row">
             <div id="article_content" class="">
                 <%=article.getContent()%>
+
+                <div id="evaluate" class="evaluate">
+                    <hr/>
+                    <%-- <ul>
+                        <li>
+                            <span>平阿基已</span>
+                            <span class="time">2016-5-26</span>
+                        </li>
+                        <li>
+                            <span>平阿基已</span>
+                            <span class="time">2016-5-26</span>
+                        </li>
+                    </ul> --%>
+                </div>
             </div>
         </div>
     </div>
@@ -61,10 +75,14 @@
         <div class="container">
             <div class="row">
                 <a id="modal" class="content-jubao" href="#inline1">举报</a>
-
-                <div id="inline1" style="width:500px;height:300px;display: none;">
-            		<textarea name="jubao_content" rows="12" cols="79"></textarea>
-                    <a id="btn_submit">提交</a>
+                <a id="message" class="content-jubao" href="#inline2">评价</a>
+                <div id="inline1" class="fancybox-decoration">
+            		<textarea name="jubao_content" style="width:35.7em;height:17em;"></textarea>
+                    <a id="btn_submit" class="btn_submit">提交</a>
+            	</div>
+                <div id="inline2" class="fancybox-decoration">
+            		<textarea name="mes_content" style="width:35.7em;height:17em;"></textarea>
+                    <a id="mes_submit" class="btn_submit">留言</a>
             	</div>
             </div>
         </div>
@@ -72,11 +90,15 @@
 
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/util/HtmlUtil.js"></script>
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/util/CompatibleStyle.js"></script>
+<script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/evaluate.js"></script>
 <script type="text/javascript">
 
     $(document).ready(function(){
 
         CompStyle.lineStyle();
+
+        //加载留言
+        Evaluate.getMessage("<%=article.getId()%>","evaluate");
 
         var url = RESOUCE_SYSTEM_URL_JS+"/websiteconfig/getinfo";
 
@@ -91,6 +113,10 @@
             'hideOnContentClick': true
         });
 
+        $("#message").fancybox({
+            'hideOnContentClick': true
+        });
+
 
         $("#btn_submit").unbind('click');
         $("#btn_submit").bind('click',function(){
@@ -102,6 +128,24 @@
             $.post(url,{articleid:articleid,content:content},function(data){
                 var res = eval("("+data+")");
                 if(res.success){
+                    $.fancybox.close();
+                }
+            });
+
+        });
+
+        $("#mes_submit").unbind('click');
+        $("#mes_submit").bind('click',function(){
+
+            var articleid = "<%=article.getId()%>";
+            var content = $("textarea[name='mes_content']").val();
+            var url = "${RESOUCE_SYSTEM_URL}/message/add";
+
+            $.post(url,{articleId:articleid,content:content},function(data){
+                var res = eval("("+data+")");
+                if(res.success){
+                    //加载留言
+                    Evaluate.getMessage("<%=article.getId()%>","evaluate");
                     $.fancybox.close();
                 }
             });

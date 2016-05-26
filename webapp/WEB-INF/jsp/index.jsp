@@ -39,9 +39,11 @@
 
     <div class="row notice">
         <div class="text-center">
-            <a href="${RESOUCE_SYSTEM_URL}/aboutus">关于我们</a>|
-            <a href="${RESOUCE_SYSTEM_URL}/agreement">使用规则</a>|
-            <a href="${RESOUCE_SYSTEM_URL}/law">法律声明</a>
+            <a href="${RESOUCE_SYSTEM_URL}/law?param=gywm">关于我们</a>|
+            <a href="${RESOUCE_SYSTEM_URL}/law?param=lxwm">联系我们</a>|
+            <a href="${RESOUCE_SYSTEM_URL}/law?param=flsm">法律声明</a>
+            <span>&copy;2016 公司名称 沪ICP证1000000323号<i class="icr-logo"></i></span>
+            <span><i class="ba-logo"></i>沪公安网备100003232号</span>
         </div>
     </div>
 </div>
