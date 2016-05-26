@@ -8,6 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1, user-scalable=no">
+<meta name="keywords" content=""/>
 <%
 	Article article = (Article)request.getAttribute("article");
 
@@ -46,6 +47,12 @@
             <div class="info-title">
                 <%=article.getTitle() %>
             </div>
+
+        </div>
+        <div class="row">
+            <span class="info-time">
+                发表时间:<%=article.getDate()%>
+            </span>
         </div>
         <div class="row">
             <hr/>
@@ -55,17 +62,7 @@
                 <%=article.getContent()%>
 
                 <div id="evaluate" class="evaluate">
-                    <hr/>
-                    <%-- <ul>
-                        <li>
-                            <span>平阿基已</span>
-                            <span class="time">2016-5-26</span>
-                        </li>
-                        <li>
-                            <span>平阿基已</span>
-                            <span class="time">2016-5-26</span>
-                        </li>
-                    </ul> --%>
+
                 </div>
             </div>
         </div>
@@ -91,10 +88,12 @@
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/util/HtmlUtil.js"></script>
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/util/CompatibleStyle.js"></script>
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/evaluate.js"></script>
+<script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/util/keywords.js"></script>
+
 <script type="text/javascript">
 
     $(document).ready(function(){
-            
+        Keywrods.getContent();
         CompStyle.lineStyle();
 
         //加载留言
@@ -159,14 +158,14 @@
         window.location.href="${RESOUCE_SYSTEM_URL}/article/list?keywords="+keywords;
         return false;
     });
-    $(document).on('keyup',function(event) {
-    	event.preventDefault();
-    	if (event.keyCode == 13) {
-    		var keywords = $("input[type=text]").val();
-            window.location.href="${RESOUCE_SYSTEM_URL}/article/list?keywords="+keywords;
-    	}
-    	return false;
-    });
+    // $(document).on('keyup',function(event) {
+    // 	event.preventDefault();
+    // 	if (event.keyCode == 13) {
+    // 		var keywords = $("input[type=text]").val();
+    //         window.location.href="${RESOUCE_SYSTEM_URL}/article/list?keywords="+keywords;
+    // 	}
+    // 	return false;
+    // });
 
 
 </script>

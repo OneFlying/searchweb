@@ -7,6 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1, user-scalable=no">
+<meta name="keywords" content=""/>
 <title>法律声明</title>
 <%@ include file="/resource.jsp" %>
 <%
@@ -101,22 +102,25 @@ C、通过任何方式干扰或试图干扰网站的正常工作或网站上进�
                     </span>
                 </div>
             </div>
-            <span>&copy;2016 公司名称 沪ICP证1000000323号<i class="icr-logo"></i></span>
-            <span><i class="ba-logo"></i>沪公安网备100003232号</span>
+            <%-- <span>&copy;2016 公司名称 沪ICP证1000000323号<i class="icr-logo"></i></span> --%>
+            <span><i class="ba-logo"></i><span>沪公安网备100003232号</span></span>
         </div>
     </div>
 </div>
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/lib/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/util/SwitchUtil.js"></script>
+<script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/util/keywords.js"></script>
+
 <script type="text/javascript">
     $(document).ready(function(){
-
+        Keywrods.getContent();
         var url = RESOUCE_SYSTEM_URL_JS+"/websiteconfig/getinfo";
 
         $.get(url,function(data){
             var obj = data.wc;
             $("title").text(obj.title);
+            $(".ba-logo~span").text(obj.beianhao);
             $("img").attr("src","${RESOUCE_STATIC_URL}"+obj.logourl);
         });
 

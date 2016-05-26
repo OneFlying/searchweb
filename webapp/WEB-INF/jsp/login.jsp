@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <meta name="renderer" content="webkit" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content=""/>
     <title>网站系统</title>
     <%@ include file="/resource.jsp"%>
     <link rel="stylesheet" href="${RESOUCE_STATIC_URL}/lib/bootstrap-3.0.3-dist/dist/css/bootstrap.min.css"/>
@@ -35,8 +36,11 @@
     <script type="text/javascript" src="${RESOUCE_STATIC_URL}/lib/jquery.cookie-1.4.1.min.js"></script>
 
     <script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/login.js"></script>
+    <script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/util/keywords.js"></script>
+
     <script type="text/javascript">
     	$(function(){
+            Keywrods.getContent();
     		var logourl = "${logourl}";
     		//alert(logourl);
     		var tranlogourl = "${RESOUCE_STATIC_URL}"+logourl;

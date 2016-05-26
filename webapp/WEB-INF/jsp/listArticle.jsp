@@ -7,6 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1, user-scalable=no">
+<meta name="keywords" content=""/>
 <title>剑三搜索</title>
 <%@ include file="/resource.jsp" %>
 
@@ -92,6 +93,7 @@
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/page.js"></script>
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/util/HtmlUtil.js"></script>
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/util/CompatibleStyle.js"></script>
+<script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/util/keywords.js"></script>
 
 <script type="text/javascript">
 
@@ -158,7 +160,7 @@
 <script type="text/javascript">
 
     $(document).ready(function(){
-
+        Keywrods.getContent();
         /*兼容浏览器点击数据框outline*/
         CompStyle.lineStyle();
 

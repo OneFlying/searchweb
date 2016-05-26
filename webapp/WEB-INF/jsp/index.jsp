@@ -7,6 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1, user-scalable=no">
+<meta name="keywords" content=""/>
 <title>剑三搜索</title>
 <%@ include file="/resource.jsp" %>
 
@@ -42,8 +43,8 @@
             <a href="${RESOUCE_SYSTEM_URL}/law?param=gywm">关于我们</a>|
             <a href="${RESOUCE_SYSTEM_URL}/law?param=lxwm">联系我们</a>|
             <a href="${RESOUCE_SYSTEM_URL}/law?param=flsm">法律声明</a>
-            <span>&copy;2016 公司名称 沪ICP证1000000323号<i class="icr-logo"></i></span>
-            <span><i class="ba-logo"></i>沪公安网备100003232号</span>
+            <%-- <span>&copy;2016 公司名称 沪ICP证1000000323号<i class="icr-logo"></i></span> --%>
+            <span><i class="ba-logo"></i><span>沪公安网备100003232号</span></span>
         </div>
     </div>
 </div>
@@ -51,8 +52,11 @@
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/lib/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/util/CompatibleStyle.js"></script>
+<script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/util/keywords.js"></script>
+
 <script type="text/javascript">
     $(document).ready(function(){
+        Keywrods.getContent();
 
         /*兼容浏览器点击数据框outline*/
         CompStyle.lineStyle();
@@ -62,6 +66,7 @@
         $.get(url,function(data){
             var obj = data.wc;
             $("title").text(obj.title);
+            $(".ba-logo~span").text(obj.beianhao);
             $(".logo>img").attr("src","${RESOUCE_STATIC_URL}"+obj.logourl);
         });
     });
