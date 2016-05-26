@@ -114,13 +114,14 @@ public class ArticleController {
 				List<Article> newList = this.warpList(plist, list);
 				modelMap.put("list", newList);
 				modelMap.put("rows", searchEntity.getTotal());
+				modelMap.put("promotion", true);
 				
 				return modelMap;
 			}else if((list != null)&&(list.size()!=0)){
 				 
 				modelMap.put("list", list);
 				modelMap.put("rows", searchEntity.getTotal());
-
+				modelMap.put("promotion", false);
 			}
 		}
 		
