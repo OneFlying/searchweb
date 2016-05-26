@@ -78,9 +78,9 @@
     <div class="container">
         <div class="row">
             <div class="content-footer-notice">
-                <a href="${RESOUCE_SYSTEM_URL}/aboutus">关于我们</a>|
-                <a href="${RESOUCE_SYSTEM_URL}/agreement">使用协议</a>|
-                <a href="${RESOUCE_SYSTEM_URL}/law">法律声明</a>
+                <a href="${RESOUCE_SYSTEM_URL}/law?param=gywm">关于我们</a>|
+                <a href="${RESOUCE_SYSTEM_URL}/law?param=lxwm">联系我们</a>|
+                <a href="${RESOUCE_SYSTEM_URL}/law?param=flsm">法律声明</a>
             </div>
         </div>
     </div>
@@ -98,7 +98,7 @@
 <script type="text/javascript">
 // style="min-height:459px"
     var Bheight = window.screen.height ;
-  // alert(Bheight); 
+  // alert(Bheight);
    /// alert( $('#height-over').style.height);
    if(Bheight>800&&Bheight<1080){
         $('#height-over').attr('style','min-height:'+(Bheight*0.52)+'px'+'')
@@ -107,7 +107,7 @@
    }else if(Bheight <700){
          $('#height-over').attr('style','min-height:'+(Bheight*0.30)+'px'+'')
    }
-  
+
      var keywords = "<%=keywords%>";
      $("input[type='text']").val(keywords);
 
