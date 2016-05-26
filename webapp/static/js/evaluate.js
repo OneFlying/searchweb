@@ -5,6 +5,7 @@ var Evaluate = {
         var param = {articleId:articleId};
 
         $.get(url,param,function(data){
+
             var $ul = $("<ul></ul>");
 
             var $div = $("<div></div>");
