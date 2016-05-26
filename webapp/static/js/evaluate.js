@@ -6,10 +6,21 @@ var Evaluate = {
 
         $.get(url,param,function(data){
             var $ul = $("<ul></ul>");
+
+            var $div = $("<div></div>");
+            var $hr = $("<hr/>");
+            $div.text("评论(共"+data.total+"条评论):");
+
+
             $(data.list).each(function(index, el) {
                 var $li = Evaluate.render(el);
                 $ul.append($li);
             });
+
+            $("#"+divId).children('div').remove();
+            $("#"+divId).append($div);
+            $("#"+divId).children('hr').remove();
+            $("#"+divId).append($hr);
             $("#"+divId).children('ul').remove();
             $("#"+divId).append($ul);
         });

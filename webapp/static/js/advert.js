@@ -126,9 +126,7 @@ loadgrid : function(){
 			handler:function(){
 				$('#ggglgrid').datagrid('load',{operatime:"",content:""});
 			}
-		},'-',{
-            text:'<input type="button" id="uploadpic" onclick="uploadpic()" style="height:27px;width:70px;font-size:12px;line-height:0px;margin-top:-7px;color:black" value="上传图片"/>'
-        }],
+		}],
 		singleSelect:false,
 		selectOnCheck:true,
 		fitColumns:true,
@@ -193,8 +191,3 @@ reload:function(){//重新加载，保持在当前页
 }
 
 };
-
-function uploadpic(){
-    //alert('2345');
-    $('#advertlogo_add_win').window('open');
-}

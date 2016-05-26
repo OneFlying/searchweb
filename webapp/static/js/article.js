@@ -87,12 +87,12 @@ loadgrid : function(){
 				        return '<font color="black" size="2px" >'+value+'</font>';
 				      }
 		          },
-		          {
-		        	field:'keywords',title:'<font color="black" size="2px">关键字</font>',align:'center',width:40,
-		        	 formatter : function(value,row,index){
-				        return '<font color="black" size="2px" >'+value+'</font>';
-				      }
-		          },
+		        //   {
+		        // 	field:'keywords',title:'<font color="black" size="2px">关键字</font>',align:'center',width:40,
+		        // 	 formatter : function(value,row,index){
+				//         return '<font color="black" size="2px" >'+value+'</font>';
+				//       }
+		        //   },
 		          {
 		          	field:'website',title:'<font color="black" size="2px">链接网址</font>',width:30,align:'center',sortable:true,
 		          	 formatter : function(value,row,index){
@@ -115,9 +115,9 @@ loadgrid : function(){
 	var page = $('#wzglgrid').datagrid('getPager');
 		$(page).pagination({
 		pageNumber:1,
-		beforePageText: '<font color="black" size="2px" >第</font>',//页数文本框前显示的汉字 
-		afterPageText: '<font color="black" size="2px" >页    共 {pages} 页</font>', 
-		displayMsg: '<font color="black" size="2px" >当前显示 {from} - {to} 条记录   共 {total} 条记录</font>', 
+		beforePageText: '<font color="black" size="2px" >第</font>',//页数文本框前显示的汉字
+		afterPageText: '<font color="black" size="2px" >页    共 {pages} 页</font>',
+		displayMsg: '<font color="black" size="2px" >当前显示 {from} - {to} 条记录   共 {total} 条记录</font>',
 	});
 },
 reload:function(){//重新加载，保持在当前页
