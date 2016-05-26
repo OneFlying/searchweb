@@ -14,7 +14,8 @@ public class Websitconfig {
 	private String id;//
 	private String title;//网站名称
 	private String logourl;//logo路径
-	
+	private String keywords;//关键字
+	private String beianhao;//备案号
 	@Column(name="id")
 	public String getId() {
 		return id;
@@ -35,5 +36,19 @@ public class Websitconfig {
 	}
 	public void setLogourl(String logourl) {
 		this.logourl = logourl;
+	}
+	@Column(name="keywords")
+	public String getKeywords() {
+		return keywords;
+	}
+	public void setKeywords(String keywords) {
+		this.keywords = keywords;
+	}
+	@Column(name="beianhao")
+	public String getBeianhao() {
+		return beianhao;
+	}
+	public void setBeianhao(String beianhao) {
+		this.beianhao = beianhao;
 	}
 }

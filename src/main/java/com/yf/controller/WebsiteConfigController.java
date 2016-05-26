@@ -56,7 +56,7 @@ public class WebsiteConfigController {
 	}
 	
 	/**
-	 * 保存网页配置信息
+	 * 修改网页配置信息
 	 * @param id
 	 * @param title
 	 * @param logourl
