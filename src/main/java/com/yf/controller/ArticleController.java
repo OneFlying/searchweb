@@ -104,7 +104,7 @@ public class ArticleController {
 		if(StringUtils.isNotBlank(keywords)){
 			searchEntity.addSearchColumn("content", "%"+keywords+"%", " like ", false);
 			searchEntity.setPage(page, rows);
-			searchEntity.setOrderBy(" order by count desc");
+			searchEntity.setOrderBy(" ORDER BY count DESC,date DESC");
 			List<Article> list = articleDao.pageArticle(searchEntity);
 			
 			List<Promotion> plist = promotionDao.getPromotionsByContent(keywords);
@@ -173,6 +173,7 @@ public class ArticleController {
 		article.setImgids(imageurl);
 		article.setTitle(title);
 		article.setCount(0);
+		article.setDate(StringUtils.getCurTimeFormat());
 		
 		int res = articleDao.saveArticle(article);
 		modelAndView.setViewName("redirect:/");

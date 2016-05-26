@@ -2,6 +2,7 @@ package com.yf.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/")
@@ -18,8 +19,12 @@ public class IndexController {
 	}
 	
 	@RequestMapping("/law")
-	public String noticeLaw(){
-		return "law";
+	public ModelAndView noticeLaw(String param){
+		ModelAndView modelAndView = new ModelAndView();
+		
+		modelAndView.addObject("param", param);
+		modelAndView.setViewName("law");
+		return modelAndView;
 	}
 	
 	@RequestMapping("/agreement")
