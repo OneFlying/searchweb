@@ -18,8 +18,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yf.dao.ArticleDao;
 import com.yf.dao.MessageDao;
+import com.yf.dao.PromotionDao;
 import com.yf.model.Article;
 import com.yf.model.Message;
+import com.yf.model.Promotion;
 import com.yf.utils.StringUtils;
 
 @Controller
@@ -31,6 +33,9 @@ public class MessageController {
 	
 	@Resource(name="articleDao")
 	private ArticleDao articleDao;
+	
+	@Resource(name="promotionDao")
+	private PromotionDao promotionDao;
 	
 	/**
 	 * 添加留言信息
@@ -49,7 +54,16 @@ public class MessageController {
 		
 		if(res != 0){
 			Article article = articleDao.getArticleById(message.getArticleId());
-			articleDao.updateArticleCount(article.getId(), article.getCount()+3);
+			
+			if(article != null){
+				articleDao.updateArticleCount(article.getId(), article.getCount()+3);
+			}else{
+				Promotion pomotion = promotionDao.getPromotionById(message.getArticleId());
+				
+				pomotion.setUsecount(pomotion.getUsecount()+3);
+				promotionDao.update(pomotion);
+			}
+			
 			
 			modelMap.put("success", true);
 		}else{
@@ -72,10 +86,11 @@ public class MessageController {
 	public ModelMap getMessages(String articleId){
 		ModelMap modelMap = new ModelMap();
 		
-		List<Message> list = messageDao.getMessages(articleId);
+		Map<String, Object> maps = messageDao.getMessages(articleId);
 		
-		if(list != null){
-			modelMap.put("list", list);
+		if(maps != null){
+			modelMap.put("list", maps.get("list"));
+			modelMap.put("total", maps.get("total"));
 			modelMap.put("success", true);
 		}else{
 			modelMap.put("success", false);
