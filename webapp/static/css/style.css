@@ -14,7 +14,28 @@ body{
     height: 8em;
     margin-bottom: 1em;
 }
+.icr-logo{
+    background: url(../img/icon.png) -600px -96px no-repeat;
 
+    width: 14px;
+    height: 17px;
+    display: inline-block;
+    overflow: hidden;
+    /*background-position: -600px -96px;*/
+    position: relative;
+    top: 3px;
+}
+.ba-logo{
+    background: url(../img/icon.png) -623px -96px no-repeat;
+
+    width: 14px;
+    height: 17px;
+    display: inline-block;
+    overflow: hidden;
+    /*background-position: -600px -96px;*/
+    position: relative;
+    top: 3px;
+}
 /*
 尾部声明
 ------------------------*/
@@ -24,6 +45,36 @@ body{
 
 .law-container > div > div > img{
     height: 6em;
+}
+.law-container > div > div > ul{
+    display: block;
+    list-style: none;
+}
+.law-container > div > div > ul > li{
+    display: block;
+    margin-top: 5px;
+
+}
+.law-container > div > div > ul > li > a{
+    display: block;
+    text-decoration: underline;
+    cursor: pointer;
+    color: #0000CC;
+}
+.law-title-chanage{
+    color: black !important;
+    font-weight: bold;
+
+}
+.law-content-parent{
+    padding-bottom: 20px;
+}
+.law-content-parent > span{
+    text-align: center;
+    display: block;
+    color: #999999;
+    margin-right: 5px;
+    font: 14px arial;
 }
 .law-content{
     margin-top: 30px;
@@ -35,6 +86,23 @@ body{
     font-size: 14px;
     padding: 5px 0 5px 10px;
     /*line-height: 2em;*/
+}
+
+.law-content-text{
+    margin-top: 30px;
+    padding: 20px 0 0 20px;
+    border-left: 1px solid #d9e5f5;
+}
+.law-content-text > span{
+
+    font-size: 13px;
+
+    /*让文本自动换行*/
+    word-break: normal;
+    width: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow: hidden;
 }
 /*
 form表单
@@ -97,17 +165,26 @@ form表单
 .index_form > span > a{
     font: 0.94em arial;
 }
-
+/*.container{
+    padding-bottom: 50px;
+}*/
 /*
 修饰声明
 ------------------------*/
 .notice{
-    margin-top: 200px;
+    margin-top: 150px;
+    padding-bottom: 50px;
 }
 .notice > div{
     color: #999999;
 }
 .notice > div > a{
+    color: #999999;
+    margin-right: 5px;
+    font: 14px arial;
+}
+.notice > div > span{
+    display: block;
     color: #999999;
     margin-right: 5px;
     font: 14px arial;
@@ -281,7 +358,8 @@ label{
     margin-bottom: 0;
 }
 .content-jubao{
-    display: block;
+    display: inline-block;
+    margin-left: 10px;
     color: #777777;
     text-decoration: none;
     padding-top: 15px;
@@ -316,7 +394,7 @@ label{
     color: #999;
     margin-right: 5px;
 }
-#btn_submit{
+.btn_submit{
     display: inline-block;
     margin-top: 10px;
     text-decoration: none;
@@ -334,6 +412,42 @@ label{
     background-color: #2EA5C6;
     color: #fff;
     cursor: pointer;
+}
+.btn_submit:hover{
+    background-color: #2EA5C6;
+    color: #fff;
+    text-decoration: none;
+}
+.evaluate{
+
+}
+.evaluate > ul{
+    padding: 0;
+    list-style: none;
+    display: block;
+}
+.evaluate > ul > li{
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin-top: 10px;
+    display: block;
+    /*background: red;*/
+    border-bottom: 1.5px dotted silver;
+}
+.evaluate > ul > li > span{
+    display: block;
+    margin-top: 5px;
+
+    word-break: normal;
+    width: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+.evaluate > ul > li > span.time{
+    font-size: 14px;
+    font-style: italic;
+    color: #666666;
 }
 /*
 分页导航条
@@ -436,6 +550,11 @@ label{
     padding: 0 20px;
 }
 
+.fancybox-decoration{
+    width: 500px;
+    height: 300px;
+    display: none;
+}
 /*
 针对移动端
 */
@@ -600,6 +719,12 @@ label{
 }
 
 @media only screen and (min-width: 321px) and (max-width: 600px){
+    .fancybox-decoration{
+        width: 300px;
+    }
+    .fancybox-decoration > textarea{
+        width: 21em   !important;
+    }
     .ad-content{
         display: none;
     }
@@ -706,6 +831,16 @@ label{
 }
 
 @media only screen and (max-width:320px) {
+
+    .fancybox-decoration{
+        width:300px;
+
+    }
+    .fancybox-decoration > textarea{
+        width: 17em !important;
+        overflow: hidden;
+    }
+
     .ad-content{
         display: none;
     }
