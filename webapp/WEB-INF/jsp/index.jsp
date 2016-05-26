@@ -38,7 +38,7 @@
         </div>
     </div>
 
-    <div class="row notice" id="textId" style="margin-top:250px">
+    <div class="row notice" id="textId" style="margin-top:168px">
         <div class="text-center">
             <a href="${RESOUCE_SYSTEM_URL}/law?param=gywm">关于我们</a>|
             <a href="${RESOUCE_SYSTEM_URL}/law?param=lxwm">联系我们</a>|
