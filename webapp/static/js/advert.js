@@ -140,7 +140,7 @@ loadgrid : function(){
 		method:'GET',
 		columns:[[
 		          {
-		          	field:'logourl',title:'id',checkbox:true
+		          	field:'id',title:'id',checkbox:true
 		          },
 		          {
 		          	field:'title',title:'<font color="black" size="2px">广告标题</font>',width:30,align:'center',sortable:true,
