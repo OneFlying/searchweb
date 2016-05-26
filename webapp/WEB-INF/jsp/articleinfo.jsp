@@ -94,7 +94,7 @@
 <script type="text/javascript">
 
     $(document).ready(function(){
-
+            
         CompStyle.lineStyle();
 
         //加载留言

@@ -1,6 +1,6 @@
 var Evaluate = {
     getMessage : function(articleId,divId){
-
+        //alert(articleId);
         var url = RESOUCE_SYSTEM_URL_JS+"/message/list";
         var param = {articleId:articleId};
 

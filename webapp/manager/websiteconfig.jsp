@@ -5,16 +5,29 @@
 		$('#websitconfig_add_win').window('close');
 	}
 </script>
-<div id="websitconfig_add_win" class="easyui-dialog" title="修改网站名称" style="width:290px;height:140px;background-color:rgba(0,0,0,0.09)"
+<style>
+#webtable{
+	border-collapse:separate;border-spacing:15px;
+}
+</style>
+<div id="websitconfig_add_win" class="easyui-dialog" title="修改网站信息" style="width:350px;height:240px;background-color:rgba(0,0,0,0.09)"
         data-options="modal:true,closed:true,collapsible:false,minimizable:false,maximizable:false">
 	<form enctype="multipart/form-data" class="easyui-form" id="websitconfig_add_form"  method="post" style="margin-top:20px">	
-		<tr>
-			<td>网站名称：</td>
-		</tr>
-		<tr>
-			<td><input type="text" name="title" style="30px;margin-left:10px"/></td>
-		</tr>
-				
+		<input type="hidden" name="id"/>
+		<table id="webtable">
+			<tr>
+				<td>网站名称：</td>
+				<td><input type="text" name="title" style="width:215px;"/></td>
+			</tr>
+			<tr>
+				<td>网站关键字：</td>
+				<td><input type="text" name="keywords" style="width:215px;"/></td>
+			</tr>
+			<tr>
+				<td>网站备案号：</td>
+				<td><input type="text" name="beianhao" style="width:215px;"/></td>
+			</tr>		
+		</table>	
 	</form>
 	<div style="text-align: center; padding: 5px;margin-top:10px">
 		<a id="websitconfig_submit" class="easyui-linkbutton">提交</a>

@@ -35,7 +35,8 @@ loadgrid : function(){
 			text:'添加',
 					iconCls: 'icon-add',
 					handler: function(){
-						window.location.href = RESOUCE_SYSTEM_URL_JS + '/promotion/index'
+						window.open(RESOUCE_SYSTEM_URL_JS + '/promotion/index');
+						//window.location.href = RESOUCE_SYSTEM_URL_JS + '/promotion/index'
 						/*$('#promotion_add_win').window('open');
 						$('#promotion_add_win').panel({
 							title:'添加推广',
@@ -87,8 +88,8 @@ loadgrid : function(){
 		url:RESOUCE_SYSTEM_URL_JS+'/promotion/page',
 		method:'GET',
 		columns:[[
-		          {
-		          	field:'id',title:'id',checkbox:true
+		         {
+		          	field:'content',title:'id',checkbox:true
 		          },
 		          {
 		          	field:'price',title:'<font color="black" size="2px">价格</font>',width:40,align:'center',sortable:true,
@@ -107,7 +108,16 @@ loadgrid : function(){
 		          	formatter : function(value,row,index){
 				        return '<font color="black" size="2px" >'+value+'</font>';
 				      }
-		          }
+		          },
+		          {
+			          	field:'id',title:'<font color="black" size="2px">详情</font>',
+			          	formatter : function(value,row,index){
+			          		/*var id = 1+value; ;
+			          		alert(id);*/
+			          		return "<a href='"+RESOUCE_SYSTEM_URL_JS+"/article/info?id="+value+"' target='_blank'><font style='font-size:10px'>查看详情</font></a>"
+				        	//return '<input type="button" onclick="look('+id+')" style="height:27px;width:70px;font-size:12px;line-height:0px;margin-top:-7px;color:black" value="查看详情"/>';
+				      	}
+			       }
 		          ]],
 		          rownumbers:true,
 		          pagination:true,
@@ -124,6 +134,8 @@ loadgrid : function(){
 reload:function(){//重新加载，保持在当前页
 	$('#tgglgrid').datagrid('reload');
 }
-
 };
 
+/*function look(id){
+	alert(id);
+}*/

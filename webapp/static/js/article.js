@@ -79,7 +79,7 @@ loadgrid : function(){
 		method:'GET',
 		columns:[[
 		          {
-		          	field:'id',title:'id',checkbox:true
+		          	field:'content',title:'id',checkbox:true
 		          },
 		          {
 		          	field:'title',title:'<font color="black" size="2px">文章标题</font>',width:40,align:'center',sortable:true,
@@ -98,7 +98,15 @@ loadgrid : function(){
 		          	 formatter : function(value,row,index){
 				        return '<font color="black" size="2px" >'+value+'</font>';
 				      }
-				  }
+				  },  {
+			          	field:'id',title:'<font color="black" size="2px">详情</font>',
+			          	formatter : function(value,row,index){
+			          		/*var id = 1+value; ;
+			          		alert(id);*/
+			          		return "<a href='"+RESOUCE_SYSTEM_URL_JS+"/article/info?id="+value+"' target='_blank'><font style='font-size:10px'>查看详情</font></a>"
+				        	//return '<input type="button" onclick="look('+id+')" style="height:27px;width:70px;font-size:12px;line-height:0px;margin-top:-7px;color:black" value="查看详情"/>';
+				      	}
+			       }
 		          ]],
 		          rownumbers:true,
 		          pagination:true,

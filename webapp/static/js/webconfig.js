@@ -60,6 +60,18 @@ loadgrid : function(){
 				      }
 		          },
 		          {
+		          	field:'keywords',title:'<font color="black" size="2px">网站关键字</font>',width:40,align:'center',sortable:true,
+		          	formatter : function(value,row,index){
+				        return '<font color="black" size="2px" >'+value+'</font>';
+				      }
+		          },
+		          {
+		          	field:'beianhao',title:'<font color="black" size="2px">备案号</font>',width:40,align:'center',sortable:true,
+		          	formatter : function(value,row,index){
+				        return '<font color="black" size="2px" >'+value+'</font>';
+				      }
+		          },
+		          {
 		        	field:'content',title:'<font color="black" size="2px">上传logo</font>',align:'center',width:90,
 		        	formatter: function(value, row, index) {
 		        		return '<input type="button" id="uploadPic" onclick="uploadPic()" style="height:27px;width:70px;font-size:12px;line-height:0px;margin-top:-7px;color:black" value="上传图片"/>';

@@ -7,7 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>新增推广</title>
+<title>后台配置管理</title>
 <%@ include file="/resource.jsp" %>
 
 <link rel="stylesheet" href="${RESOUCE_STATIC_URL}/lib/bootstrap-3.3.5-dist/css/bootstrap.css">
@@ -18,9 +18,16 @@
 <script type="text/javascript" charset="utf-8" src="${RESOUCE_STATIC_URL}/umeditor/umeditor.min.js"></script>
 <script type="text/javascript" src="lang/zh-cn/zh-cn.js"></script>
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+<style>
+    h1{
+        font-size: 20px;
+        font-weight: bold;
+        margin-left: 4%;
+    }
+</style>
 </head>
 <body>
-
+    <h1>后台配置管理-新增推广信息</h1>
     <div class="container">
         <form role="form" id="form" action="${RESOUCE_SYSTEM_URL}/promotion/add" method="post">
             <div class="form-group">
@@ -94,6 +101,7 @@
         //var url = RESOUCE_SYSTEM_URL_JS+"/index";
 
          $("#form").submit();
+         window.close();
         /*$.post("${RESOUCE_SYSTEM_URL}/promotion/add",{price:price,url:url,content:content,imageurl:imageurl},function(data){
             if(data.success){
                 alert(data.msg);
@@ -108,7 +116,8 @@
 
     //返回首页
     function backTO(){
-        window.location.href = "${RESOUCE_SYSTEM_URL}/admin";
+        //window.location.href = "${RESOUCE_SYSTEM_URL}/admin";
+        window.close();
     }
 
 
