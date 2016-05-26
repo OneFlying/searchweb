@@ -38,7 +38,7 @@
         </div>
     </div>
 
-    <div class="row notice">
+    <div class="row notice" id="textId" style="margin-top:250px">
         <div class="text-center">
             <a href="${RESOUCE_SYSTEM_URL}/law?param=gywm">关于我们</a>|
             <a href="${RESOUCE_SYSTEM_URL}/law?param=lxwm">联系我们</a>|
@@ -57,7 +57,16 @@
 <script type="text/javascript">
     $(document).ready(function(){
         Keywrods.getContent();
-
+        var Bheight = window.screen.height ;
+        if(Bheight>800&&Bheight<1080){
+            $('#textId').attr('style','margin-top:'+(Bheight*0.35)+'px'+'')
+        }else if(Bheight>=1080&Bheight<1600){
+             $('#textId').attr('style','margin-top:'+(Bheight*0.42)+'px'+'')
+        }else if(Bheight<700){
+            $('#textId').attr('style','margin-top:'+(Bheight*0.35)+'px'+'')
+        }
+        //alert($('#textId').style.marginTop);
+        //alert(Bheight);
         /*兼容浏览器点击数据框outline*/
         CompStyle.lineStyle();
 
