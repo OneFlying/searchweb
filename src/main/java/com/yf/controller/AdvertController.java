@@ -7,8 +7,13 @@ import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.yf.dao.AdvertDao;
 import com.yf.dao.SearchEntity;
@@ -106,7 +112,7 @@ public class AdvertController {
 	
 	@RequestMapping("/add")
 	@ResponseBody
-	public ModelMap addAdvert(Advert advert){
+	public ResponseEntity<Map<String, Object>> addAdvert(HttpServletResponse response,Advert advert){
 		ModelMap modelMap = new ModelMap();
 		advert.setId(StringUtils.generateUuid());
 		int res = advertDao.saveAdvert(advert);
@@ -119,7 +125,10 @@ public class AdvertController {
 			modelMap.put("msg", "添加失败");
 		}
 		
-		return modelMap;
+		HttpHeaders headers = new HttpHeaders();
+		response.setContentType("text/html;charset=UTF-8"); 
+		headers.setContentType(MediaType.TEXT_PLAIN);
+		return new ResponseEntity<Map<String,Object>>(modelMap, headers, HttpStatus.OK);
 	}
 	
 	@RequestMapping("/list")

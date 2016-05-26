@@ -250,7 +250,7 @@ public class ArticleController {
 		
 		List<Article> newList = new ArrayList<Article>();
 		
-		for(int i = 0;i<2;i++){
+		for(int i = 0;i<plist.size();i++){
 			Promotion p = plist.get(i);
 			Article article = new Article();
 			article.setId(p.getId());
