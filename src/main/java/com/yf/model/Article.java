@@ -23,7 +23,18 @@ public class Article implements Serializable{
 	private String content;//内容
 	private String website;//网址
 	private int count;//搜索次数
+	private String date;
 	
+	@Column(name="date")
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	@Column(name="count")
 	public int getCount() {
 		return count;
