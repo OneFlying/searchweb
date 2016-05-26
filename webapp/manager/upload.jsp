@@ -74,6 +74,7 @@
 	          contentType: false,
 	          processData: false,
 	          success: function (data) {
+				  //var data = eval("("+ds+")");
 	              $("#logourl").val(RESOUCE_STATIC_URL_JS+data.logourl);
 				  $("#advertlogo_add_win").window('close');
 	          }
