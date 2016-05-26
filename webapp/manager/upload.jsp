@@ -79,6 +79,11 @@
 	          }
 	     });
 	}
+
+	function uploadpic(){
+	    //alert('2345');
+	    $('#advertlogo_add_win').window('open');
+	}
 </script>
 <div id="advertlogo_add_win" class="easyui-dialog" title="上传图片" style="width:340px;height:100px;background-color:rgba(0,0,0,0.09)"
         data-options="modal:true,closed:true,collapsible:false,minimizable:false,maximizable:false">
@@ -88,27 +93,40 @@
 	</form>
 </div>
 
-<div id="advert_add_win" class="easyui-dialog" title="修改广告信息" style="width:390px;height:300px;background-color:rgba(0,0,0,0.09)"
+
+<div id="advert_add_win" class="easyui-dialog" title="修改广告信息" style="width:410px;height:320px;background-color:rgba(0,0,0,0.09)"
         data-options="modal:true,closed:true,collapsible:false,minimizable:false,maximizable:false">
 	<form class="easyui-form" id="advert_add_form"  method="post" style="margin-top:20px">
+		<input type="hidden" name="id" value="">
 		<table 	id="webtable">
 			<tr>
 				<td>广告标题：</td>
-				<td><input id="title_" type="text" name="title" value="" style="width:210px;margin-left:10px"/></td>
+				<td><input id="title_" type="text" name="title" value="" style="width:260px;margin-left:10px"/></td>
 			</tr>
 			<tr style="margin-top:10px;">
 				<td>广告描述：</td>
-				<td><input id="desc" type="text" name="desc" value="" style="width:210px;margin-left:10px"/></td>
+				<td><input id="desc" type="text" name="desc" value="" style="width:260px;margin-left:10px"/></td>
 			</tr>
 			<tr>
 				<td>广告网址：</td>
-				<td><input id="adurl" type="text" name="adurl" value="" style="width:210px;margin-left:10px"/></td>
+				<td><input id="adurl" type="text" name="adurl" value="" style="width:260px;margin-left:10px"/></td>
 			</tr>
 			<tr>
 				<td>广告价格：</td>
-				<td><input id="price" type="text" name="price" value="" style="width:210px;margin-left:10px"/></td>
+				<td><input id="price" type="text" name="price" value="" style="width:260px;margin-left:10px"/></td>
+			</tr>
+			<tr>
+				<td>广告logo：</td>
+				<td><input type="button" value="上传" onclick="uploadpic()" style="width:260px;margin-left:10px"/></td>
 			</tr>
 		</table>
+
+		<%-- <tr>
+			<td>广告logo:</td>
+			<td>
+				<input id="modify_btn" onlick="uploadpic()" type="button" value="上传文件"/>
+			</td>
+		</tr> --%>
 		<input id="logourl" type="hidden" name="logourl" value=""/>
 
 	</form>
