@@ -10,16 +10,18 @@ var Page = {
         };
         var pageNation = PageNation(opts);
     },
-    initContent:function(data){
+    initContent:function(data,promotion,keywords){
+
         var $ul = $("<ul></ul>");
         $ul.addClass('article');
         $(data).each(function(index, item) {
 
             var li ;
-            if(index < 2){
-                li = Page.renderProtion(item);
+            if((index < 2) &&(promotion)){
+
+                li = Page.renderProtion(item,keywords);
             }else{
-                li = Page.renderPage(item);
+                li = Page.renderPage(item,keywords);
             }
             //var li = Page.renderPage(item);
             $ul.append(li);
@@ -30,7 +32,7 @@ var Page = {
         window.open("info?id="+id);
 
     },
-    renderProtion:function(obj){
+    renderProtion:function(obj,keywords){
         var $li = $("<li></li>");
         var $a_title = $("<a>"+obj.title+"</a>");
         $a_title.attr("data-id",obj.id);
@@ -62,7 +64,11 @@ var Page = {
 
             var $span = $("<span></span>");
             $span.addClass('dec_word');
-            $span.text(Page.pageContent(obj.content));
+
+            var content_ = Page.pageContent(obj.content);
+            var reg=new RegExp("("+keywords+")","g");
+            var newstr = content_.replace(reg,"<font style='color:red;'>"+keywords+"</font>");
+            $span.html(newstr);
             $div_content.append($span);
 
             var $a_website = $("<a></a>");
@@ -81,7 +87,10 @@ var Page = {
 
             var $span = $("<span></span>");
             $span.addClass('dec_word');
-            $span.text(Page.pageContent(obj.content));
+            var content_ = Page.pageContent(obj.content);
+            var reg=new RegExp("("+keywords+")","g");
+            var newstr = content_.replace(reg,"<font style='color:red;'>"+keywords+"</font>");
+            $span.html(newstr);
             $div_content.append($span);
 
             var $a_website = $("<a></a>");
@@ -98,7 +107,7 @@ var Page = {
 
         return $li;
     },
-    renderPage:function(obj){
+    renderPage:function(obj,keywords){
 
 
         var $li = $("<li></li>");
@@ -132,7 +141,11 @@ var Page = {
 
             var $span = $("<span></span>");
             $span.addClass('dec_word');
-            $span.text(Page.pageContent(obj.content));
+
+            var content_ = Page.pageContent(obj.content);
+            var reg=new RegExp("("+keywords+")","g");
+            var newstr = content_.replace(reg,"<font style='color:red;'>"+keywords+"</font>");
+            $span.html(newstr);
             $div_content.append($span);
 
             var $a_website = $("<a></a>");
@@ -151,7 +164,12 @@ var Page = {
 
             var $span = $("<span></span>");
             $span.addClass('dec_word');
-            $span.text(Page.pageContent(obj.content));
+
+            var content_ = Page.pageContent(obj.content);
+            var reg=new RegExp("("+keywords+")","g");
+            var newstr = content_.replace(reg,"<font style='color:red;'>"+keywords+"</font>");
+            $span.html(newstr);
+
             $div_content.append($span);
 
             var $a_website = $("<a></a>");

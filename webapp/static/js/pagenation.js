@@ -103,7 +103,7 @@ PageNation.prototype = {
             }
 
 
-            var contenthtml = Page.initContent(data.list);
+            var contenthtml = Page.initContent(data.list,data.promotion,param.keywords);
 
             $("#"+opts.contentId).children().remove();
             $("#"+opts.contentId).append(contenthtml);
