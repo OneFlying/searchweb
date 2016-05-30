@@ -218,19 +218,61 @@ PageNation.prototype = {
         var $next_page_a = $("<a>后一页></a>");
         this.nextPage($next_page_a,opts,param);
         $next_page_li.append($next_page_a);
-        if(opts.page > 6){
-            for(var i=0; i < 10; i++){
-                if( total_page < 11){
+        //alert(opts.page);
+        if(opts.page > 10){
+            if(opts.page > 6){
+                for(var i=0; i < 10; i++){
+                    if( total_page < 11){
+                        var $li = $("<li></li>");
+                        var $a = $("<a>"+(i+1)+"</a>");
+                    }else{
+                        var $li = $("<li></li>");
+                        var $a = $("<a>"+(opts.page-5+i)+"</a>");
+                    }
+                    $li.append($a);
+                    $ul.append($li);
+                    if(i == (opts.page-1)){
+                        $a.addClass('active');            
+                        if(opts.page == 1){
+                            $pre_page_li.attr("style","display:none");
+                        }
+                        if(opts.page == total_page){
+                            $next_page_li.attr();
+                        }
+                            this.options.page = opts.page;
+                     }                  
+                    //绑定点击事件
+                     this.clickPage($a,opts,param); 
+                }
+            }else{
+                for(var i=0; i < 10; i++){
                     var $li = $("<li></li>");
                     var $a = $("<a>"+(i+1)+"</a>");
-                }else{
-                    var $li = $("<li></li>");
-                    var $a = $("<a>"+(opts.page-5+i)+"</a>");
+                    $li.append($a);
+                    $ul.append($li);
+                    if(i == (opts.page-1)){
+                        $a.addClass('active');            
+                        if(opts.page == 1){
+                            $pre_page_li.attr("style","display:none");
+                        }
+                        if(opts.page == total_page){
+                            $next_page_li.attr();
+                        }
+                        this.options.page = opts.page;
+                    }                  
+                //绑定点击事件
+                this.clickPage($a,opts,param); 
                 }
+            }
+        }else{
+            for(var i=0; i < total_page; i++){
+                var $li = $("<li id = '"+(i+1)+"'></li>");
+                var $a = $("<a>"+(i+1)+"</a>"); 
                 $li.append($a);
                 $ul.append($li);
                 if(i == (opts.page-1)){
-                    $a.addClass('active');            
+                    $a.addClass('active');
+                   
                     if(opts.page == 1){
                         $pre_page_li.attr("style","display:none");
                     }
@@ -238,31 +280,12 @@ PageNation.prototype = {
                         $next_page_li.attr();
                     }
                         this.options.page = opts.page;
-                 }                  
-                //绑定点击事件
-                 this.clickPage($a,opts,param); 
-            }
-        }else{
-            for(var i=0; i < 10; i++){
-                var $li = $("<li></li>");
-                var $a = $("<a>"+(i+1)+"</a>");
-                $li.append($a);
-                $ul.append($li);
-                if(i == (opts.page-1)){
-                    $a.addClass('active');            
-                    if(opts.page == 1){
-                        $pre_page_li.attr("style","display:none");
-                    }
-                    if(opts.page == total_page){
-                        $next_page_li.attr();
-                    }
-                    this.options.page = opts.page;
-                }                  
+                    }                  
             //绑定点击事件
-            this.clickPage($a,opts,param); 
+            this.clickPage($a,opts,param);  
+
             }
-        }
-       
+        } 
         /*for(var i=0; i < total_page; i++){
             if(i < 10){
                 var $li = $("<li id = '"+(i+1)+"'></li>");
