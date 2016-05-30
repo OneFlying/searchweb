@@ -25,8 +25,8 @@
             <ul>
                 <li><a href="${RESOUCE_SYSTEM_URL}/">首页</a></li>
                 <li><a data-name="gywm">关于我们</a></li>
-                <li><a data-name="lxwm">联系我们</a></li>
-                <li><a data-name="flsm">法律声明</a></li>
+                <li><a data-name="lxwm">使用协议</a></li>
+                <li><a data-name="flsm">免责声明</a></li>
             </ul>
         </div>
         <div class="col-xs-12 col-sm-10 col-md-10 law-content-parent">
@@ -50,7 +50,7 @@
             </div>
 
             <div data-content="lxwm" class="law-content" style="display:none;">
-                <span>联系我们</span>
+                <span>使用协议</span>
                 <div class="law-content-text">
                     <span>
 律师湾客服联系方式：（以下联系方式均不解答法律咨询，咨询请先注册普通会员，然后发布到这里)
@@ -75,10 +75,10 @@ copyright@right:2011-2013 律师湾（lvshiwan.com）版权所有 沪ICP备11048
             </div>
 
             <div data-content="flsm" class="law-content" style="display:none;">
-                <span>法律声明</span>
+                <span>免责声明</span>
                 <div class="law-content-text">
                     <span>
-                        律师湾网（以下简称"本网站"）依据《律师湾网服务协议》（以下简称"本协议"）的规定提供服务，本协议具有合同效力。注册会员时，请您认真阅读本协议，审阅并接受或不接受本协议（未成年人应在法定监护人陪同下审阅）。
+    律师湾网（以下简称"本网站"）依据《律师湾网服务协议》（以下简称"本协议"）的规定提供服务，本协议具有合同效力。注册会员时，请您认真阅读本协议，审阅并接受或不接受本协议（未成年人应在法定监护人陪同下审阅）。
     若您已经注册为本网站会员，即表示您已充分阅读、理解并同意自己与本网站订立本协议，且您自愿受本协议的条款约束。本网站有权随时变更本协议并在本网站上予以公告。经修订的条款一经在本网站的公布后，立即自动生效。如您不同意相关变更，必须停止使用本网站。本协议内容包括协议正文及所有律师湾网已经发布的各类规则。所有规则为本协议不可分割的一部分，与本协议正文具有同等法律效力。一旦您继续使用本网站，则表示您已接受并自愿遵守经修订后的条款。
 第一条 会员资格
 1、只有符合下列条件之一的自然人或法人才能申请成为本网站会员，可以使用本网站的服务；
@@ -122,6 +122,16 @@ C、通过任何方式干扰或试图干扰网站的正常工作或网站上进�
             $("title").text(obj.title);
             $(".ba-logo~span").text(obj.beianhao);
             $("img").attr("src","${RESOUCE_STATIC_URL}"+obj.logourl);
+            $.ajax({ //获取logo
+                type: 'get',
+                url: '${RESOUCE_STATIC_URL}'+obj.logourl,
+                success: function(){
+                    $("#lg>img").attr("src","${RESOUCE_STATIC_URL}"+obj.logourl);
+                },
+                error: function(){
+                    $("img").attr("src","${RESOUCE_STATIC_URL}/img/bd_logo1.png");
+                }
+            });
         });
 
         var param = "<%=param%>";
