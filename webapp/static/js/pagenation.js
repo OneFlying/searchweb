@@ -202,7 +202,7 @@ PageNation.prototype = {
     渲染导航条
     */
     renderPageNation : function(total_page,opts,param){
-
+       // alert(opts.page);
         var $ul = $("<ul id ='ul_title'></ul>");
 
         //前一页
@@ -218,25 +218,58 @@ PageNation.prototype = {
         var $next_page_a = $("<a>后一页></a>");
         this.nextPage($next_page_a,opts,param);
         $next_page_li.append($next_page_a);
-
-        for(var i=0; i < total_page; i++){
+        if(opts.page > 6){
+            for(var i=0; i < 10; i++){
+                if( total_page < 11){
+                    var $li = $("<li></li>");
+                    var $a = $("<a>"+(i+1)+"</a>");
+                }else{
+                    var $li = $("<li></li>");
+                    var $a = $("<a>"+(opts.page-5+i)+"</a>");
+                }
+                $li.append($a);
+                $ul.append($li);
+                if(i == (opts.page-1)){
+                    $a.addClass('active');            
+                    if(opts.page == 1){
+                        $pre_page_li.attr("style","display:none");
+                    }
+                    if(opts.page == total_page){
+                        $next_page_li.attr();
+                    }
+                        this.options.page = opts.page;
+                 }                  
+                //绑定点击事件
+                 this.clickPage($a,opts,param); 
+            }
+        }else{
+            for(var i=0; i < 10; i++){
+                var $li = $("<li></li>");
+                var $a = $("<a>"+(i+1)+"</a>");
+                $li.append($a);
+                $ul.append($li);
+                if(i == (opts.page-1)){
+                    $a.addClass('active');            
+                    if(opts.page == 1){
+                        $pre_page_li.attr("style","display:none");
+                    }
+                    if(opts.page == total_page){
+                        $next_page_li.attr();
+                    }
+                    this.options.page = opts.page;
+                }                  
+            //绑定点击事件
+            this.clickPage($a,opts,param); 
+            }
+        }
+       
+        /*for(var i=0; i < total_page; i++){
             if(i < 10){
                 var $li = $("<li id = '"+(i+1)+"'></li>");
                 var $a = $("<a>"+(i+1)+"</a>");
             }
             $li.append($a);
             $ul.append($li);
-            if(opts.page > 6){
-                var lis = $('#ul_title').find('li');
-                for(var j = 0 ;j < lis.length ; j++){
-                   if(lis[j].id == (opts.page-6)){
-                    console.log(lis[j].id)
-                    console.log('------------>'+(opts.page-6));
-                    $('#'+ (opts.page-6)).innerHTML = '100';
-                   // $ul.remove();
-                   }
-                }
-            }
             if(i == (opts.page-1)){
                 $a.addClass('active');
                
@@ -251,7 +284,7 @@ PageNation.prototype = {
             //绑定点击事件
             this.clickPage($a,opts,param);  
 
-        }
+        }*/
 
         $ul.append($next_page_li);
 
