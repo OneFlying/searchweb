@@ -179,7 +179,7 @@ PageNation.prototype = {
         var $next_page_li = $("<li></li>");
         var $next_page_a;
         if(opts.page == 1){
-            $next_page_a = $("<a>后一页</a>");
+            $next_page_a = $("<a>下一页</a>");
             //$next_page_li..attr("style","display:none");
         }else{
             $next_page_a = $("<a>></a>");
@@ -218,8 +218,11 @@ PageNation.prototype = {
         var $next_page_a = $("<a>后一页></a>");
         this.nextPage($next_page_a,opts,param);
         $next_page_li.append($next_page_a);
-        //alert(opts.page);
-        if(opts.page > 10){
+        alert(opts.page);
+        //模仿百度的分页机制
+        //大于10页时
+        if(total_page > 10){
+            //点击7以后
             if(opts.page > 6){
                 for(var i=0; i < 10; i++){
                     if( total_page < 11){
@@ -240,10 +243,11 @@ PageNation.prototype = {
                             $next_page_li.attr();
                         }
                             this.options.page = opts.page;
-                     }                  
+                    }                  
                     //绑定点击事件
-                     this.clickPage($a,opts,param); 
+                    this.clickPage($a,opts,param); 
                 }
+              //不点击7以后的页数时
             }else{
                 for(var i=0; i < 10; i++){
                     var $li = $("<li></li>");
@@ -264,6 +268,7 @@ PageNation.prototype = {
                 this.clickPage($a,opts,param); 
                 }
             }
+              //小于10页
         }else{
             for(var i=0; i < total_page; i++){
                 var $li = $("<li id = '"+(i+1)+"'></li>");
