@@ -1,0 +1,389 @@
+html,body {
+    height: 100%
+}
+
+html {
+    overflow-y: auto
+}
+
+body {
+    font: 12px arial;
+    background: #fff
+}
+
+body,p,form,ul,li {
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+
+body,form,#fm {
+    position: relative
+}
+
+td {
+    text-align: left
+}
+
+img {
+    border: 0
+}
+
+a {
+    color: #00c
+}
+
+a:active {
+    color: #f60
+}
+
+input,button {
+    border: 0;
+    padding: 0
+}
+
+#wrapper {
+    position: relative;
+    min-height: 100%
+}
+
+#head {
+    padding-bottom: 100px;
+    text-align: center;
+    *z-index: 1
+}
+
+#ftCon {
+    height: 100px;
+    position: absolute;
+    bottom: 23px;
+    text-align: left;
+    width: 100%;
+    margin: 0 auto;
+    z-index: 0;
+    overflow: hidden
+}
+
+.ftCon-Wrapper {
+    overflow: hidden;
+    margin: 0 auto;
+    text-align: center;
+    *width: 640px
+}
+
+#ftConw {
+    display: inline-block;
+    text-align: left;
+    margin-left: 33px;
+    line-height: 22px;
+    position: relative;
+    top: -2px;
+    *float: right;
+    *margin-left: 0;
+    *position: static
+}
+
+#ftConw,#ftConw a {
+    color: #999
+}
+
+#m {
+    width: 720px;
+    margin: 30px auto 0;
+}
+
+#m > a {
+    color: #666666;
+}
+
+.btn,#lk {
+    font-size: 14px
+}
+
+.s_btn {
+    width: 95px;
+    height: 32px;
+    padding-top: 2px\9;
+    font-size: 14px;
+    background-color: #ddd;
+    background-position: 0 -48px;
+    cursor: pointer;
+    margin-left: -3px;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.s_btn_h {
+    background-position: -240px -48px
+}
+
+.s_btn_wr {
+    width: 97px;
+    height: 34px;
+    display: inline-block;
+    background-position: -120px -48px;
+    *position: relative;
+    z-index: 0;
+    vertical-align: top
+}
+
+#cp .c-icon-icrlogo,#jgwab .c-icon-jgwablogo {
+    width: 14px;
+    height: 17px;
+    display: inline-block;
+    overflow: hidden;
+}
+
+#cp .c-icon-icrlogo {
+    background-position: -600px -96px;
+    position: relative;
+    top: 3px
+}
+
+#jgwab .c-icon-jgwablogo {
+    background-position: -623px -96px;
+    position: relative;
+    top: 3px;
+    margin-right: 6px
+}
+
+#shouji {
+    margin-right: 14px
+}
+
+#u {
+    display: none
+}
+
+#c-tips-container {
+    display: none
+}
+
+#wrapper {
+    min-width: 810px;
+    height: 100%;
+    min-height: 600px
+}
+
+#head {
+    position: relative;
+    padding-bottom: 0;
+    height: 100%;
+    min-height: 600px
+}
+
+#head .head_wrapper {
+    height: 100%
+}
+
+#m {
+    position: relative
+}
+
+#fm {
+    padding-left: 40px;
+    top: -37px
+}
+
+#lh a {
+    margin-left: 62px
+}
+
+#lh #seth {
+    margin-left: 0
+}
+
+#1h #setf {
+    display:inline;
+    margin-left:62px
+}
+
+#lk {
+    position: absolute;
+    display: none;
+    top: 0;
+    right: 0;
+    margin: 33px 0
+}
+
+#lk span {
+    font: 14px "宋体"
+}
+
+#nv {
+    position: absolute;
+    display: none;
+    top: 0;
+    right: 0
+}
+
+#lm {
+    color: #666;
+    width: 100%;
+    height: 60px;
+    margin-top: 60px;
+    line-height: 15px;
+    font-size: 13px;
+    position: absolute;
+    top: 0;
+    left: 0
+}
+
+#lm a {
+    color: #666
+}
+
+.s_ipt_wr.bg,.s_btn_wr.bg,#su.bg {
+    background-image: none
+}
+
+.s_btn_wr {
+    width: auto;
+    height: auto;
+    border-bottom: 1px solid transparent;
+    *border-bottom: 0
+}
+
+.s_btn {
+    width: 100px;
+    height: 36px;
+    color: white;
+    font-size: 15px;
+    letter-spacing: 1px;
+    background: #3385ff;
+    border: none;
+    border-bottom: 1px solid #2d78f4;
+    outline: medium;
+    *border-bottom: 0;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    position: relative;
+}
+
+.s_btn:hover,.s_btn:focus,.s_btn:active {
+    background: #317ef3;
+    border-bottom: 1px solid #2868c8;
+    *border-bottom: 0;
+    box-shadow: 1px 1px 1px #ccc
+}
+
+.s_btn_h {
+    background: #3075dc;
+    box-shadow: inset 1px 1px 5px #2964bb;
+    -webkit-box-shadow: inset 1px 1px 5px #2964bb;
+    -moz-box-shadow: inset 1px 1px 5px #2964bb;
+    -o-box-shadow: inset 1px 1px 5px #2964bb
+}
+
+#index_logo img {
+    display: inline-block;
+    width: 270px;
+    height: 129px
+}
+
+.s_form {
+    position: relative;
+    top: 38.2%
+}
+
+.s_form_wrapper {
+    position: relative;
+    top: -191px
+}
+
+.s_ipt_wr {
+    height: 34px
+}
+
+#head .c-icon-bear-round {
+    display: none
+}
+
+#form {
+    margin: 22px auto 0;
+    width: 641px;
+    text-align: left;
+    z-index: 100
+}
+
+#sekj {
+    margin-left: 14px
+}
+
+#st,#sekj {
+    display: none
+}
+
+.s_ipt_wr {
+    border: 1px solid #b6b6b6;
+    border-color: #7b7b7b #b6b6b6 #b6b6b6 #7b7b7b;
+    background: #fff;
+    display: inline-block;
+    vertical-align: top;
+    width: 539px;
+    margin-right: 0;
+    border-right-width: 0;
+    border-color: #b8b8b8 transparent #ccc #b8b8b8;
+    overflow: hidden
+}
+
+.s_ipt_wr.ipthover,.s_ipt_wr:hover {
+    border-color: #999 transparent #b3b3b3 #999
+}
+
+.iptfocus {
+    border-color: #4791ff transparent #4791ff #4791ff
+}
+
+.iptfocus:hover {
+    border-color: #4791ff transparent #4791ff #4791ff
+}
+
+.s_ipt {
+    width: 526px;
+    height: 22px;
+    font: 16px/18px arial;
+    line-height: 22px\9;
+    margin: 6px 0 0 7px;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    -webkit-appearance: none
+}
+
+.s_ipt:hover,.s_ipt:focus {
+    border-color: #4791ff transparent #4791ff #4791ff;
+}
+
+input::-ms-clear {
+    display: none
+}
+
+input::-ms-reveal {
+    display: none;
+}
+
+@font-face {
+    font-family: 'Glyphicons Halflings';
+
+    src: url('../fonts/glyphicons-halflings-regular.eot');
+    src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
+.glyphicon {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: 200;
+    line-height: 1;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.glyphicon-search:before {
+    content: "\e003";
+}

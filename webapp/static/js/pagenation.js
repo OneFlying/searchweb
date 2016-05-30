@@ -80,14 +80,13 @@ PageNation.prototype = {
         $.get(opts.url,param,function(data){
 
             if(data.rows != undefined){
-                $("#res_total").text("为您找到的结果约"+data.rows+"个");
+                $(".nums").text("共为您搜索到 "+data.rows+" 条相关数据");
             }else{
-                $("#res_total").text("为您找到的结果约0个")
+                $(".nums").text("共为您搜索到 0 条相关数据");
             }
 
             //获取总页数
             var total_page = Math.ceil(data.rows/opts.rows);//也总页数
-            //alert(parseInt(options.screen_width));
             //获取渲染后的对象
             var $ul="";
             if(parseInt(options.screen_width) <= 600){
@@ -101,12 +100,14 @@ PageNation.prototype = {
             if(data.rows != undefined){
                 $("#"+opts.pageId).append($ul);
             }
-
+            //console.log(data);
 
             var contenthtml = Page.initContent(data.list,data.promotion,param.keywords);
 
             $("#"+opts.contentId).children().remove();
-            $("#"+opts.contentId).append(contenthtml);
+            //$("#"+opts.contentId).append(contenthtml);
+            $('#'+opts.contentId).append(contenthtml[0]);
+            $('#'+opts.contentId).append(contenthtml[1]);
 
         });
 
