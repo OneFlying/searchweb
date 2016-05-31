@@ -250,7 +250,6 @@
 <body class="easyui-layout" ondragstart="return false;">
 	<div region="north" class="north" title="">
 		<div class="north-title">
-			<img id="img" alt="" src="">
 			<span id="title">网站后台管理</span>
 		</div>
 

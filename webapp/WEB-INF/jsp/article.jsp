@@ -114,11 +114,11 @@
         //实例化编辑器
         var isFirst = true;
         var um = UM.getEditor('myEditor');
-        um.setContent('还可输入5000字');
+        um.setContent('<p style="color:#bbb;">还可输入5000字</p>');
         um.addListener('blur',function(){
             if(um.getContent().trim().length == 0) {
-                um.setContent('还可输入5000字');
-                $('#contentNum').text('还可输入5000字');
+                um.setContent('<p style="color:#bbb;">还可输入5000字</p>');
+                $('#contentNum').html('还可输入 <span>5000</span> 字');
                 isFirst = true;
             }
         });
@@ -130,7 +130,7 @@
         });
 
         um.addListener('contentChange', function(){
-            var length = um.getPlainTxt().length-1;
+            var length = um.getPlainTxt().length;
 
             if(length > 5000) {
                 $('#contentNum').html('您已超过<span style="color:#cc0000"> '+(length-5000)+' </span>字');
@@ -172,7 +172,7 @@
                 return false;
             }
 
-            if(UM.getEditor('myEditor').getPlainTxt().length > 4999) {
+            if(UM.getEditor('myEditor').getPlainTxt().length > 5000) {
                 return false;
             }
 
@@ -244,7 +244,7 @@
                 type: 'get',
                 url: '${RESOUCE_STATIC_URL}'+obj.logourl,
                 success: function(){
-                    $("#result_logo>img").attr("src","${RESOUCE_STATIC_URL}"+obj.logourl);
+                    $("#result_logo>img").attr("src","${RESOUCE_STATIC_URL}"+obj.qitalogourl);
                 },
                 error: function(){
 

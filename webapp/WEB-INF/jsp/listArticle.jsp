@@ -358,7 +358,7 @@
                 type: 'get',
                 url: '${RESOUCE_STATIC_URL}'+obj.logourl,
                 success: function(){
-                    $("#result_logo>img").attr("src","${RESOUCE_STATIC_URL}"+obj.logourl);
+                    $("#result_logo>img").attr("src","${RESOUCE_STATIC_URL}"+obj.qitalogourl);
                 },
                 error: function(){
                     $('#result_logo>img').attr({'src':'${RESOUCE_STATIC_URL}/img/plus_logo.png'});
