@@ -163,9 +163,10 @@ public class ArticleController {
 	 * @return
 	 */
 	@RequestMapping(value="/save",method=RequestMethod.POST)
-	public ModelAndView saveArticle(String title,String content,String website,String imageurl){
+	@ResponseBody
+	public ModelMap saveArticle(String title,String content,String website,String imageurl){
 		
-		ModelAndView modelAndView = new ModelAndView();
+		ModelMap modelMap = new ModelMap();
 		Article article = new Article();
 		
 		article.setId(StringUtils.generateUuid());
@@ -177,8 +178,11 @@ public class ArticleController {
 		article.setDate(StringUtils.getCurTimeFormat());
 		
 		int res = articleDao.saveArticle(article);
-		modelAndView.setViewName("redirect:/");
-		return modelAndView;
+		if(res > 0) {
+			modelMap.put("success",true);
+		}
+		//modelAndView.setViewName("article");
+		return modelMap;
 		
 		
 	}
