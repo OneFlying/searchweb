@@ -10,7 +10,7 @@ var Page = {
         };
         var pageNation = PageNation(opts);
     },
-    initContent:function(data,promotion,keywords){
+    initContent:function(data,promotion,size,keywords){
 
         //var $ul = $("<ul></ul>");
         //$ul.addClass('article');
@@ -18,8 +18,9 @@ var Page = {
         var div1 = $('<div class="content_top"></div>');
         var div2 = $('<div class="c-container"></div>');
         $(data).each(function(index, item) {
+            
             var li ;
-            if((index < 2) &&(promotion)){
+            if((promotion)&&(index < size) ){
                 li = Page.renderProtion(item,keywords);
                 li.appendTo(div1);
             }else{
