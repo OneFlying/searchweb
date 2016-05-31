@@ -115,7 +115,7 @@ public class ArticleController {
 				modelMap.put("list", newList);
 				modelMap.put("rows", searchEntity.getTotal());
 				modelMap.put("promotion", true);
-				
+				modelMap.put("size", plist.size());
 				return modelMap;
 			}else if((list != null)&&(list.size()!=0)){
 				 
