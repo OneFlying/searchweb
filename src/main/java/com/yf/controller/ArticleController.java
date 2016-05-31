@@ -18,9 +18,11 @@ import com.yf.dao.ArticleDao;
 import com.yf.dao.PromotionDao;
 import com.yf.dao.RelSearchDao;
 import com.yf.dao.SearchEntity;
+import com.yf.dao.WebsiteconfigDao;
 import com.yf.model.Article;
 import com.yf.model.Promotion;
 import com.yf.model.RelSearch;
+import com.yf.model.Websitconfig;
 import com.yf.utils.StringUtils;
 
 @Controller
@@ -36,6 +38,8 @@ public class ArticleController {
 	@Resource(name="relSearchDao")
 	private RelSearchDao relSearchDao;
 	
+	@Resource
+	private WebsiteconfigDao websiteconfigDao;
 	/** 
 	 * 分页获取文章信息
 	 * @param rows 
@@ -116,6 +120,7 @@ public class ArticleController {
 				modelMap.put("rows", searchEntity.getTotal());
 				modelMap.put("promotion", true);
 				modelMap.put("size", plist.size());
+				
 				return modelMap;
 			}else if((list != null)&&(list.size()!=0)){
 				 
@@ -163,9 +168,10 @@ public class ArticleController {
 	 * @return
 	 */
 	@RequestMapping(value="/save",method=RequestMethod.POST)
-	public ModelAndView saveArticle(String title,String content,String website,String imageurl){
+	@ResponseBody
+	public ModelMap saveArticle(String title,String content,String website,String imageurl){
 		
-		ModelAndView modelAndView = new ModelAndView();
+		ModelMap modelMap = new ModelMap();
 		Article article = new Article();
 		
 		article.setId(StringUtils.generateUuid());
@@ -177,8 +183,11 @@ public class ArticleController {
 		article.setDate(StringUtils.getCurTimeFormat());
 		
 		int res = articleDao.saveArticle(article);
-		modelAndView.setViewName("redirect:/");
-		return modelAndView;
+		if(res > 0) {
+			modelMap.put("success",true);
+		}
+		//modelAndView.setViewName("article");
+		return modelMap;
 		
 		
 	}
@@ -187,8 +196,14 @@ public class ArticleController {
 	 * 跳转到编写文章也
 	 */
 	@RequestMapping("/index")
-	public String skipToArticle(){
-		return "article";
+	public ModelAndView skipToArticle(){
+		ModelAndView modelAndView = new ModelAndView();
+		Websitconfig websitconfig = websiteconfigDao.getWebsitconfig();
+		modelAndView.addObject("logourl",websitconfig.getLogourl());
+		modelAndView.addObject("qitalogourl",websitconfig.getQitalogo());
+		modelAndView.addObject("title",websitconfig.getTitle());
+		modelAndView.setViewName("index");
+		return modelAndView;
 	}
 	
 	/**
@@ -201,6 +216,10 @@ public class ArticleController {
 	public ModelAndView skipToListArticle(String keywords){
 		
 		ModelAndView modelAndView = new ModelAndView();
+		Websitconfig websitconfig = websiteconfigDao.getWebsitconfig();
+		modelAndView.addObject("logourl",websitconfig.getLogourl());
+		modelAndView.addObject("qitalogourl",websitconfig.getQitalogo());
+		modelAndView.addObject("title",websitconfig.getTitle());
 		modelAndView.addObject("keywords", keywords);
 		modelAndView.setViewName("listArticle");
 		return modelAndView;
@@ -236,6 +255,10 @@ public class ArticleController {
 			int count = article.getCount()+1;		
 			articleDao.updateArticleCount(id, count);		
 		}
+		Websitconfig websitconfig = websiteconfigDao.getWebsitconfig();
+		modelAndView.addObject("logourl",websitconfig.getLogourl());
+		modelAndView.addObject("qitalogourl",websitconfig.getQitalogo());
+		modelAndView.addObject("title",websitconfig.getTitle());
 		return modelAndView;
 	
 	}
