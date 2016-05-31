@@ -44,8 +44,9 @@ public class PromotionController {
 		return "promotion";
 	}*/
 	@RequestMapping(value="/add",method=RequestMethod.POST)
-	public ModelAndView add(HttpServletResponse response,String price,String content,String imageurl,String url,String title){
-		ModelAndView modelAndView = new ModelAndView();
+	@ResponseBody
+	public ModelMap add(HttpServletResponse response,String price,String content,String imageurl,String url,String title){
+		ModelMap modelMap = new ModelMap();
 		Promotion promotin = new Promotion();
 		promotin.setTitle(title);
 		promotin.setContent(content);
@@ -57,20 +58,24 @@ public class PromotionController {
 		promotin.setId(StringUtils.generateUuid());
 		boolean ret = promotionDao.add(promotin);
 		if(ret){
-			Websitconfig websitconfig = websiteconfigDao.getWebsitconfig();
+			modelMap.put("success", true);
+			modelMap.put("msg", "新增推广信息成功");
+			//Websitconfig websitconfig = websiteconfigDao.getWebsitconfig();
 			/*modelAndView.addObject("msg", "新增成功");
 			modelAndView.addObject("success", ret);*/
-			modelAndView.addObject("logourl",websitconfig.getLogourl());
+			/*modelAndView.addObject("logourl",websitconfig.getLogourl());
 			modelAndView.addObject("title",websitconfig.getTitle());
 			modelAndView.addObject("success", true);
 			modelAndView.addObject("msg", "新增成功");
 			modelAndView.setViewName("promotion");
-			modelAndView.addObject("url", "/admin");
+			modelAndView.addObject("url", "/admin");*/
 		}else{
-			modelAndView.addObject("success", ret);
-			modelAndView.addObject("msg", "新增失败");
+			//modelAndView.addObject("success", ret);
+			//modelAndView.addObject("msg", "新增失败");
+			modelMap.put("msg", "新增推广信息失败");
 		}
-		return modelAndView;
+		//return modelAndView;
+		return modelMap;
 	}
 	@RequestMapping(value="/update",method=RequestMethod.POST)
 	@ResponseBody
