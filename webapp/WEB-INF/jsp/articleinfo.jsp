@@ -71,7 +71,11 @@
                 <div class="s_content_left">
                     <div class="s_top">
                         <h1><%=article.getTitle() %></h1>
+                        <%
+                            if( article.getDate() != null){                                
+                        %>
                         <div class="date">更新时间：<%=article.getDate()%></div>
+                        <%}%>
                     </div>
                     <div class="s_middle" style="clear:both;">
                         <%=article.getContent()%>
