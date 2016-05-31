@@ -1,7 +1,7 @@
 <%@ page import="java.util.*" %>
-<%@page import="com.yf.model.Article"%>
+<%@ page import="com.yf.model.Article"%>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<%@page import="com.yf.utils.KeyWordUtil"%>
+<%@ page import="com.yf.utils.KeyWordUtil"%>
 <%
     KeyWordUtil keyUtil = KeyWordUtil.getInstance();
     String keywordsContent = keyUtil.getContent();
@@ -64,14 +64,8 @@
             <div class="s_navbar">
                 <a class="active" href="javascript:;">搜索结果</a>
                 <span>&gt;</span>
-                <a href="#">
-                    <%
-                       if(article.getTitle().length() > 10) {
-                            out.print(article.getTitle().substring(0,7)+"...");
-                       }else{
-                            out.print(article.getTitle());
-                       }
-                    %>
+                <a href="#" class="subActive">
+                    <%=article.getTitle() %>
                 </a>
             </div>
         </div>
@@ -143,10 +137,10 @@
                 if(isDesktop) {
                 	if(scrollTop >= 150) {
                 		isFixed = true;
-                		if($(window).width() >= 1280) {
-                			$('.s_content_right').addClass('content_right_fixed')
-							 .css({right: ($(window).width()-1040)/2-17+'px'});
-                		}
+                		<%--if($(window).width() >= 1280) {--%>
+                			<%--$('.s_content_right').addClass('content_right_fixed')--%>
+							 <%--.css({right: ($(window).width()-1040)/2-17+'px'});--%>
+                		<%--}--%>
                 	}
                 }
             }else {
@@ -256,9 +250,9 @@
                     right: ($(window).width()-1040)/2-80+'px'
                 });
             }
-            if(isFixed) {
-            	$('.s_content_right').css({right: ($(window).width()-1040)/2-21+'px'});
-            }
+            <%--if(isFixed) {--%>
+            	<%--$('.s_content_right').css({right: ($(window).width()-1040)/2-21+'px'});--%>
+            <%--}--%>
         });
 
         $("#su").bind("click",function(){
