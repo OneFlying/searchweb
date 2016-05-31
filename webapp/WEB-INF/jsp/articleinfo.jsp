@@ -56,7 +56,7 @@
                     </form>
                 </div>
                 <div class="search-box-tools">
-                    <a href="${RESOUCE_SYSTEM_URL}/article/index" target="_blank">上传你的文章</a>
+                    <a href="${RESOUCE_SYSTEM_URL}/article/index">上传你的文章</a>
                 </div>
             </div>
         </div>

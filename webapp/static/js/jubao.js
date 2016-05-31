@@ -54,12 +54,7 @@ loadgrid : function(){
 		          {
 		          	field:'id',title:'id',checkbox:true
 		          },
-		          {
-		          	field:'articleid',title:'<font color="black" size="2px">举报标题</font>',width:40,align:'center',sortable:true,
-		          	  	formatter : function(value,row,index){
-				        	return '<font color="black" size="2px" >'+value+'</font>';
-				      	}
-		          },
+		          
 		          {
 		        	  field:'content',title:'<font color="black" size="2px">举报内容</font>',align:'center',width:90,
 		        	  formatter : function(value,row,index){
@@ -71,7 +66,13 @@ loadgrid : function(){
 		          	formatter : function(value,row,index){
 				        return '<font color="black" size="2px" >'+value+'</font>';
 				      }
-		          }
+		          },
+		          {
+			          	field:'articleid',title:'<font color="black" size="2px">举报文章</font>',width:40,align:'center',sortable:true,
+			          	  	formatter : function(value,row,index){
+			          	  	return "<a href='"+RESOUCE_SYSTEM_URL_JS+"/article/info?id="+value+"' target='_blank'><font style='font-size:10px'>查看文章</font></a>"
+					      	}
+			         }
 		          ]],
 		          rownumbers:true,
 		          pagination:true,

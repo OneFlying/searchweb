@@ -75,15 +75,15 @@ public class JubaoController {
 		ModelMap modelMap = new ModelMap();
 		SearchEntity searchEntity = new SearchEntity(Jubao.class);
 		searchEntity.addResultColumn("*");
-		if(content != null){
+		if(StringUtils.isNotBlank(content)){
 			searchEntity.addSearchColumn("content", "%"+content+"%" , " LIKE ", false);
 		}
-		if(operatime !=null){
+		if(StringUtils.isNotBlank(operatime)){
 			searchEntity.addSearchColumn("datetime", "%"+operatime+"%" , " LIKE ", false);
 		}
 		searchEntity.setPage(page, rows);
 		List<Jubao> list = jubaoDao.getPageJubao(searchEntity);
-		List<Jubao> listJson = new ArrayList<Jubao>();
+		/*List<Jubao> listJson = new ArrayList<Jubao>();
 		//将文章ID转化为标题
 		//int a = 0;
 		for(Jubao jubao :list){
@@ -93,9 +93,9 @@ public class JubaoController {
 				jubao.setArticleid(article.getTitle());
 				listJson.add(jubao);
 			}	
-		}
-		int total = listJson.size();
-		modelMap.put("rows",listJson);
+		}*/
+		int total = searchEntity.getTotal();
+		modelMap.put("rows",list);
 		modelMap.put("total", total);
 		return modelMap;
 	}
