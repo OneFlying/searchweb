@@ -18,11 +18,9 @@ import com.yf.dao.ArticleDao;
 import com.yf.dao.PromotionDao;
 import com.yf.dao.RelSearchDao;
 import com.yf.dao.SearchEntity;
-import com.yf.dao.WebsiteconfigDao;
 import com.yf.model.Article;
 import com.yf.model.Promotion;
 import com.yf.model.RelSearch;
-import com.yf.model.Websitconfig;
 import com.yf.utils.StringUtils;
 
 @Controller
@@ -38,8 +36,6 @@ public class ArticleController {
 	@Resource(name="relSearchDao")
 	private RelSearchDao relSearchDao;
 	
-	@Resource
-	private WebsiteconfigDao websiteconfigDao;
 	/** 
 	 * 分页获取文章信息
 	 * @param rows 
@@ -119,12 +115,7 @@ public class ArticleController {
 				modelMap.put("list", newList);
 				modelMap.put("rows", searchEntity.getTotal());
 				modelMap.put("promotion", true);
-				if(plist.size()>2){
-					modelMap.put("size", 2);
-				}else{
-					modelMap.put("size", plist.size());
-				}
-				
+				modelMap.put("size", plist.size());
 				return modelMap;
 			}else if((list != null)&&(list.size()!=0)){
 				 
@@ -172,10 +163,9 @@ public class ArticleController {
 	 * @return
 	 */
 	@RequestMapping(value="/save",method=RequestMethod.POST)
-	@ResponseBody
-	public ModelMap saveArticle(String title,String content,String website,String imageurl){
+	public ModelAndView saveArticle(String title,String content,String website,String imageurl){
 		
-		ModelMap modelMap = new ModelMap();
+		ModelAndView modelAndView = new ModelAndView();
 		Article article = new Article();
 		
 		article.setId(StringUtils.generateUuid());
@@ -187,11 +177,8 @@ public class ArticleController {
 		article.setDate(StringUtils.getCurTimeFormat());
 		
 		int res = articleDao.saveArticle(article);
-		if(res > 0) {
-			modelMap.put("success",true);
-		}
-		//modelAndView.setViewName("article");
-		return modelMap;
+		modelAndView.setViewName("redirect:/");
+		return modelAndView;
 		
 		
 	}
@@ -200,14 +187,8 @@ public class ArticleController {
 	 * 跳转到编写文章也
 	 */
 	@RequestMapping("/index")
-	public ModelAndView skipToArticle(){
-		ModelAndView modelAndView = new ModelAndView();
-		Websitconfig websitconfig = websiteconfigDao.getWebsitconfig();
-		modelAndView.addObject("logourl",websitconfig.getLogourl());
-		modelAndView.addObject("qitalogourl",websitconfig.getQitalogo());
-		modelAndView.addObject("title",websitconfig.getTitle());
-		modelAndView.setViewName("index");
-		return modelAndView;
+	public String skipToArticle(){
+		return "article";
 	}
 	
 	/**
@@ -220,10 +201,6 @@ public class ArticleController {
 	public ModelAndView skipToListArticle(String keywords){
 		
 		ModelAndView modelAndView = new ModelAndView();
-		Websitconfig websitconfig = websiteconfigDao.getWebsitconfig();
-		modelAndView.addObject("logourl",websitconfig.getLogourl());
-		modelAndView.addObject("qitalogourl",websitconfig.getQitalogo());
-		modelAndView.addObject("title",websitconfig.getTitle());
 		modelAndView.addObject("keywords", keywords);
 		modelAndView.setViewName("listArticle");
 		return modelAndView;
@@ -259,10 +236,6 @@ public class ArticleController {
 			int count = article.getCount()+1;		
 			articleDao.updateArticleCount(id, count);		
 		}
-		Websitconfig websitconfig = websiteconfigDao.getWebsitconfig();
-		modelAndView.addObject("logourl",websitconfig.getLogourl());
-		modelAndView.addObject("qitalogourl",websitconfig.getQitalogo());
-		modelAndView.addObject("title",websitconfig.getTitle());
 		return modelAndView;
 	
 	}
@@ -276,11 +249,8 @@ public class ArticleController {
 	private List<Article> warpList(List<Promotion> plist,List<Article> list){
 		
 		List<Article> newList = new ArrayList<Article>();
-		int count = 1;
-		if(plist.size() > 2){
-			count = 2;
-		}
-		for(int i = 0;i<count;i++){
+		
+		for(int i = 0;i<plist.size();i++){
 			Promotion p = plist.get(i);
 			Article article = new Article();
 			article.setId(p.getId());
