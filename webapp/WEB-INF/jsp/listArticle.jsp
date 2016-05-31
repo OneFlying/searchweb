@@ -17,7 +17,7 @@
         var p = navigator.platform;
             system.win = p.indexOf("Win") == 0; 
             system.mac = p.indexOf("Mac") == 0; 
-            system.x11 = (p == "X11") || (p.indexOf("Linux") == 0);    
+            system.x11 = (p == "X11") || (p.indexOf("Linux") == 0);
         var head = document.getElementsByTagName('head')[0];
         var link = document.createElement('link');
             link.rel = 'stylesheet';
@@ -48,7 +48,7 @@
                                 <button id="su" value="" class="s_btn"><span class="glyphicon glyphicon-search"></span></button>
                             </span>
                             <span class="tools">
-                                <a href="${RESOUCE_SYSTEM_URL}/article/index">上传你的文章</a>
+                                <a href="${RESOUCE_SYSTEM_URL}/article/index" style="text-decoration:none;">上传你的文章</a>
                             </span>
                         </form>
                     </div>
@@ -316,12 +316,12 @@
 
     //修正页面
     $('#container').css({
-        minHeight: $(window).height() - 197 + 'px'
+        minHeight: $(window).height() - 177 + 'px'
     });
 
     $(window).on('resize',function(){
         $('#container').css({
-            minHeight: $(window).height() - 197 + 'px'
+            minHeight: $(window).height() - 177 + 'px'
         });
     });
 

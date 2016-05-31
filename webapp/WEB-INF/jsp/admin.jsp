@@ -47,18 +47,6 @@
 	input::-ms-clear {
 		display: none;
 	}
-	/* body{
-		margin: 0;
-		border: 0;
-		width:100%;
-		height:100%;
-		overflow:hidden;
-		/* background: repeat-x url(../../static/img/backimg.png); */
-		backgroud-color:red;
-		position:absolute;
-		font-family:"Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
-		font-size:12px; color:#FFFFFF;
-	} */
 	h1{
 		font-size:29px;
 		color:gray;
@@ -261,7 +249,7 @@
 
 		 <div class="north-logout">
             <a href="${RESOUCE_SYSTEM_URL}/logout" >
-                <img src="${RESOUCE_STATIC_URL}/img/logout.png"/>
+                <img src="${RESOUCE_STATIC_URL}/img/close.png"/>
                 <span>退出</span>
             </a>
         </div>
