@@ -20,6 +20,7 @@ public class IndexController {
 		ModelAndView modelAndView = new ModelAndView();
 		Websitconfig websitconfig = websiteconfigDao.getWebsitconfig();
 		modelAndView.addObject("logourl",websitconfig.getLogourl());
+		modelAndView.addObject("qitalogourl",websitconfig.getQitalogo());
 		modelAndView.addObject("title",websitconfig.getTitle());
 		modelAndView.setViewName("index");
 		return modelAndView;

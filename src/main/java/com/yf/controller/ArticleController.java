@@ -199,6 +199,7 @@ public class ArticleController {
 		ModelAndView modelAndView = new ModelAndView();
 		Websitconfig websitconfig = websiteconfigDao.getWebsitconfig();
 		modelAndView.addObject("logourl",websitconfig.getLogourl());
+		modelAndView.addObject("qitalogourl",websitconfig.getQitalogo());
 		modelAndView.addObject("title",websitconfig.getTitle());
 		modelAndView.setViewName("index");
 		return modelAndView;
@@ -216,6 +217,7 @@ public class ArticleController {
 		ModelAndView modelAndView = new ModelAndView();
 		Websitconfig websitconfig = websiteconfigDao.getWebsitconfig();
 		modelAndView.addObject("logourl",websitconfig.getLogourl());
+		modelAndView.addObject("qitalogourl",websitconfig.getQitalogo());
 		modelAndView.addObject("title",websitconfig.getTitle());
 		modelAndView.addObject("keywords", keywords);
 		modelAndView.setViewName("listArticle");
@@ -254,6 +256,7 @@ public class ArticleController {
 		}
 		Websitconfig websitconfig = websiteconfigDao.getWebsitconfig();
 		modelAndView.addObject("logourl",websitconfig.getLogourl());
+		modelAndView.addObject("qitalogourl",websitconfig.getQitalogo());
 		modelAndView.addObject("title",websitconfig.getTitle());
 		return modelAndView;
 	
