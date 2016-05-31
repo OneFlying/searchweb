@@ -1,12 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html>
+<%@page import="com.yf.utils.KeyWordUtil"%>
+<%
+    KeyWordUtil keyUtil = KeyWordUtil.getInstance();
+    String keywordsContent = keyUtil.getContent();
+%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <meta name="renderer" content="webkit" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1, user-scalable=no">
-    <meta name="keywords" content=""/>
+    <meta name="keywords" content="<%=keywordsContent%>"/>
     <title>剑三搜索</title>
     <%@ include file="/resource.jsp" %>
     <%
@@ -269,6 +274,7 @@
     var opts = {
         page:1,
         rows:10,
+        page_total:10,
         url:RESOUCE_SYSTEM_URL_JS+"/article/search",
         pageId:'page',
         contentId:'content_left'

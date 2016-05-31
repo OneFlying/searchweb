@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@page import="com.yf.utils.KeyWordUtil"%>
+<%
+    KeyWordUtil keyUtil = KeyWordUtil.getInstance();
+    String keywordsContent = keyUtil.getContent();
+%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -7,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <meta name="renderer" content="webkit" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1, user-scalable=no">
-    <meta name="keywords" content=""/>
+    <meta name="keywords" content="<%=keywordsContent%>"/>
     <title>上传你的文章</title>
     <%@ include file="/resource.jsp" %>
     <link href="${RESOUCE_STATIC_URL}/umeditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
