@@ -119,7 +119,12 @@ public class ArticleController {
 				modelMap.put("list", newList);
 				modelMap.put("rows", searchEntity.getTotal());
 				modelMap.put("promotion", true);
-				modelMap.put("size", plist.size());
+				if(plist.size()>2){
+					modelMap.put("size", 2);
+				}else{
+					modelMap.put("size", plist.size());
+				}
+				
 				return modelMap;
 			}else if((list != null)&&(list.size()!=0)){
 				 
@@ -271,8 +276,11 @@ public class ArticleController {
 	private List<Article> warpList(List<Promotion> plist,List<Article> list){
 		
 		List<Article> newList = new ArrayList<Article>();
-		
-		for(int i = 0;i<plist.size();i++){
+		int count = 1;
+		if(plist.size() > 2){
+			count = 2;
+		}
+		for(int i = 0;i<count;i++){
 			Promotion p = plist.get(i);
 			Article article = new Article();
 			article.setId(p.getId());
