@@ -255,7 +255,7 @@ PageNation.prototype = {
                                 var $a = $("<a>"+(opts.page-5+i)+"</a>");
                                  $li.append($a);
                                 $ul.append($li);
-                                if(i == (opts.page-1)){
+                                if((opts.page-5+i) == opts.page){
                                     $a.addClass('active');            
                                     if(opts.page == 1){
                                         $pre_page_li.css({display:"none"});
@@ -269,12 +269,12 @@ PageNation.prototype = {
                                 this.clickPage($a,opts,param); 
                             }
                         }else{
-                            for(var i = total_page -9; i < total_page ;i++){
+                            for(var i = total_page -9; i <= total_page ;i++){
                                 var $li = $("<li></li>");
-                                var $a = $("<a>"+(i+1)+"</a>");
+                                var $a = $("<a>"+i+"</a>");
                                 $li.append($a);
                                 $ul.append($li);
-                                if(i == (opts.page-1)){
+                                if(i == opts.page){
                                     $a.addClass('active');            
                                     if(opts.page == 1){
                                         $pre_page_li.css({display:"none"});
@@ -290,21 +290,8 @@ PageNation.prototype = {
                         }
                        
                     }
-                  /*  $li.append($a);
-                    $ul.append($li);
-                    if(i == (opts.page-1)){
-                        $a.addClass('active');            
-                        if(opts.page == 1){
-                            $pre_page_li.attr("style","display:none");
-                        }
-                        if(opts.page == total_page){
-                            $next_page_li.attr();
-                        }
-                            this.options.page = opts.page;
-                    }                  
-                    //绑定点击事件
-                    this.clickPage($a,opts,param); 
-                }*/
+                    
+              //  }
               //不点击7以后的页数时
             }else{
                 for(var i=0; i < 10; i++){
