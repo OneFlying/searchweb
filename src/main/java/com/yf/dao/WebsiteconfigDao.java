@@ -22,6 +22,7 @@ public class WebsiteconfigDao extends DaoAdapter{
 				Websitconfig websitconfig = new Websitconfig();
 				websitconfig.setId(rs.getString("id"));
 				websitconfig.setLogourl(rs.getString("logourl"));
+				websitconfig.setQitalogo(rs.getString("qitalogo"));
 				websitconfig.setTitle(rs.getString("title"));
 				websitconfig.setBeianhao(rs.getString("beianhao"));
 				websitconfig.setKeywords(rs.getString("keywords"));
