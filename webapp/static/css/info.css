@@ -410,3 +410,9 @@ input {
     box-shadow: 1px 1px 1px #ccc
 }
 
+.content_right_fixed {
+	position: fixed;
+	top: 0;
+	right: 0;
+}
+

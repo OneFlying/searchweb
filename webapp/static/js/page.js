@@ -28,7 +28,9 @@ var Page = {
             }
             //$ul.append(li);
         });
-        obj.push(div1);
+        if (div1.html().length != 0) {
+        	obj.push(div1);
+        }
         obj.push(div2);
         //return $ul;
         return obj;
@@ -354,7 +356,7 @@ var Page = {
         $.get(url,param,function(data){
             $("#"+divId).children().remove();
             if(data.list != null && data.list.length != 0) {
-                console.log(data.list);
+                //console.log(data.list);
                 $('#'+divId).append('<span style="font-size:14px;font-weight:bold;margin-bottom:10px;display:block;">广告推荐</span>');
             }
             Page.renderAdvert(data.list,divId);
