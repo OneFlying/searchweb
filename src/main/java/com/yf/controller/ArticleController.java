@@ -202,7 +202,7 @@ public class ArticleController {
 		modelAndView.addObject("logourl",websitconfig.getLogourl());
 		modelAndView.addObject("qitalogourl",websitconfig.getQitalogo());
 		modelAndView.addObject("title",websitconfig.getTitle());
-		modelAndView.setViewName("index");
+		modelAndView.setViewName("article");
 		return modelAndView;
 	}
 	
