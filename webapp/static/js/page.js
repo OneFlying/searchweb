@@ -41,13 +41,13 @@ var Page = {
     //渲染推广
     renderProtion:function(obj,keywords){
         var div = $('<div class="content_top_item"></div>'),
-            a = $('<a href="#"></a>');
+            a = $('<a href="'+obj.website+'" target="_blank"></a>');
 
         var title = $('<div class="content_title" data-id="'+obj.id+'">'+obj.title+'</div>');
-        title.bind('click',function (event) {
+        /*title.bind('click',function (event) {
             event.preventDefault();
             Page.clickTitle(title.data("id"));
-        });
+        });*/
         title.appendTo(a);
 
         var content = $('<div class="content_content" data-id="'+obj.id+'"></div>'),
@@ -56,10 +56,10 @@ var Page = {
             link = $('<div class="content_link"></div>'),
             link_a = $('<a href="'+obj.website+'" target="_blank">'+obj.website+'</a>');
 
-        content.bind('click',function (event) {
+        /*content.bind('click',function (event) {
             event.preventDefault();
             Page.clickTitle(content.data("id"));
-        });
+        });*/
 
         link_a.appendTo(link);
 
@@ -357,7 +357,7 @@ var Page = {
             $("#"+divId).children().remove();
             if(data.list != null && data.list.length != 0) {
                 //console.log(data.list);
-                $('#'+divId).append('<span style="font-size:14px;font-weight:bold;margin-bottom:10px;display:block;">广告推荐</span>');
+                $('#'+divId).append('<span style="font-size:14px;font-weight:bold;margin-bottom:10px;display:block;">推荐</span>');
             }
             Page.renderAdvert(data.list,divId);
         });
@@ -370,9 +370,13 @@ var Page = {
             html += '<tr>';
             for(var k = 0; k < 4; k ++,t ++) {
                 if(list[t] != undefined) {
+                    var desc = list[t].desc;
+                    if(desc.length > 10) {
+                        desc = desc.substring(0,10);
+                    }
                     html += '<td>'
                         + '<img alt="ad" src="' + list[t].logourl + '" />'
-                        + '<a target="_blank" href="' + list[t].adurl + '" title="' + list[t].title + '">' + list[t].desc + '</a>'
+                        + '<a target="_blank" href="' + list[t].adurl + '" title="' + list[t].title + '">' + desc + '</a>'
                         + '</td>';
                 }
             }

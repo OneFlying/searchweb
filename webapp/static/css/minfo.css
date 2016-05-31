@@ -203,14 +203,19 @@ input::-ms-reveal {
 }
 
 .s_navbar > a {
-    display: inline-block;
+    float: left;
     color: #333333;
     text-decoration: none;
     padding-left: 5px;
     font-size: 14px;
 }
+.s_navbar > span {
+    float: left;
+}
 .s_navbar > a.subActive {
-
+    max-width: 140px;
+    overflow: hidden;
+    word-break: keep-all;
 }
 
 .s_navbar > a.active {
