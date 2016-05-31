@@ -271,6 +271,7 @@
 	<%@ include file="/manager/webconfig.jsp"%>
 	<%@ include file="/manager/websiteconfig.jsp"%>
     <%@ include file="/manager/upload.jsp"%>
+     <%@ include file="/manager/webconfigforqita.jsp"%>
 
 </body>
 </html>
