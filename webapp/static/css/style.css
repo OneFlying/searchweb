@@ -44,7 +44,7 @@ body{
 }
 
 .law-container > div > div > img{
-    height: 6em;
+    width: 155px;
 }
 .law-container > div > div > ul{
     display: block;
