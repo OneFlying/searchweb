@@ -65,7 +65,7 @@
         <div id="wrapper_wrapper">
             <div id="container" class="container-l">
                 <div id="content_right" class="cr-offset">
-                    <span style="font-size:14px;font-weight:bold;margin-bottom:5px;display:block;">广告推荐</span>
+                    <!-- <span style="font-size:14px;font-weight:bold;margin-bottom:5px;display:block;">广告推荐</span>
                     <table>
                         <tr>
                             <td>1111</td>
@@ -73,12 +73,12 @@
                             <td>3333</td>
                             <td>4444</td>
                         </tr>
-                    </table>
+                    </table> -->
                 </div><!-- /ad -->
 
                 <div class="head_nums_cont_outer">
                     <div class="nums">
-                        共为您搜索到1000条相关数据
+                        	<!-- 共为您搜索到1000条相关数据 -->
                     </div>
                 </div><!-- /num -->
 

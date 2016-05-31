@@ -31,7 +31,7 @@
     <script type="text/javascript" src="${RESOUCE_STATIC_URL}/lib/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="${RESOUCE_STATIC_URL}/umeditor/umeditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="${RESOUCE_STATIC_URL}/umeditor/umeditor.min.js"></script>
-    <script type="text/javascript" charset="utd-8" src="${RESOUCE_STATIC_URL}/umeditor/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript" src="${RESOUCE_STATIC_URL}/umeditor/lang/zh-cn/zh-cn.js"></script>
 </head>
 <body>
 	<div id="wrapper" class="wrapper_s">
