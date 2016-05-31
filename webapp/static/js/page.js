@@ -372,7 +372,7 @@ var Page = {
                 if(list[t] != undefined) {
                     html += '<td>'
                         + '<img alt="ad" src="' + list[t].logourl + '" />'
-                        + '<a href="' + list[t].adurl + '" title="' + list[t].title + '">' + list[t].desc + '</a>'
+                        + '<a target="_blank" href="' + list[t].adurl + '" title="' + list[t].title + '">' + list[t].desc + '</a>'
                         + '</td>';
                 }
             }

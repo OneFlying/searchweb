@@ -109,7 +109,6 @@ input::-ms-reveal {
 
 .search-box-logo > img {
     width: 137px;
-    height: 46px;
     display: block;
 }
 
@@ -376,6 +375,7 @@ input {
     height: 160px;
     border: 1px solid #f1f1f1;
     outline: none !important;
+    font-size: 14px;
 }
 
 .btn_submit {
@@ -416,3 +416,23 @@ input {
 	right: 0;
 }
 
+.message {
+    display: none;
+    position: fixed;
+    width: 300px;
+    z-index: 999;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    text-align: center;
+    color: #ffffff;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: rgba(0,0,0,.75);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}

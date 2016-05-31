@@ -602,6 +602,10 @@ input::-ms-reveal {
     width: 300px;
 }
 
+.form-group input[type="text"].error {
+    border-color: #CC0000 !important;
+}
+
 .btn-default {
     padding-top: 2px\9;
     font-size: 14px;
@@ -630,6 +634,27 @@ input::-ms-reveal {
     border-bottom: 1px solid #2868c8;
     *border-bottom: 0;
     box-shadow: 1px 1px 1px #ccc
+}
+
+.message {
+    display: none;
+    position: fixed;
+    width: 300px;
+    z-index: 999;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    text-align: center;
+    color: #ffffff;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: rgba(0,0,0,.75);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
 }
 
 
