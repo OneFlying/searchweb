@@ -45,7 +45,7 @@
             <div class="head_wrapper">
                 <div class="s_form">
                     <div class="s_form_wrapper">
-                        <a id="result_logo" onclick="window.history.go(-1);">
+                        <a id="result_logo" onclick="window.location.href='${RESOUCE_SYSTEM_URL}/'">
                             <img src="${RESOUCE_STATIC_URL}/img/plus_logo.png" alt="返回首页" title="返回首页">
                         </a>
                         <form id="form" name="f" class="fm" action="" method="" onsubmit="return false;">
@@ -75,19 +75,22 @@
                 <div id="container" class="container-l">
                     <div class="c-container" style="width:100%;">
                         <div class="c-row">
-                            <form role="form" id="form2" action="${RESOUCE_SYSTEM_URL}/article/save" method="post">
+                            <form role="form" id="form2" action="" method="">
                                 <div class="form-group">
                                     <label for="title">标题：</label>
-                                    <input id="title" placeholder="请输入标题" class="form-control" type="text" name="title" value="">
+                                    <input id="title" placeholder="请输入标题" class="form-control" type="text" name="title" value="" onblur="testTitle()" maxLength="50">
+                                    <span id="titleNum">还可输入50字</span>
                                 </div>
                                 <div class="form-group">
                                     <label for="website" style="font-size:14px;">网址链接：</label>
-                                    <input id="website" placeholder="请输入网址链接" class="form-control" type="text" name="website" value="">
+                                    <input id="website" placeholder="请输入网址链接" class="form-control" type="text" name="website" value="" onblur="testUrl()" maxLength="100">
+                                    <span id="urlNum">还可输入100字</span>
                                 </div>
                                 <div class="form-group">
                                     <!--style给定宽度可以影响编辑器的最终宽度-->
                                     <script type="text/plain" id="myEditor" name="content" style="width:840px;height:500px;" ></script>
                                 </div>
+                                <div id="contentNum" style="margin-bottom:10px;">还可输入 <span>5000</span> 字</div>
                                 <input type="hidden" id="img" name="imageurl" value=""/>
 
                                 <button type="button" onclick="setImg()" class="btn btn-default" name="button">提交</button>
@@ -105,19 +108,39 @@
             </div><!-- /footer -->
         </div>
 	</div>
+    <div class="message"></div>
 	<script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/util/HtmlUtil.js"></script>
     <script type="text/javascript">
         //实例化编辑器
+        var isFirst = true;
         var um = UM.getEditor('myEditor');
+        um.setContent('还可输入5000字');
         um.addListener('blur',function(){
-            $('#focush2').html('编辑器失去焦点了')
+            if(um.getContent().trim().length == 0) {
+                um.setContent('还可输入5000字');
+                $('#contentNum').text('还可输入5000字');
+                isFirst = true;
+            }
         });
         um.addListener('focus',function(){
-            $('#focush2').html('')
+            if(isFirst) {
+                um.setContent('');
+                isFirst = false;
+            }
         });
-        var res = um.getContent();
 
-        //alert(res);
+        um.addListener('contentChange', function(){
+            var length = um.getPlainTxt().length-1;
+
+            if(length > 5000) {
+                $('#contentNum').html('您已超过<span style="color:#cc0000"> '+(length-5000)+' </span>字');
+            } else {
+                $('#contentNum').html('还可输入<span> '+(5000-length)+' </span>字');
+            }
+        });
+
+        $('#title').focus();
+
         function setImg() {
             var res = UM.getEditor('myEditor').getContent();
 
@@ -134,17 +157,71 @@
                 }
             });
 
-            var res = $("#title").val();
+            var img = $('#img').val();
 
-            if(!res){
-                alert("请输入标题");
+            var res = $("#title").val().trim();
+            var url = $('#website').val().trim();
+            var regexp = new RegExp("(http[s]{0,1}|ftp)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?", "gi");
+            if(res == '' || res == null){
+                $('#title').addClass('error');
                 return false;
             }
-            //var url = RESOUCE_SYSTEM_URL_JS+"/index";
 
-            $("#form2").submit();
+            if(url.match(regexp) == null) {
+                $('#website').addClass('error');
+                return false;
+            }
 
+            if(UM.getEditor('myEditor').getPlainTxt().length > 4999) {
+                return false;
+            }
+
+            //$("#form2").submit();
+            $.post(RESOUCE_SYSTEM_URL_JS+'/article/save',{title:res,content:UM.getEditor("myEditor").getContent(),website:url,imageurl:img},function(data) {
+                if(data.success) {
+                    $('.message').text('上传文章成功').fadeIn();
+                    setTimeout(function(){
+                        $('.message').fadeOut();
+                    },3000);
+                    $('#title').val('');
+                    $('#website').val('');
+                    $('#titleNum').text('还可输入50字');
+                    $('#urlNum').text('还可输入100字');
+                    $('#img').val('');
+                    UM.getEditor("myEditor").setContent('');
+                }
+            });
         }
+
+        function testTitle() {
+            var res = $("#title").val().trim();
+            if(res == '' || res == null){
+                $('#title').addClass('error');
+            } else {
+                $('#title').removeClass('error');
+            }
+        }
+
+        function testUrl() {
+            var url = $('#website').val().trim();
+            var regexp = new RegExp("(http[s]{0,1}|ftp)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?", "gi");
+            if(url.match(regexp) == null) {
+                $('#website').addClass('error');
+            } else {
+                $('#website').removeClass('error');
+            }
+        }
+
+        //实时文字长度限制
+        $('#title').on('input propertychange', function(){
+            var length = $(this).val().trim().length;
+            $('#titleNum').text('还可输入'+(50-length)+'字');
+        });
+
+        $('#website').on('input propertychange', function(){
+            var length = $(this).val().trim().length;
+            $('#urlNum').text('还可输入'+(100-length)+'字');
+        });
 
         //修正页面
         $('#container').css({
@@ -183,17 +260,25 @@
         $("#su").on("click",function(){
             //获取要搜寻的关键字
             var keywords = $("#kw").val();
-            window.location.href="${RESOUCE_SYSTEM_URL}/article/list?keywords="+keywords;
-            return false;
-        });
-        $(document).on('keyup',function(event) {
-            event.preventDefault();
-            if (event.keyCode == 13) {
-                var keywords = $("#kw").val();
+            if(keywords.trim() == '') {
+                window.location.href = RESOUCE_SYSTEM_URL_JS + '/';
+            } else {
                 window.location.href="${RESOUCE_SYSTEM_URL}/article/list?keywords="+keywords;
             }
             return false;
         });
+        <%--$(document).on('keyup',function(event) {--%>
+            <%--event.preventDefault();--%>
+            <%--if (event.keyCode == 13) {--%>
+                <%--var keywords = $("#kw").val();--%>
+                <%--if(keywords.trim() == '') {--%>
+                    <%--window.location.href = RESOUCE_SYSTEM_URL_JS + '/';--%>
+                <%--} else {--%>
+                    <%--window.location.href="${RESOUCE_SYSTEM_URL}/article/list?keywords="+keywords;--%>
+                <%--}--%>
+            <%--}--%>
+            <%--return false;--%>
+        <%--});--%>
     </script>
 </body>
 </html>

@@ -131,14 +131,18 @@
         $("#su").on("click",function(){
             //获取要搜寻的关键字
             var keywords = $("#kw").val();
-            window.location.href="${RESOUCE_SYSTEM_URL}/article/list?keywords="+keywords;
+            if(keywords.trim() != '') {
+                window.location.href="${RESOUCE_SYSTEM_URL}/article/list?keywords="+keywords;
+            }
             return false;
         });
         $(document).on('keyup',function(event) {
             event.preventDefault();
             if (event.keyCode == 13) {
                 var keywords = $("#kw").val();
-                window.location.href="${RESOUCE_SYSTEM_URL}/article/list?keywords="+keywords;
+                if(keywords.trim() != '') {
+                    window.location.href="${RESOUCE_SYSTEM_URL}/article/list?keywords="+keywords;
+                }
             }
             return false;
         });

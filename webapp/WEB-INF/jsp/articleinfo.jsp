@@ -1,3 +1,4 @@
+<%@ page import="java.util.*" %>
 <%@page import="com.yf.model.Article"%>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@page import="com.yf.utils.KeyWordUtil"%>
@@ -63,7 +64,15 @@
             <div class="s_navbar">
                 <a class="active" href="javascript:;">搜索结果</a>
                 <span>&gt;</span>
-                <a href="#"><%=article.getTitle() %></a>
+                <a href="#">
+                    <%
+                       if(article.getTitle().length() > 10) {
+                            out.print(article.getTitle().substring(0,7)+"...");
+                       }else{
+                            out.print(article.getTitle());
+                       }
+                    %>
+                </a>
             </div>
         </div>
         <div class="content">
@@ -92,12 +101,14 @@
                 <div class="s_content_right">
                     <div id="inline1" class="fancybox-decoration right_box">
                         <h2>我要举报</h2>
-                        <textarea name="jubao_content" title=""></textarea>
+                        <textarea name="jubao_content" title="" maxLength="200"></textarea>
+                        <div id="jbNum">还可输入200字</div>
                         <a id="btn_submit" class="btn_submit btn_gray">我要举报</a>
                     </div>
                     <div id="inline2" class="fancybox-decoration right_box">
                         <h2>我要留言</h2>
-                        <textarea name="mes_content" title=""></textarea>
+                        <textarea name="mes_content" title="" maxLength="200"></textarea>
+                        <div id="meNum">还可输入200字</div>
                         <a id="mes_submit" class="btn_submit">我要留言</a>
                     </div>
                 </div>
@@ -113,6 +124,9 @@
     </div>
     <!-- 返回顶部 -->
     <a href="#" id="scrollTop"><span class="glyphicon glyphicon-menu-up"></span></a>
+
+    <!-- 提示窗口 -->
+    <div class="message"></div>
 
     <script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/util/HtmlUtil.js"></script>
     <script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/evaluate.js"></script>
@@ -157,6 +171,16 @@
             $('html,body').animate({scrollTop:0},500);
         });
 
+        $('textarea[name="jubao_content"]').on('input propertychange', function(){
+            var length = $(this).val().trim().length;
+            $('#jbNum').text('还可输入'+(200-length)+'字');
+        });
+
+        $('textarea[name="mes_content"]').on('input propertychange', function(){
+            var length = $(this).val().trim().length;
+            $('#meNum').text('还可输入'+(200-length)+'字');
+        });
+
         $(document).ready(function(){
             //加载留言
             Evaluate.getMessage("<%=article.getId()%>","evaluate");
@@ -188,7 +212,10 @@
                     var res = eval("("+data+")");
                     if(res.success){
                         $("textarea[name='jubao_content']").val('');
-                        alert('感谢您的举报信息，我们会尽快处理');
+                        $('.message').text('感谢您的举报信息，我们会尽快处理').fadeIn();
+                        setTimeout(function(){
+                            $('.message').fadeOut();
+                        },3000);
                     }
                 });
 
@@ -204,7 +231,10 @@
                     var res = eval("("+data+")");
                     if(res.success){
                         $("textarea[name='mes_content']").val('');
-                        alert('感谢您的留言，您的留言可以帮助其他用户');
+                        $('.message').text('感谢您的留言，您的留言可以帮助其他用户').fadeIn();
+                        setTimeout(function(){
+                            $('.message').fadeOut();
+                        },3000);
                         //加载留言
                         Evaluate.getMessage("<%=article.getId()%>","evaluate");
                     }
@@ -234,7 +264,11 @@
         $("#su").bind("click",function(){
             //获取要搜寻的关键字
             var keywords = $("#kw").val();
-            window.location.href="${RESOUCE_SYSTEM_URL}/article/list?keywords="+keywords;
+            if(keywords.trim() == '') {
+                window.location.href = RESOUCE_SYSTEM_URL_JS + '/';
+            } else {
+                window.location.href="${RESOUCE_SYSTEM_URL}/article/list?keywords="+keywords;
+            }
             return false;
         });
     </script>

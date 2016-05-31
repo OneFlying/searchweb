@@ -286,6 +286,9 @@
     $(document).keydown(function(event) {
         if (event.keyCode == 13) {
             var keywords = $("#kw").val();
+            if(keywords.trim() == '') {
+                window.location.href = RESOUCE_SYSTEM_URL_JS + '/';
+            }
             $("#kw").val(keywords);
             keywords = $("#kw").val();
             $("title").text(keywords);
@@ -299,6 +302,9 @@
     $("#su").bind('click',function(event) {
         /* Act on the event */
         var keywords = $("#kw").val();
+        if(keywords.trim() == '') {
+            window.location.href = RESOUCE_SYSTEM_URL_JS + '/';
+        }
         $("#kw").val(keywords);
         keywords = $("#kw").val();
         $("title").text(keywords);
@@ -311,6 +317,9 @@
     $("#su1").bind('click',function(event) {
         /* Act on the event */
         var keywords = $("#kw1").val();
+        if(keywords.trim() == '') {
+            window.location.href = RESOUCE_SYSTEM_URL_JS + '/';
+        }
         $("#kw1").val(keywords);
         keywords = $("#kw1").val();
         $("title").text(keywords);
