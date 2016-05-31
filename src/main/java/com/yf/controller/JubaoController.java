@@ -85,6 +85,7 @@ public class JubaoController {
 		List<Jubao> list = jubaoDao.getPageJubao(searchEntity);
 		List<Jubao> listJson = new ArrayList<Jubao>();
 		//将文章ID转化为标题
+		//int a = 0;
 		for(Jubao jubao :list){
 			String articleId = jubao.getArticleid();
 			Article article = articleDao.getArticleById(articleId);
@@ -93,7 +94,7 @@ public class JubaoController {
 				listJson.add(jubao);
 			}	
 		}
-		int total = searchEntity.getTotal();
+		int total = listJson.size();
 		modelMap.put("rows",listJson);
 		modelMap.put("total", total);
 		return modelMap;
