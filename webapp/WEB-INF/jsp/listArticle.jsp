@@ -231,6 +231,9 @@
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/util/HtmlUtil.js"></script>
 
 <script type="text/javascript">
+    $.ajaxSetup ({
+        cache: false //关闭AJAX缓存
+    });
     //未做手机端浏览器判定
     var initTop = 0;
     $(window).scroll(function(){

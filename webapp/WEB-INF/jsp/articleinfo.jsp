@@ -176,6 +176,9 @@
         });
 
         $(document).ready(function(){
+            $.ajaxSetup ({
+                cache: false //关闭AJAX缓存
+            });
             //加载留言
             Evaluate.getMessage("<%=article.getId()%>","evaluate");
 

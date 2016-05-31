@@ -94,6 +94,9 @@
     </div>
     <script type="text/javascript" src="${RESOUCE_STATIC_URL}/lib/jquery-1.11.1.min.js"></script>
     <script type="text/javascript">
+        $.ajaxSetup ({
+            cache: false //关闭AJAX缓存
+        });
         (function(){
             if(!system.win && !system.mac && !system.x11){//如果是手机，隐藏上传链接
                 $('#m').css({display:'none'});

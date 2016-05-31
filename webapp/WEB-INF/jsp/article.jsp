@@ -267,6 +267,12 @@
             }
             return false;
         });
+
+        $(document).ready(function(){
+            $.ajaxSetup ({
+                cache: false //关闭AJAX缓存
+            });
+        });
         <%--$(document).on('keyup',function(event) {--%>
             <%--event.preventDefault();--%>
             <%--if (event.keyCode == 13) {--%>

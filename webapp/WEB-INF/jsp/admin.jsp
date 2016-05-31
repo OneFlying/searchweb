@@ -41,6 +41,13 @@
 		src="${RESOUCE_STATIC_URL}/js/promotion.js"></script>
     <script type="text/javascript"
 		src="${RESOUCE_STATIC_URL}/js/advert.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$.ajaxSetup ({
+				cache: false //关闭AJAX缓存
+			});
+		});
+	</script>
     <title>网站后台登录</title>
     <%@ include file="/resource.jsp" %>
    <style>
