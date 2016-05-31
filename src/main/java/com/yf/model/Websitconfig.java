@@ -16,6 +16,14 @@ public class Websitconfig {
 	private String logourl;//logo路径
 	private String keywords;//关键字
 	private String beianhao;//备案号
+	private String qitalogo;
+	@Column(name="qitalogo")
+	public String getQitalogo() {
+		return qitalogo;
+	}
+	public void setQitalogo(String qitalogo) {
+		this.qitalogo = qitalogo;
+	}
 	@Column(name="id")
 	public String getId() {
 		return id;

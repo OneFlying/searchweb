@@ -1,34 +1,58 @@
 package com.yf.controller;
 
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.yf.dao.WebsiteconfigDao;
+import com.yf.model.Websitconfig;
 
 @Controller
 @RequestMapping("/")
 public class IndexController {
 
+	@Resource
+	private WebsiteconfigDao websiteconfigDao;
 	@RequestMapping("/")
-	public String skipToIndex(){
-		return "index";
+	public ModelAndView skipToIndex(){
+		ModelAndView modelAndView = new ModelAndView();
+		Websitconfig websitconfig = websiteconfigDao.getWebsitconfig();
+		modelAndView.addObject("logourl",websitconfig.getLogourl());
+		modelAndView.addObject("title",websitconfig.getTitle());
+		modelAndView.setViewName("index");
+		return modelAndView;
 	}
 	
 	@RequestMapping("/aboutus")
-	public String aboutUs(){
-		return "aboutus";
+	public ModelAndView aboutUs(){
+		ModelAndView modelAndView = new ModelAndView();
+		Websitconfig websitconfig = websiteconfigDao.getWebsitconfig();
+		modelAndView.addObject("qitalogourl",websitconfig.getQitalogo());
+		modelAndView.addObject("title",websitconfig.getTitle());
+		modelAndView.setViewName("aboutus");
+		return modelAndView;
 	}
 	
 	@RequestMapping("/law")
 	public ModelAndView noticeLaw(String param){
 		ModelAndView modelAndView = new ModelAndView();
-		
+		Websitconfig websitconfig = websiteconfigDao.getWebsitconfig();
+		modelAndView.addObject("qitalogourl",websitconfig.getQitalogo());
+		modelAndView.addObject("title",websitconfig.getTitle());
 		modelAndView.addObject("param", param);
 		modelAndView.setViewName("law");
 		return modelAndView;
 	}
 	
 	@RequestMapping("/agreement")
-	public String Agreement(){
-		return "agreement";
+	public ModelAndView Agreement(){
+		ModelAndView modelAndView = new ModelAndView();
+		Websitconfig websitconfig = websiteconfigDao.getWebsitconfig();
+		modelAndView.addObject("qitalogourl",websitconfig.getQitalogo());
+		modelAndView.addObject("title",websitconfig.getTitle());
+		modelAndView.setViewName("agreement");
+		return modelAndView;
 	}
 }

@@ -70,7 +70,9 @@ public class WebsiteConfigController {
 		
 		Websitconfig websitconfig1 = websiteConfigDao.getWebsitconfig();
 		//websitconfig.setId(StringUtils.generateUuid());
-		websitconfig1.setTitle(websitconfig.getTitle());		
+		websitconfig1.setTitle(websitconfig.getTitle());
+		websitconfig1.setKeywords(websitconfig.getKeywords());
+		websitconfig1.setBeianhao(websitconfig.getBeianhao());
 		int res = websiteConfigDao.updateWebsiteConfig(websitconfig1);
 		if(res != 0){
 			modelMap.put("success", true);

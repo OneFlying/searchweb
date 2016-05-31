@@ -39,9 +39,9 @@ public class WebsiteconfigDao extends DaoAdapter{
 		
 		try {
 			
-			String sql = "insert into websitconfig values(?,?,?,?,?)";
+			String sql = "insert into websitconfig values(?,?,?,?,?,?)";
 			
-			return super.getJdbcTemplate().update(sql,websitconfig.getId(),websitconfig.getTitle(),websitconfig.getLogourl(),websitconfig.getKeywords(),websitconfig.getBeianhao());
+			return super.getJdbcTemplate().update(sql,websitconfig.getId(),websitconfig.getTitle(),websitconfig.getLogourl(),websitconfig.getKeywords(),websitconfig.getBeianhao(),websitconfig.getQitalogo());
 			
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -58,8 +58,8 @@ public class WebsiteconfigDao extends DaoAdapter{
 		
 		try {
 			
-			String sql = "update websitconfig set title=?,logourl=?,keywords=?,beianhao=? where id=?";
-			return super.getJdbcTemplate().update(sql,websitconfig.getTitle(),websitconfig.getLogourl(),websitconfig.getKeywords(),websitconfig.getBeianhao(),websitconfig.getId());
+			String sql = "update websitconfig set title=?,logourl=?,keywords=?,beianhao=?,qitalogo=? where id=?";
+			return super.getJdbcTemplate().update(sql,websitconfig.getTitle(),websitconfig.getLogourl(),websitconfig.getKeywords(),websitconfig.getBeianhao(),websitconfig.getQitalogo(),websitconfig.getId());
 			
 		} catch (Exception e) {
 			// TODO: handle exception

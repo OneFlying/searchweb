@@ -88,8 +88,10 @@ public class JubaoController {
 		for(Jubao jubao :list){
 			String articleId = jubao.getArticleid();
 			Article article = articleDao.getArticleById(articleId);
-			jubao.setArticleid(article.getTitle());
-			listJson.add(jubao);
+			if(article != null){
+				jubao.setArticleid(article.getTitle());
+				listJson.add(jubao);
+			}	
 		}
 		int total = searchEntity.getTotal();
 		modelMap.put("rows",listJson);

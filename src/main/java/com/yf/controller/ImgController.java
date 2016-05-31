@@ -105,7 +105,79 @@ public class ImgController {
 		modelAndView.setViewName("admin");
 		return modelAndView;
 	}
-	
+	/**
+	 * 上传文件
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/uploadqita")
+	public ModelAndView uploadqita(HttpServletRequest request) throws Exception
+	{
+		ModelMap modelMap = new ModelMap();
+		
+		//第一步转换request
+		MultipartHttpServletRequest mtr = (MultipartHttpServletRequest)request;
+		//接受文件
+		//这里的pic是表单中的name="pic"
+		CommonsMultipartFile cmf = (CommonsMultipartFile) mtr.getFile("pic");
+		//获得字节数组
+		byte[] bfile = cmf.getBytes();
+		
+		//设置文件名
+		String fileName = "";
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+		fileName = format.format(new Date());
+		//获得3为随机数
+		Random random = new Random();
+		
+		for(int i = 0 ; i < 3 ; i++)
+		{
+			fileName = fileName + random.nextInt(9);
+		}
+		
+		//获取原始文件名
+		String original = cmf.getOriginalFilename();
+		//获取后缀
+		String suffix = original.substring(original.lastIndexOf("."));
+		
+		//拿到项目的部署路径
+		String path = request.getSession().getServletContext().getRealPath("/");
+		
+		String realPath = path+"/static/upload/"+fileName+suffix;
+		
+		//url访问的路径
+		String urlPath = "/upload/"+fileName+suffix;
+		
+		OutputStream out = new FileOutputStream(new File(realPath));
+		
+		//开始写出
+		out.write(bfile);
+		out.flush();
+		out.close();
+		
+		/**
+		 * 将上传的图片信息进行保存
+		 */
+		Img img = new Img();
+		img.setId(StringUtils.generateUuid());
+		img.setUrl(urlPath);
+		Websitconfig websitconfig = websiteconfigDao.getWebsitconfig();
+		int ret = imgDao.saveImg(img);
+		websitconfig.setQitalogo(urlPath);
+		int num = websiteconfigDao.updateWebsiteConfig(websitconfig);
+		if(ret != 0){
+			System.out.println("上传成功");
+		}else{
+			System.out.println("上传失败");
+		}
+		ModelAndView modelAndView = new ModelAndView();
+		Websitconfig websitconfig1 = websiteconfigDao.getWebsitconfig();
+		modelAndView.addObject("logourl",websitconfig1.getLogourl());
+		modelAndView.addObject("title",websitconfig1.getTitle());
+		modelAndView.setViewName("admin");
+		return modelAndView;
+	}
 	@RequestMapping("/index")
 	public String testUpload(){
 		return "test";
