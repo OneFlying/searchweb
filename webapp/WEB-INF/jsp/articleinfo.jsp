@@ -191,7 +191,7 @@
                     type: 'get',
                     url: '${RESOUCE_STATIC_URL}'+obj.logourl,
                     success: function(){
-                        $("#logo").attr("src","${RESOUCE_STATIC_URL}"+obj.qitalogourl);
+                        $("#logo").attr("src","${RESOUCE_STATIC_URL}"+"${qitalogourl}");
                     },
                     error: function(){
 

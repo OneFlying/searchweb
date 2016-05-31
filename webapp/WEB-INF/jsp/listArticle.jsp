@@ -348,22 +348,23 @@
 
     $(document).ready(function(){
         $("title").text("<%=keywords%>");
+        $("#result_logo>img").attr("src","${RESOUCE_STATIC_URL}"+"${qitalogourl}");
 
         var url = RESOUCE_SYSTEM_URL_JS+"/websiteconfig/getinfo";
 
         $.get(url,function(data){
             var obj = data.wc;
             $("meta[name='keywords']").attr("content",obj.keywords);
-            $.ajax({ //获取logo
-                type: 'get',
-                url: '${RESOUCE_STATIC_URL}'+obj.logourl,
-                success: function(){
-                    $("#result_logo>img").attr("src","${RESOUCE_STATIC_URL}"+obj.qitalogourl);
-                },
-                error: function(){
-                    $('#result_logo>img').attr({'src':'${RESOUCE_STATIC_URL}/img/plus_logo.png'});
-                }
-            });
+            <%--$.ajax({ //获取logo--%>
+                <%--type: 'get',--%>
+                <%--url: '${RESOUCE_STATIC_URL}'+obj.logourl,--%>
+                <%--success: function(){--%>
+                    <%--$("#result_logo>img").attr("src","${RESOUCE_STATIC_URL}"+obj.qitalogourl);--%>
+                <%--},--%>
+                <%--error: function(){--%>
+                    <%--$('#result_logo>img').attr({'src':'${RESOUCE_STATIC_URL}/img/plus_logo.png'});--%>
+                <%--}--%>
+            <%--});--%>
         });
     });
 

@@ -244,7 +244,7 @@
                 type: 'get',
                 url: '${RESOUCE_STATIC_URL}'+obj.logourl,
                 success: function(){
-                    $("#result_logo>img").attr("src","${RESOUCE_STATIC_URL}"+obj.qitalogourl);
+                    $("#result_logo>img").attr("src","${RESOUCE_STATIC_URL}"+"${qitalogourl}");
                 },
                 error: function(){
 
