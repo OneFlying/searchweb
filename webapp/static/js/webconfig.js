@@ -72,9 +72,15 @@ loadgrid : function(){
 				      }
 		          },
 		          {
-		        	field:'content',title:'<font color="black" size="2px">上传logo</font>',align:'center',width:90,
+		        	field:'content',title:'<font color="black" size="2px">上传首页logo</font>',align:'center',width:50,
 		        	formatter: function(value, row, index) {
 		        		return '<input type="button" id="uploadPic" onclick="uploadPic()" style="height:27px;width:70px;font-size:12px;line-height:0px;margin-top:-7px;color:black" value="上传图片"/>';
+		        	}
+		          },
+		          {
+		        	field:'cont',title:'<font color="black" size="2px">上传其他logo</font>',align:'center',width:50,
+		        	formatter: function(value, row, index) {
+		        		return '<input type="button" id="uploadPic" onclick="uploadPicOne()" style="height:27px;width:70px;font-size:12px;line-height:0px;margin-top:-7px;color:black" value="上传图片"/>';
 		        	}
 		          }
 		          ]],
@@ -97,4 +103,8 @@ reload:function(){//重新加载，保持在当前页
 function uploadPic(){
 	//alert('2345');
 	$('#webconfig_add_win').window('open');
+}
+function uploadPicOne(){
+	//alert('2345');
+	$('#webconfigfor_add_win').window('open');
 }

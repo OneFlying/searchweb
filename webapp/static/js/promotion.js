@@ -92,6 +92,12 @@ loadgrid : function(){
 		          	field:'id',title:'id',checkbox:true
 		          },
 		          {
+		          	field:'title',title:'<font color="black" size="2px">标题</font>',width:40,align:'center',sortable:true,
+		          	  	formatter : function(value,row,index){
+				        	return '<font color="black" size="2px" >'+value+'</font>';
+				      	}
+		          },
+		          {
 		          	field:'price',title:'<font color="black" size="2px">价格</font>',width:40,align:'center',sortable:true,
 		          	  	formatter : function(value,row,index){
 				        	return '<font color="black" size="2px" >'+value+'</font>';
