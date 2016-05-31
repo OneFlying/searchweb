@@ -16,8 +16,7 @@
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/lib/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="${RESOUCE_STATIC_URL}/umeditor/umeditor.config.js"></script>
 <script type="text/javascript" charset="utf-8" src="${RESOUCE_STATIC_URL}/umeditor/umeditor.min.js"></script>
-<script type="text/javascript" src="lang/zh-cn/zh-cn.js"></script>
-<script type="text/javascript" src="${RESOUCE_STATIC_URL}/lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="${RESOUCE_STATIC_URL}/umeditor/lang/zh-cn/zh-cn.js"></script>
 <style>
     h1{
         font-size: 20px;
@@ -29,7 +28,7 @@
 <body>
     <h1>后台配置管理-新增推广信息</h1>
     <div class="container">
-        <form role="form" id="form" action="${RESOUCE_SYSTEM_URL}/promotion/add" method="post">
+        <form role="form" id="form1" method="post" action="${RESOUCE_SYSTEM_URL}/promotion/add">
             <div class="form-group">
                 <label for="website">标题:</label>
                 <input id="website" class="form-control" type="text" name="title" value="">
@@ -63,6 +62,10 @@
 <script type="text/javascript">
     //实例化编辑器
     //action="${RESOUCE_SYSTEM_URL}/promotion/add"
+    var log = "${msg}";
+    if(log != ""){
+         alert(log);
+    }
     var um = UM.getEditor('myEditor');
     um.addListener('blur',function(){
         $('#focush2').html('编辑器失去焦点了')
@@ -98,11 +101,22 @@
             alert("请输入标题");
             return false;
         }*/
-        //var url = RESOUCE_SYSTEM_URL_JS+"/index";
-
-         $("#form").submit();
-         window.close();
-        /*$.post("${RESOUCE_SYSTEM_URL}/promotion/add",{price:price,url:url,content:content,imageurl:imageurl},function(data){
+        var url = RESOUCE_SYSTEM_URL_JS+"/promotion/add";
+      /*  document.form.action = url;   
+        document.form.method = "post";   
+        document.form.submit()*/
+        //action="${RESOUCE_SYSTEM_URL}/promotion/add"
+        $("#form1").submit();
+       // var ret = sleep(2000)
+        /*if(ret){
+            alert(1);
+             var log = "${success}";
+             alert('------'+log);
+        } */
+    
+       
+       // window.close();
+       /* $.post("${RESOUCE_SYSTEM_URL}/promotion/add",{price:price,url:url,content:content,imageurl:imageurl},function(data){
             if(data.success){
                 alert(data.msg);
                 location.href = RESOUCE_SYSTEM_URL_JS + data.url;
@@ -118,9 +132,25 @@
     function backTO(){
         //window.location.href = "${RESOUCE_SYSTEM_URL}/admin";
         window.close();
+        /*var log = "${success}";
+        alert('------'+log);*/
     }
-
-
+    function test(){
+        setTimeout('alert(1)',2000);
+    }
+    function tableAlert(){
+        var log = "${success}";
+        alert('------'+log);
+    }
+    function sleep(numberMillis) {
+    var now = new Date();
+    var exitTime = now.getTime() + numberMillis;
+    while (true) {
+        now = new Date();
+        if (now.getTime() > exitTime)
+            return;
+    }
+}
 </script>
 </body>
 </html>
