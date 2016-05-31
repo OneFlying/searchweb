@@ -38,6 +38,11 @@ public class PromotionController {
 	private PromotionDao promotionDao;
 	@Resource
 	private WebsiteconfigDao websiteconfigDao;
+	
+	/*@RequestMapping("/pro")
+	public String index(){
+		return "promotion";
+	}*/
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public ModelAndView add(HttpServletResponse response,String price,String content,String imageurl,String url,String title){
 		ModelAndView modelAndView = new ModelAndView();
@@ -51,18 +56,20 @@ public class PromotionController {
 		promotin.setUsecount(0);
 		promotin.setId(StringUtils.generateUuid());
 		boolean ret = promotionDao.add(promotin);
-		//if(ret){
+		if(ret){
 			Websitconfig websitconfig = websiteconfigDao.getWebsitconfig();
 			/*modelAndView.addObject("msg", "新增成功");
 			modelAndView.addObject("success", ret);*/
 			modelAndView.addObject("logourl",websitconfig.getLogourl());
 			modelAndView.addObject("title",websitconfig.getTitle());
-			modelAndView.setViewName("redirect:/admin");
-//			modelAndView.addObject("url", "/admin");
-		/*}else{
+			modelAndView.addObject("success", true);
+			modelAndView.addObject("msg", "新增成功");
+			modelAndView.setViewName("promotion");
+			modelAndView.addObject("url", "/admin");
+		}else{
 			modelAndView.addObject("success", ret);
 			modelAndView.addObject("msg", "新增失败");
-		}*/
+		}
 		return modelAndView;
 	}
 	@RequestMapping(value="/update",method=RequestMethod.POST)
