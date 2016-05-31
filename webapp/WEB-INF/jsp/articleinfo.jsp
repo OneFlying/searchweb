@@ -110,15 +110,29 @@
     <script type="text/javascript">
         //滚动事件监听
         var initTop = 0;
+        var isFixed = false;
         $(window).scroll(function(){
             var scrollTop = $(window).scrollTop();
             if(scrollTop > initTop){
                 if(scrollTop >= 500) {
                     $('#scrollTop').css({display:'block'});
                 }
+                if(isDesktop) {
+                	if(scrollTop >= 150) {
+                		isFixed = true;
+                		if($(window).width() >= 1280) {
+                			$('.s_content_right').addClass('content_right_fixed')
+							 .css({right: ($(window).width()-1040)/2-17+'px'});
+                		}
+                	}
+                }
             }else {
                 if(scrollTop == 0) {
                     $('#scrollTop').css({display:'none'});
+                }
+                if(scrollTop == 0) {
+                	isFixed = false;
+                	$('.s_content_right').removeClass('content_right_fixed');
                 }
             }
             initTop = scrollTop;
@@ -202,6 +216,9 @@
                 $('#scrollTop').css({
                     right: ($(window).width()-1040)/2-80+'px'
                 });
+            }
+            if(isFixed) {
+            	$('.s_content_right').css({right: ($(window).width()-1040)/2-21+'px'});
             }
         });
 

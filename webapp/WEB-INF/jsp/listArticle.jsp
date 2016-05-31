@@ -83,7 +83,7 @@
                 </div><!-- /num -->
 
                 <div id="content_left">
-                    <div class="content_top">
+                    <%-- <div class="content_top">
                         <div class="content_top_item">
                             <a href="#">
                                 <div class="content_title">广西南宁医院--一家大型的医院</div>
@@ -119,7 +119,7 @@
                             </div>
                         </div>
 
-                    </div>
+                    </div> --%>
                 </div><!-- /content -->
 
                 <div style="clear:both;height: 0"></div>
