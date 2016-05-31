@@ -563,16 +563,16 @@ input::-ms-reveal {
     text-decoration: none;
     border: 1px solid rgba(178,178,178,.3);
     padding: 8px 12px;
-    color: #0000CC;
     margin-right: 5px;
+    outline: none;
+    -webkit-appearance: none;
 }
 .pagenation > ul > li > a:active{
-    color: red;
+    background: none !important;
+    border: none !important;
 }
 .pagenation > ul > li > a:hover{
     cursor: pointer;
-    background:#f2f8ff;
-    border:1px solid #38f
 }
 .page-hidden{
     display: none;
@@ -581,8 +581,30 @@ input::-ms-reveal {
     display: inline-block;
 }
 
+.pagenation{
+    text-align: -webkit-center;
+    text-align: center;
+}
+.pagenation > ul > li > span{
+    display: block;
+    margin:auto 10px auto 10px;
+    vertical-align: middle;
+    font-size: 16px;
+    letter-spacing: 0.3em;
+    line-height: 1px;
+}
+.pagenation > ul > li > a{
+    text-decoration: none;
+    vertical-align: middle;
+    border: none;
+    color: #333333;
+    font-size: 16px;
+    padding: 15px 0;
+}
+
+/*
 @media only screen and (min-width: 601px) and (max-width: 768px){
-    /*修饰导航条*/
+    !*修饰导航条*!
     .pagenation{
         text-align: -webkit-left;
         text-align: left;
@@ -604,7 +626,7 @@ input::-ms-reveal {
 }
 
 @media only screen and (min-width: 321px) and (max-width: 600px){
-    /*修饰导航条*/
+    !*修饰导航条*!
     .pagenation{
         text-align: -webkit-center;
         text-align: center;
@@ -626,7 +648,7 @@ input::-ms-reveal {
 }
 
 @media only screen and (max-width:320px) {
-    /*修饰导航条*/
+    !*修饰导航条*!
     .pagenation{
         text-align: -webkit-center;
         text-align: center;
@@ -645,4 +667,4 @@ input::-ms-reveal {
         vertical-align: middle;
         border: none;
     }
-}
+}*/

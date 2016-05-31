@@ -1,2 +1,76 @@
-article,aside,figure,footer,header,hgroup,menu,nav,section{display:block}.west{width:200px;padding:10px}/*.panel-header{background:#666}*/.north{height:5pc;line-height:5pc;overflow:hidden;background:#FFF0F5 }.north>.north-title{float:left;padding-left:20px;line-height:73px}.north>.north-title>img{float:left;margin-top:14px;height: 45px;display:block;}.north>.north-title>span{float:left;font-size:30px;margin-left:10px}.north>.north-logout{float:right;padding-right:20px;margin-top:24px}.north>.north-logout>a{font-size:14px;display:block;color:black;line-height:25px;
-	border:1px solid #000;border-radius:5px;box-shadow:0 0 5px rgba(0,0,0,.5);-webkit-transition:all .5s;transition:all .5s;padding:3px 10px;overflow:hidden}.north>.north-logout>a:hover{box-shadow:inset 0 0 5px rgba(0,0,0,.5)}.north>.north-logout>a>img{float:left;margin-top:3px;width:18px;height:18px}.north>.north-logout>a>span{float:left;padding-left:5px}
+html,body {
+	margin: 0 0;
+	padding: 0 0;
+	font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+	font-size: 100%;
+}
+
+article,aside,figure,footer,header,hgroup,menu,nav,section {
+	display: block;
+}
+
+.west {
+	width: 200px;
+	padding: 10px;
+}
+
+.north {
+	height: 60px;
+	width: 100%;
+	line-height: 58px;
+	overflow: hidden;
+	background-color: #E0ECFF;
+	background: -webkit-linear-gradient(top,#EFF5FF 0,#E0ECFF 100%);
+	background: -moz-linear-gradient(top,#EFF5FF 0,#E0ECFF 100%);
+	background: -o-linear-gradient(top,#EFF5FF 0,#E0ECFF 100%);
+	background: linear-gradient(to bottom,#EFF5FF 0,#E0ECFF 100%);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#EFF5FF,endColorstr=#E0ECFF,GradientType=0);
+}
+
+.north>.north-title {
+	float: left;
+	padding-left: 20px;
+}
+
+.north>.north-title>img {
+	height: 40px;
+	margin: 8px 0 0;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.north>.north-title>span {
+	font-size: 26px;
+	margin-left: 10px;
+	display: inline-block;
+}
+
+.north>.north-logout {
+	float: right;
+}
+
+.north>.north-logout>a {
+	font-size: 18px;
+	width: 100px;
+	height: 60px;
+	display: block;
+	color: #4cbff4;
+	text-decoration: none;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	clear: both;
+	vertical-align: middle;
+}
+
+.north>.north-logout>a>img {
+	width: 50px;
+	height: 34px;
+	float: left;
+	margin-top: 11px;
+}
+
+.north>.north-logout>a>span {
+	float: left;
+}

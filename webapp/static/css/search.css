@@ -338,6 +338,18 @@ input::-ms-reveal {
     background-color: #FFFAFA !important;
 }
 
+.content_top:before {
+    position: absolute;
+    content: '商业推广';
+    display: box;
+    -webkit-display: box;
+    margin-left: 580px;
+    margin-top: 5px;
+    color: #3385ff !important;
+    font-size: 12px;
+    text-decoration: underline;
+}
+
 .content_top_item {
     width: 540px;
     margin-bottom: 11px;
@@ -557,5 +569,67 @@ input::-ms-reveal {
     display: inline-block;
 }
 
+#form2 {
+    display: block;
+    padding-left: 121px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/*ueditor*/
+.edui-container {
+    box-shadow: none !important;
+}
+
+.edui-toolbar {
+    box-shadow: none !important;
+}
+
+.form-group {
+    width: 100%;
+    margin: 10px auto;
+}
+
+.form-group label {
+    font-size: 14px !important;
+    width: 80px;
+    display: inline-block;
+}
+
+.form-group input[type="text"] {
+    padding: 5px 5px;
+    border: 1px solid #b6b6b6;
+    width: 300px;
+}
+
+.btn-default {
+    padding-top: 2px\9;
+    font-size: 14px;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    width: 150px;
+    height: 34px;
+    color: white;
+    letter-spacing: 1px;
+    background: #3385ff;
+    border-bottom: 1px solid #2d78f4;
+    outline: medium;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+
+    -webkit-transition: all 500ms;
+    -moz-transition: all 500ms;
+    -ms-transition: all 500ms;
+    -o-transition: all 500ms;
+    transition: all 500ms;
+}
+
+.btn:hover {
+    background: #317ef3;
+    border-bottom: 1px solid #2868c8;
+    *border-bottom: 0;
+    box-shadow: 1px 1px 1px #ccc
+}
 
 

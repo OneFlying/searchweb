@@ -1,4 +1,5 @@
 var Evaluate = {
+    length: 0,
     getMessage : function(articleId,divId){
         //alert(articleId);
         var url = RESOUCE_SYSTEM_URL_JS+"/message/list";
@@ -8,20 +9,14 @@ var Evaluate = {
 
             var $ul = $("<ul></ul>");
 
-            var $div = $("<div></div>");
-            var $hr = $("<hr/>");
-            $div.text("评论(共"+data.total+"条评论):");
-
+            $('.s_ground').text("评论(共"+data.total+"条评论):");
 
             $(data.list).each(function(index, el) {
+                Evaluate.length += 1;
                 var $li = Evaluate.render(el);
                 $ul.append($li);
             });
 
-            $("#"+divId).children('div').remove();
-            $("#"+divId).append($div);
-            $("#"+divId).children('hr').remove();
-            $("#"+divId).append($hr);
             $("#"+divId).children('ul').remove();
             $("#"+divId).append($ul);
         });
@@ -30,12 +25,11 @@ var Evaluate = {
     render : function(item){
         var $li = $("<li></li>");
 
-        var $span1 = $("<span></span>");
+        var $span1 = $("<span class='list_text'></span>");
         $span1.text(item.content);
         $li.append($span1);
 
-        var $span2 = $("<span></span>");
-        $span2.attr("class","time");
+        var $span2 = $("<span class='list_date'></span>");
         $span2.text(item.date);
 
         $li.append($span2);

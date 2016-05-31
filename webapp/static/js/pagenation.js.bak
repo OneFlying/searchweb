@@ -54,11 +54,10 @@ PageNation.prototype = {
             me.initPage(opts,param);
         });
     },
-    nextPage : function($el,opts,param,total_page){
+    nextPage : function($el,opts,param){
 
         //alert("ok");
         var me = this;
-        //if(opts.page > total_page)
         $el.unbind("click");
         $el.bind("click",function(){
 
@@ -105,7 +104,7 @@ PageNation.prototype = {
             var total_page = Math.ceil(data.rows/opts.rows);//也总页数
             //获取渲染后的对象
             var $ul="";
-             if(system.win||system.mac||system.x11){//如果是电脑
+            if(system.win||system.mac||system.x11){//如果是电脑
                // alert('是电脑');
                 $ul = me.renderPageNation(total_page,opts,param);
             }else{ //如果是手机
@@ -148,7 +147,7 @@ PageNation.prototype = {
         $ul.append($pre_page_li);
     },*/
     /*
-    分辨率改变时渲染导航条
+    分辨率改变时渲染导航条,手机
     */
     renderPageAdapterScreen : function(total_page,opts,param){
 
@@ -180,7 +179,7 @@ PageNation.prototype = {
         var $next_page_li = $("<li></li>");
         var $next_page_a;
         if(opts.page == 1){
-            $next_page_a = $("<a>下一页</a>");
+            $next_page_a = $("<a>下一页 ></a>");
             //$next_page_li..attr("style","display:none");
         }else{
             $next_page_a = $("<a>></a>");
@@ -216,81 +215,21 @@ PageNation.prototype = {
 
         //后一页
         var $next_page_li = $("<li id='next_page'></li>");
-        var $next_page_a = $("<a>后一页></a>");
-        this.nextPage($next_page_a,opts,param,total_page);
+        var $next_page_a = $("<a>下一页></a>");
+        this.nextPage($next_page_a,opts,param);
         $next_page_li.append($next_page_a);
         //alert(opts.page);
-        //模仿百度的分页机制
-        //大于10页时
-        if(total_page > 10){
-            //点击7以后
+        if(opts.page > 10){
             if(opts.page > 6){
-                /*for(var i=0; i < 10; i++){*/
+                for(var i=0; i < 10; i++){
                     if( total_page < 11){
-                        for(var i=0; i < 10; i++){
-                            var $li = $("<li></li>");
-                            var $a = $("<a>"+(i+1)+"</a>");
-                            $li.append($a);
-                            $ul.append($li);
-                            if(i == (opts.page-1)){
-                                $a.addClass('active');            
-                                if(opts.page == 1){
-                                    $pre_page_li.css({display:"none"});
-                                }
-                                if(opts.page == total_page){
-                                    $next_page_li.css({display:"none"});
-                                }
-                                    this.options.page = opts.page;
-                            }                  
-                            //绑定点击事件
-                            this.clickPage($a,opts,param); 
-                        }
+                        var $li = $("<li></li>");
+                        var $a = $("<a>"+(i+1)+"</a>");
                     }else{
-                        //判断所选页和总数的差值，当差值大于4时，正常执行，当小于4时，则页数的生成不变，参考百度  gaoqijun
-                        var chaju = total_page - opts.page;
-                        //alert(chaju);
-                        if(chaju > 4){
-                            for(var i=0; i < 10; i++){
-                                var $li = $("<li></li>");
-                                var $a = $("<a>"+(opts.page-5+i)+"</a>");
-                                 $li.append($a);
-                                $ul.append($li);
-                                if(i == (opts.page-1)){
-                                    $a.addClass('active');            
-                                    if(opts.page == 1){
-                                        $pre_page_li.css({display:"none"});
-                                    }
-                                    if(opts.page == total_page){
-                                        $next_page_li.css({display:"none"});
-                                    }
-                                        this.options.page = opts.page;
-                                }                  
-                                //绑定点击事件
-                                this.clickPage($a,opts,param); 
-                            }
-                        }else{
-                            for(var i = total_page -9; i < total_page ;i++){
-                                var $li = $("<li></li>");
-                                var $a = $("<a>"+(i+1)+"</a>");
-                                $li.append($a);
-                                $ul.append($li);
-                                if(i == (opts.page-1)){
-                                    $a.addClass('active');            
-                                    if(opts.page == 1){
-                                        $pre_page_li.css({display:"none"});
-                                    }
-                                    if(opts.page == total_page){
-                                        $next_page_li.css({display:"none"});
-                                    }
-                                        this.options.page = opts.page;
-                                }                  
-                                //绑定点击事件
-                                this.clickPage($a,opts,param); 
-                            }
-                        }
-                       
+                        var $li = $("<li></li>");
+                        var $a = $("<a>"+(opts.page-5+i)+"</a>");
                     }
-                  /*  $li.append($a);
+                    $li.append($a);
                     $ul.append($li);
                     if(i == (opts.page-1)){
                         $a.addClass('active');            
@@ -300,12 +239,11 @@ PageNation.prototype = {
                         if(opts.page == total_page){
                             $next_page_li.attr();
                         }
-                            this.options.page = opts.page;
-                    }                  
+                        this.options.page = opts.page;
+                     }                  
                     //绑定点击事件
-                    this.clickPage($a,opts,param); 
-                }*/
-              //不点击7以后的页数时
+                     this.clickPage($a,opts,param); 
+                }
             }else{
                 for(var i=0; i < 10; i++){
                     var $li = $("<li></li>");
@@ -315,10 +253,10 @@ PageNation.prototype = {
                     if(i == (opts.page-1)){
                         $a.addClass('active');            
                         if(opts.page == 1){
-                            $pre_page_li.css({display:"none"});
+                            $pre_page_li.attr("style","display:none");
                         }
                         if(opts.page == total_page){
-                            $next_page_li.css({display:"none"});
+                            $next_page_li.attr();
                         }
                         this.options.page = opts.page;
                     }                  
@@ -326,7 +264,6 @@ PageNation.prototype = {
                 this.clickPage($a,opts,param); 
                 }
             }
-              //小于10页
         }else{
             for(var i=0; i < total_page; i++){
                 var $li = $("<li id = '"+(i+1)+"'></li>");
@@ -337,10 +274,10 @@ PageNation.prototype = {
                     $a.addClass('active');
                    
                     if(opts.page == 1){
-                        $pre_page_li.css({display:"none"});
+                        $pre_page_li.attr("style","display:none");
                     }
                     if(opts.page == total_page){
-                        $next_page_li.css({display:"none"});
+                        $next_page_li.attr();
                     }
                         this.options.page = opts.page;
                     }                  
