@@ -25,7 +25,7 @@
         var link = document.createElement('link');
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        if(system.win||system.mac||system.x11){//如果是电脑
+        if(system.win||system.mac){//如果是电脑
             link.href = '${RESOUCE_STATIC_URL}/css/main.css';
         }else{  //如果是手机
             link.href = '${RESOUCE_STATIC_URL}/css/mobile.css';
@@ -98,7 +98,7 @@
             cache: false //关闭AJAX缓存
         });
         (function(){
-            if(!system.win && !system.mac && !system.x11){//如果是手机，隐藏上传链接
+            if(!system.win && !system.mac){//如果是手机，隐藏上传链接
                 $('#m').css({display:'none'});
                 $('#lg>img').attr({width:'175',height:'55'});
             }

@@ -30,7 +30,7 @@
         var link = document.createElement('link');
             link.rel = 'stylesheet';
             link.type = 'text/css';
-        if(system.win||system.mac||system.x11){//如果是电脑
+        if(system.win||system.mac){//如果是电脑
             isDesktop = true;
             link.href = '${RESOUCE_STATIC_URL}/css/info.css';
         }else{  //如果是手机

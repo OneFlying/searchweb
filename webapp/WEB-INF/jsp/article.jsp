@@ -26,7 +26,7 @@
         var link = document.createElement('link');
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        if(system.win||system.mac||system.x11){//如果是电脑
+        if(system.win||system.mac){//如果是电脑
             link.href = '${RESOUCE_STATIC_URL}/css/search.css';
         }else{  //如果是手机
             link.href = '${RESOUCE_STATIC_URL}/css/msearch.css';
