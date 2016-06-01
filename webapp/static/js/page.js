@@ -55,7 +55,7 @@ var Page = {
             right = $('<div class="c_col_r"></div>'),
             p = $('<p></p>'),
             link = $('<div class="content_link"></div>'),
-            link_a = $('<a href="'+obj.website+'" target="_blank">'+obj.website+'</a>');
+            link_a = $('<a href="'+obj.website+'" target="_blank">相关网页：'+obj.website+'</a>');
 
         /*content.bind('click',function (event) {
             event.preventDefault();
@@ -168,8 +168,10 @@ var Page = {
             h = $('<h3></h3>'),
             h_a = $('<a href="#" data-id="'+obj.id+'" target="_blank">'+title+'</a>');
 
+        var divDate = $('<div style="color:#666;font-size: 12px;line-height:20px;">发布时间：'+obj.date+'</div>');
         h_a.appendTo(h);
         h.appendTo(row);
+        divDate.appendTo(row);
         h_a.bind('click',function (event) {
             event.preventDefault();
             h_a.addClass('active');
@@ -179,7 +181,7 @@ var Page = {
         var right = $('<div class="c_col_r"></div>'),
             p = $('<p></p>'),
             link = $('<div class="c_col_link"></div>'),
-            link_a = $('<a target="_blank" href="'+obj.website+'">'+obj.website+'</a>');
+            link_a = $('<a target="_blank" href="'+obj.website+'">相关网页：'+obj.website+'</a>');
         link_a.appendTo(link);
 
         content_ = Page.pageContent(obj.content);
@@ -299,7 +301,7 @@ var Page = {
 
                 var tableHtml = Page.renderRelSearch(data.list,isMobile);
                 $("#rs").children().remove();
-                if(data.list != null) {
+                if(data.list.length > 0) {
                     $('#rs').append('<div class="tt">相关搜索</div>');
                 }
                 $("#rs").append(tableHtml);

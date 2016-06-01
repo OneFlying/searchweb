@@ -41,9 +41,10 @@ PageNation.prototype = {
             opts.page = param.page = me.options.page-1;
 
             me.initPage(opts,param);
+            $(window).scrollTop(0);
         });
     },
-     firstPage : function($el,opts,param){
+    firstPage : function($el,opts,param){
 
         var me = this;
         $el.unbind("click");
@@ -52,6 +53,7 @@ PageNation.prototype = {
             opts.page = param.page = me.options.page-1;
 
             me.initPage(opts,param);
+            $(window).scrollTop(0);
         });
     },
     nextPage : function($el,opts,param,total_page){
@@ -64,6 +66,7 @@ PageNation.prototype = {
 
             opts.page = param.page = me.options.page+1;
             me.initPage(opts,param);
+            $(window).scrollTop(0);
         });
     },
     clickPage : function($el,opts,param){
@@ -77,6 +80,7 @@ PageNation.prototype = {
 
             param.page = opts.page;
             me.initPage(opts,param);
+            $(window).scrollTop(0);
 
         })
     },

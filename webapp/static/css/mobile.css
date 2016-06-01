@@ -31,7 +31,9 @@ img {
 }
 
 a {
-    color: #00c
+    color: #00c;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
 }
 
 a:active {
@@ -40,7 +42,9 @@ a:active {
 
 input,button {
     border: 0;
-    padding: 0
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
 }
 
 input::-ms-clear {

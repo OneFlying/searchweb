@@ -438,6 +438,11 @@ input::-ms-reveal {
     width: 121px;
 }
 
+.c_col_link {
+    clear: both;
+    width: 100%;
+}
+
 .c_col_link > a {
     color: #4F8000;
     text-decoration: none;
@@ -546,6 +551,10 @@ input::-ms-reveal {
     color: #000;
     font-weight: bold;
 }
+.pagenation > ul > li > a.active:hover {
+    background: none;
+    border: none;
+}
 .pagenation > ul > li > a{
     display: block;
     text-decoration: none;
@@ -592,14 +601,14 @@ input::-ms-reveal {
 
 .form-group label {
     font-size: 14px !important;
-    width: 80px;
+    width: 100px;
     display: inline-block;
 }
 
 .form-group input[type="text"] {
     padding: 5px 5px;
     border: 1px solid #b6b6b6;
-    width: 660px;
+    width: 640px;
 }
 
 .form-group input[type="text"].error {
