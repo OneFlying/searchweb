@@ -45,7 +45,7 @@
             <div class="head_wrapper">
                 <div class="s_form">
                     <div class="s_form_wrapper">
-                        <a id="result_logo" onclick="window.location.href='${RESOUCE_SYSTEM_URL}/'">
+                        <a id="result_logo" href="${RESOUCE_SYSTEM_URL}/" style="cursor:pointer;">
                             <img src="${RESOUCE_STATIC_URL}/img/plus_logo.png" alt="返回首页" title="返回首页">
                         </a>
                         <form id="form" name="f" class="fm" action="" method="" onsubmit="return false;">

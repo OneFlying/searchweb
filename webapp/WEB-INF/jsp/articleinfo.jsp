@@ -44,7 +44,7 @@
     <div class="wide-screen">
         <div class="head">
             <div class="top-search-box">
-                <div class="search-box-logo">
+                <div class="search-box-logo" onclick="window.location.href='${RESOUCE_SYSTEM_URL}/'" style="cursor:pointer;">
                     <img alt="logo" src="${RESOUCE_STATIC_URL}/img/plus_logo.png" id="logo" />
                 </div>
                 <div class="search-box-form">

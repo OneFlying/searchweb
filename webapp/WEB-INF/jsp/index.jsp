@@ -76,7 +76,7 @@
                             <a id="setf" href="${RESOUCE_SYSTEM_URL}/law?param=flsm">免责声明</a>
                             <a id="segy" href="${RESOUCE_SYSTEM_URL}/law?param=gywm">关于我们</a>
                         </p>
-                        <p id="cp">
+                        <p id="cp" style="text-align:center;">
                             &copy;&nbsp;xx.com 2016
                             <%--<a href="">使用百度前必读</a>&nbsp;
                             <a href="">意见反馈</a>&nbsp;

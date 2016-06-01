@@ -18,20 +18,48 @@
 <%
     String param = (String)request.getAttribute("param");
 %>
+    <script type="text/javascript">
+        var system = {};
+        var isMobile = false;
+        var p = navigator.platform;
+            system.win = p.indexOf("Win") == 0; 
+            system.mac = p.indexOf("Mac") == 0; 
+            system.x11 = (p == "X11") || (p.indexOf("Linux") == 0);    
+        var head = document.getElementsByTagName('head')[0];
+        var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+        if(system.win||system.mac||system.x11){//如果是电脑
+            //link.href = '${RESOUCE_STATIC_URL}/css/search.css';
+        }else{  //如果是手机
+            isMobile = true;
+        }
+        head.appendChild(link);
+    </script>
 <link rel="stylesheet" href="${RESOUCE_STATIC_URL}/lib/bootstrap-3.3.5-dist/css/bootstrap.css">
 <link rel="stylesheet" href="${RESOUCE_STATIC_URL}/css/style.css">
+    <style type="text/css">
+        .text-fix {
+            padding: 0 !important;
+            margin-top: -30px !important;
+        }
+        .text-fix > ul {
+            margin-left: -23px;
+        }
+    </style>
 </head>
 <body>
 
 <div class="container law-container">
     <div class="row">
-        <div class="col-xs-12 col-sm-2 col-md-2 text-right">
-            <img src="" alt="" />
+        <div class="col-xs-12 col-sm-2 col-md-2 text-right" id="top">
+            <img src="" alt="" style="cursor:pointer" onclick="window.location.href='${RESOUCE_SYSTEM_URL}/'" />
             <ul>
                 <li><a href="${RESOUCE_SYSTEM_URL}/">首页</a></li>
                 <li><a data-name="gywm">关于我们</a></li>
                 <li><a data-name="lxwm">使用协议</a></li>
                 <li><a data-name="flsm">免责声明</a></li>
+                <li><a data-name="ljwm">联系我们</a></li>
             </ul>
         </div>
         <div class="col-xs-12 col-sm-10 col-md-10 law-content-parent">
@@ -107,8 +135,32 @@ C、通过任何方式干扰或试图干扰网站的正常工作或网站上进�
                     </span>
                 </div>
             </div>
+            <div data-content="ljwm" class="law-content" style="display:none;">
+                <span>联系我们</span>
+                <div class="law-content-text">
+                    <span>
+    律师湾客服联系方式：（以下联系方式均不解答法律咨询，咨询请先注册普通会员，然后发布到这里)
+
+    微信客服号：lvshiwan。（绑定QQ：2320857761）--免费推荐律师
+
+    QQ客服：2320857761(网站问题反馈、及收费法律咨询)
+    律师使用帮助在这里 咨询用户使用帮助在这里
+    邮箱2320857761@qq.com、lvshiwan@lvshiwan.com
+    QQ群289658686（仅供已注册各省律师会员案例研讨、业务开拓交流）
+
+
+
+
+    copyright@right:2011-2013 律师湾（lvshiwan.com）版权所有 沪ICP备11048970号-1
+
+
+    ----律师湾是律师之间、律师和当事人之间沟通、交流的免费平台。
+    ----律师湾为普及法律知识、促进和谐社会而努力。
+                    </span>
+                </div>
+            </div>
             <%-- <span>&copy;2016 公司名称 沪ICP证1000000323号<i class="icr-logo"></i></span> --%>
-            <span><i class="ba-logo"></i><span>沪公安网备100003232号</span></span>
+            <%--<span><i class="ba-logo"></i><span>沪公安网备100003232号</span></span>--%>
         </div>
     </div>
 </div>
@@ -119,6 +171,9 @@ C、通过任何方式干扰或试图干扰网站的正常工作或网站上进�
 
 <script type="text/javascript">
     $(document).ready(function(){
+        if(isMobile) {
+            $('#top').removeClass("text-right").addClass('text-fix');
+        }
         Keywrods.getContent();
         var url = RESOUCE_SYSTEM_URL_JS+"/websiteconfig/getinfo";
 
