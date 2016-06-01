@@ -105,7 +105,7 @@ PageNation.prototype = {
             var total_page = Math.ceil(data.rows/opts.rows);//也总页数
             //获取渲染后的对象
             var $ul="";
-             if(system.win||system.mac||system.x11){//如果是电脑
+             if(system.win||system.mac){//如果是电脑
                // alert('是电脑');
                 $ul = me.renderPageNation(total_page,opts,param);
             }else{ //如果是手机
