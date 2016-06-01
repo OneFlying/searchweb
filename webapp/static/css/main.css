@@ -89,11 +89,12 @@ input,button {
 
 #m {
     width: 720px;
-    margin: 30px auto 0;
+    margin: 50px auto 0;
 }
 
 #m > a {
-    color: #666666;
+    color: #3385ff;
+    font-size: 14px;
 }
 
 .btn,#lk {

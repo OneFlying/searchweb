@@ -599,7 +599,7 @@ input::-ms-reveal {
 .form-group input[type="text"] {
     padding: 5px 5px;
     border: 1px solid #b6b6b6;
-    width: 300px;
+    width: 660px;
 }
 
 .form-group input[type="text"].error {
