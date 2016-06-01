@@ -62,9 +62,9 @@
         </div><!-- /head -->
 
         <div id="s_tab" class="s_tab">
-            <a class="active" href="${RESOUCE_SYSTEM_URL}/">首页</a>
+            <a href="${RESOUCE_SYSTEM_URL}/">首页</a>
             <span>&gt;</span>
-            <a href="#">搜索结果页</a>
+            <a href="#" class="active">搜索结果页</a>
         </div><!-- /tab -->
 
         <div id="wrapper_wrapper">

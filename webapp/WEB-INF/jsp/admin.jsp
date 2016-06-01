@@ -10,7 +10,7 @@
     <meta name="keywords" content=""/>
     <%@ include file="/resource.jsp"%>
     <link rel="stylesheet" href="${RESOUCE_STATIC_URL}/lib/bootstrap-3.3.5-dist/css/bootstrap.css">
-	<link rel="stylesheet" href="${RESOUCE_STATIC_URL}/css/style.css">
+	<%--<link rel="stylesheet" href="${RESOUCE_STATIC_URL}/css/style.css">--%>
 	<link href="${RESOUCE_STATIC_URL}/umeditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
 	<script type="text/javascript" src="${RESOUCE_STATIC_URL}/lib/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" charset="utf-8" src="${RESOUCE_STATIC_URL}/umeditor/umeditor.config.js"></script>

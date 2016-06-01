@@ -65,9 +65,9 @@
         </div><!-- /head -->
 
         <div id="s_tab" class="s_tab">
-            <a class="active" href="javascript:;" onclick="window.history.go(-1);">首页</a>
+            <a href="${RESOUCE_SYSTEM_URL}/">首页</a>
             <span>&gt;</span>
-            <a href="#">上传你的文章</a>
+            <a href="#" class="active">上传你的文章</a>
         </div><!-- /tab -->
 
 		<div id="wrapper_wrapper">
@@ -82,7 +82,7 @@
                                     <span id="titleNum">还可输入50字</span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="website" style="font-size:14px;">网址链接：</label>
+                                    <label for="website" style="font-size:14px;">相关网页链接：</label>
                                     <input id="website" placeholder="请输入网址链接" class="form-control" type="text" name="website" value="" onblur="testUrl()" maxLength="100">
                                     <span id="urlNum">还可输入100字</span>
                                 </div>

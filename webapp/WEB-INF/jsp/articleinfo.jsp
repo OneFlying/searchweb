@@ -85,10 +85,20 @@
                     </div>
                     <div class="s_bottom">
                         <div class="s_ground">
-                            评论列表
+                            <div class="s_g_title"></div>
+                            <div class="s_g_button">
+                                <button id="showMessage">评论</button>
+                            </div>
+                        </div>
+                        <div class="s_g_text">
+                            <textarea name="me_content" title="" maxLength="200"></textarea>
+                            <div class="s_g_text_btn">
+                                <span id="memNum">还可输入200字</span>
+                                <button id="memBtn">我要评论</button>
+                            </div>
                         </div>
                         <div class="s_list" id="evaluate">
-
+                            <!-- 留言列表 -->
                         </div>
                     </div>
                 </div>
@@ -118,6 +128,23 @@
     </div>
     <!-- 返回顶部 -->
     <a href="#" id="scrollTop"><span class="glyphicon glyphicon-menu-up"></span></a>
+    <!-- 我要举报 -->
+    <a href="#" id="jbBtn">我要<br>举报</a>
+    <!-- 举报窗口 -->
+    <div class="jbFrame">
+        <div class="f_title">
+            <span>我要举报</span>
+            <a href="#" onclick="$('.jbFrame').fadeOut(500);"><span class="glyphicon glyphicon-remove"></span></a>
+        </div>
+        <div class="f_content">
+            <textarea name="jbMessage" maxLength="200"></textarea>
+        </div>
+        <span id="jbMessageNum">还可输入200字</span>
+        <button id="jbMessageBtn">我要举报</button>
+        <div class="f_bottom">
+            我们会尽快的处理您的举报信息
+        </div>
+    </div>
 
     <!-- 提示窗口 -->
     <div class="message"></div>
@@ -156,7 +183,7 @@
         });
 
         if(isDesktop) {
-            $('#scrollTop').css({
+            $('#scrollTop,#jbBtn').css({
                 right: ($(window).width()-1040)/2-80+'px'
             });
         }
@@ -169,6 +196,17 @@
             var length = $(this).val().trim().length;
             $('#jbNum').text('还可输入'+(200-length)+'字');
         });
+
+        $('textarea[name="jbMessage"]').on('input propertychange', function(){
+            var length = $(this).val().trim().length;
+            $('#jbMessageNum').text('还可输入'+(200-length)+'字');
+        });
+
+        $('textarea[name="me_content"]').on('input propertychange', function(){
+            var length = $(this).val().trim().length;
+            $('#memNum').text('还可输入'+(200-length)+'字');
+        });
+
 
         $('textarea[name="mes_content"]').on('input propertychange', function(){
             var length = $(this).val().trim().length;
@@ -199,16 +237,60 @@
                 });
             });
 
+            $('#memBtn').bind('click',function(){
+                var articleid = "<%=article.getId()%>";
+                var content = $("textarea[name='me_content']").val();
+                if(content == '' || content == null) return false;
+                var url = "${RESOUCE_SYSTEM_URL}/message/add";
+
+                $.post(url,{articleId:articleid,content:content},function(data){
+                    var res = eval("("+data+")");
+                    if(res.success){
+                        $("textarea[name='me_content']").val('');
+                        $('#memNum').text('还可输入200字');
+                        $('.message').text('感谢您的留言，您的留言可以帮助其他用户').fadeIn();
+                        setTimeout(function(){
+                            $('.message').fadeOut();
+                        },3000);
+                        $('.s_g_text').slideUp(500);
+                        //加载留言
+                        Evaluate.getMessage("<%=article.getId()%>","evaluate");
+                    }
+                });
+            });
+
+            $('#jbMessageBtn').bind('click',function(){
+                var articleid = "<%=article.getId()%>";
+                var content = $("textarea[name='jbMessage']").val();
+                if(content == '' || content == null) return false;
+                var url = "${RESOUCE_SYSTEM_URL}/jubao/add";
+
+                $.post(url,{articleid:articleid,content:content},function(data){
+                    var res = eval("("+data+")");
+                    if(res.success){
+                        $("textarea[name='jbMessage']").val('');
+                        $('#jbMessageNum').text('还可输入200字');
+                        $('.jbFrame').fadeOut();
+                        $('.message').text('感谢您的举报信息，我们会尽快处理').fadeIn();
+                        setTimeout(function(){
+                            $('.message').fadeOut(500);
+                        },3000);
+                    }
+                });
+            });
+
             $("#btn_submit").bind('click',function(){
 
                 var articleid = "<%=article.getId()%>";
                 var content = $("textarea[name='jubao_content']").val();
+                if(content == '' || content == null) return false;
                 var url = "${RESOUCE_SYSTEM_URL}/jubao/add";
 
                 $.post(url,{articleid:articleid,content:content},function(data){
                     var res = eval("("+data+")");
                     if(res.success){
                         $("textarea[name='jubao_content']").val('');
+                        $('#jbNum').text('还可输入200字');
                         $('.message').text('感谢您的举报信息，我们会尽快处理').fadeIn();
                         setTimeout(function(){
                             $('.message').fadeOut();
@@ -222,12 +304,14 @@
 
                 var articleid = "<%=article.getId()%>";
                 var content = $("textarea[name='mes_content']").val();
+                if(content == '' || content == null) return false;
                 var url = "${RESOUCE_SYSTEM_URL}/message/add";
 
                 $.post(url,{articleId:articleid,content:content},function(data){
                     var res = eval("("+data+")");
                     if(res.success){
                         $("textarea[name='mes_content']").val('');
+                        $('#meNum').text('还可输入200字');
                         $('.message').text('感谢您的留言，您的留言可以帮助其他用户').fadeIn();
                         setTimeout(function(){
                             $('.message').fadeOut();
@@ -236,6 +320,14 @@
                         Evaluate.getMessage("<%=article.getId()%>","evaluate");
                     }
                 });
+            });
+
+            $('#showMessage').on('click',function(){
+                $('.s_g_text').slideDown(500);
+            });
+
+            $('#jbBtn').on('click',function(){
+                $('.jbFrame').fadeIn(500);
             });
         });
 
@@ -249,7 +341,7 @@
                 minHeight: $(window).height() - 202 + 'px'
             });
             if(isDesktop) {
-                $('#scrollTop').css({
+                $('#scrollTop,#jbBtn').css({
                     right: ($(window).width()-1040)/2-80+'px'
                 });
             }
