@@ -282,10 +282,20 @@ input {
     margin: auto;
 }
 
+.s_website {
+    margin-top: 10%;
+}
+.s_website > a{
+    color: #4F8000;
+}
+.s_website > a:hover{
+    color: #3385FF;
+}
+
 .s_ground {
     width: 700px;
     height: 50px;
-    border-bottom: 5px solid #3385ff;
+    border-bottom: 5px solid #CCCCCC;
     line-height: 50px;
     padding-left: 10px;
     color: #3385ff;
@@ -302,19 +312,21 @@ input {
     line-height: 50px;
 }
 
-.s_g_button > button {
+.s_g_button > span {
+    display: inline-block;
+    text-align: center;
     width: 80px;
     height: 30px;
     line-height: 30px;
     background: #3385ff;
     color: #ffffff;
-    cursor: pointer;
+    cursor: default;
 }
 
 .s_g_text {
     width: 708px;
     margin-top: -1px;
-    display: none;
+    /*display: none;*/
     border: 1px solid #CCCCCC;
 }
 

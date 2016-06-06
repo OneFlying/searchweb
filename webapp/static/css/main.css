@@ -191,12 +191,13 @@ input,button {
 }
 
 #lh #seth {
-    margin-left: 0
-}
-
-#1h #setf {
     display:inline;
     margin-left:62px
+
+}
+
+#lh #setf {
+    margin-left: 0
 }
 
 #lk {
