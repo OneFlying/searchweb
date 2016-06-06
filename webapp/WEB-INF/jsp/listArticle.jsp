@@ -151,8 +151,8 @@
                     </span>
                 </form>
                 <span id="help">
-                    <a id="seth" href="${RESOUCE_SYSTEM_URL}/law?param=lxwm">使用协议</a>
                     <a id="setf" href="${RESOUCE_SYSTEM_URL}/law?param=flsm">免责声明</a>
+                    <a id="seth" href="${RESOUCE_SYSTEM_URL}/law?param=lxwm">使用协议</a>
                     <a id="segy" href="${RESOUCE_SYSTEM_URL}/law?param=gywm">关于我们</a>
                 </span>
                 <span id="copy">
@@ -229,6 +229,7 @@
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/pagenation.js"></script>
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/page.js"></script>
 <script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/util/HtmlUtil.js"></script>
+<script type="text/javascript" src="${RESOUCE_STATIC_URL}/js/util/DateUtil.js"></script>
 
 <script type="text/javascript">
     $.ajaxSetup ({

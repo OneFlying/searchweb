@@ -92,7 +92,10 @@
                                 </div>
                                 <div id="contentNum" style="margin-bottom:10px;">还可输入 <span>5000</span> 字</div>
                                 <input type="hidden" id="img" name="imageurl" value=""/>
-
+                                <div class="form-group">
+                                    <input id="agree" checked="true" class="form-control" type="checkbox" name="agree" value=""/>
+                                    <label for="agree" style="font-size:14px;width:auto;">我已经阅读并同意《百度用户使用协议》</label>
+                                </div>
                                 <button type="button" onclick="setImg()" class="btn btn-default" name="button">提交</button>
                             </form>
                         </div>
@@ -101,8 +104,8 @@
             </div>
             <div id="footer">
                 <span id="help">
-                    <a id="seth" href="${RESOUCE_SYSTEM_URL}/law?param=lxwm">使用协议</a>
                     <a id="setf" href="${RESOUCE_SYSTEM_URL}/law?param=flsm">免责声明</a>
+                    <a id="seth" href="${RESOUCE_SYSTEM_URL}/law?param=lxwm">使用协议</a>
                     <a id="segy" href="${RESOUCE_SYSTEM_URL}/law?param=gywm">关于我们</a>
                 </span>
             </div><!-- /footer -->
@@ -142,6 +145,12 @@
         $('#title').focus();
 
         function setImg() {
+
+            if(!$("input[type='checkbox']").is(':checked')){
+                alert("请先阅读《百度用户使用协议》并同意协议内容");
+                return false;
+            }
+
             var res = UM.getEditor('myEditor').getContent();
 
             var objE = document.createElement("div");
@@ -167,10 +176,13 @@
                 return false;
             }
 
-            if(url.match(regexp) == null) {
-                $('#website').addClass('error');
-                return false;
+            if(url != ""){
+                if(url.match(regexp) == null) {
+                    $('#website').addClass('error');
+                    return false;
+                }
             }
+
 
             if(UM.getEditor('myEditor').getPlainTxt().length > 5000) {
                 return false;

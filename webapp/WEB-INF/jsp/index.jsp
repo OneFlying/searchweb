@@ -72,8 +72,8 @@
                 <div class="ftCon-Wrapper">
                     <div id="ftConw">
                         <p id="lh">
-                            <a id="seth" href="${RESOUCE_SYSTEM_URL}/law?param=lxwm">使用协议</a>
                             <a id="setf" href="${RESOUCE_SYSTEM_URL}/law?param=flsm">免责声明</a>
+                            <a id="seth" href="${RESOUCE_SYSTEM_URL}/law?param=lxwm">使用协议</a>
                             <a id="segy" href="${RESOUCE_SYSTEM_URL}/law?param=gywm">关于我们</a>
                         </p>
                         <p id="cp" style="text-align:center;">

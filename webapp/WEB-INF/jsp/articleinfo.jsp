@@ -75,7 +75,7 @@
                     <div class="s_top">
                         <h1><%=article.getTitle() %></h1>
                         <%
-                            if( article.getDate() != null){                                
+                            if( article.getDate() != null){
                         %>
                         <div class="date">更新时间：<%=article.getDate()%></div>
                         <%}%>
@@ -83,11 +83,17 @@
                     <div class="s_middle" style="clear:both;">
                         <%=article.getContent()%>
                     </div>
+                    <div class="s_website">
+                        相关网页：
+                        <a href="<%=article.getWebsite()%>">
+                            <%=article.getWebsite()%>
+                        </a>
+                    </div>
                     <div class="s_bottom">
                         <div class="s_ground">
                             <div class="s_g_title"></div>
                             <div class="s_g_button">
-                                <button id="showMessage">评论</button>
+                                <%-- <span id="showMessage">评论</span> --%>
                             </div>
                         </div>
                         <div class="s_g_text">
@@ -121,8 +127,8 @@
         <div style="clear:both;height:0"></div>
         <div class="footer">
             &copy;xx.com 2016
-            <a id="seth" href="${RESOUCE_SYSTEM_URL}/law?param=lxwm">使用协议</a>
             <a id="setf" href="${RESOUCE_SYSTEM_URL}/law?param=flsm">免责声明</a>
+            <a id="seth" href="${RESOUCE_SYSTEM_URL}/law?param=lxwm">使用协议</a>
             <a id="segy" href="${RESOUCE_SYSTEM_URL}/law?param=gywm">关于我们</a>
         </div>
     </div>
@@ -251,8 +257,8 @@
                         $('.message').text('感谢您的留言，您的留言可以帮助其他用户').fadeIn();
                         setTimeout(function(){
                             $('.message').fadeOut();
-                        },3000);
-                        $('.s_g_text').slideUp(500);
+                        },1500);
+                        // $('.s_g_text').slideUp(500);
                         //加载留言
                         Evaluate.getMessage("<%=article.getId()%>","evaluate");
                     }
