@@ -71,4 +71,23 @@ public class MessageDao extends DaoAdapter{
 			return null;
 		}
 	}
+	
+	/**
+	 * 统计每篇文章的评价数
+	 * @param articleId
+	 * @return
+	 */
+	public int getCount(String articleId){
+		
+		try {
+			
+			String sql = "SELECT count(*) FROM message where articleId = ? GROUP BY articleId";
+			return super.getJdbcTemplate().queryForInt(sql,articleId);
+		} catch (Exception e) {
+			// TODO: handle exception
+			return 0;
+		}
+		
+	}
+	
 }
