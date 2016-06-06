@@ -25,6 +25,16 @@ public class Article implements Serializable{
 	private int count;//搜索次数
 	private String date;
 	
+	private int mescount;//文章的评价数
+	
+	
+	
+	public int getMescount() {
+		return mescount;
+	}
+	public void setMescount(int mescount) {
+		this.mescount = mescount;
+	}
 	@Column(name="date")
 	public String getDate() {
 		return date;

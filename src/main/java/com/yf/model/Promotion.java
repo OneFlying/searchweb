@@ -28,7 +28,16 @@ public class Promotion implements Serializable{
 	//标题
 	private String title;
 	
+	private int mescount;
 	
+	
+	
+	public int getMescount() {
+		return mescount;
+	}
+	public void setMescount(int mescount) {
+		this.mescount = mescount;
+	}
 	@Column(name="title")
 	public String getTitle() {
 		return title;
