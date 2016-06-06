@@ -9,7 +9,7 @@ var Evaluate = {
 
             var $ul = $("<ul></ul>");
 
-            $('.s_g_title').html("评论(共"+data.total+"条评论):");
+            $('.s_g_title').html("评论 (共"+data.total+"条评论):");
 
             $(data.list).each(function(index, el) {
                 Evaluate.length += 1;

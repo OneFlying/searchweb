@@ -18,7 +18,7 @@ var Page = {
         var div1 = $('<div class="content_top"></div>');
         var div2 = $('<div class="c-container"></div>');
         $(data).each(function(index, item) {
-            
+
             var li ;
             if((promotion)&&(index < size) ){
                 li = Page.renderProtion(item,keywords);
@@ -55,7 +55,8 @@ var Page = {
             right = $('<div class="c_col_r"></div>'),
             p = $('<p></p>'),
             link = $('<div class="content_link"></div>'),
-            link_a = $('<a href="'+obj.website+'" target="_blank">相关网页：'+obj.website+'</a>');
+            link_a = $('<a href="'+obj.website+'" target="_blank">'+Page.dealWebsite(obj.website)+'</a>');
+            link_mes = $('<span style="color:#666;font-size: 12px;"> - '+obj.mescount+'条评价</span>');
 
         /*content.bind('click',function (event) {
             event.preventDefault();
@@ -63,6 +64,7 @@ var Page = {
         });*/
 
         link_a.appendTo(link);
+        link_mes.appendTo(link);
 
         var cont = Page.pageContent(obj.content);
         var regStr=new RegExp("("+keywords+")","g");
@@ -168,10 +170,10 @@ var Page = {
             h = $('<h3></h3>'),
             h_a = $('<a href="#" data-id="'+obj.id+'" target="_blank">'+title+'</a>');
 
-        var divDate = $('<div style="color:#666;font-size: 12px;line-height:20px;">发布时间：'+obj.date+'</div>');
+        var divDate = '<span style="color:#666;font-size: 12px;">'+DateUtil.getLocalStyleDate(obj.date)+' - </span>';
         h_a.appendTo(h);
         h.appendTo(row);
-        divDate.appendTo(row);
+        //divDate.appendTo(row);
         h_a.bind('click',function (event) {
             event.preventDefault();
             h_a.addClass('active');
@@ -181,11 +183,13 @@ var Page = {
         var right = $('<div class="c_col_r"></div>'),
             p = $('<p></p>'),
             link = $('<div class="c_col_link"></div>'),
-            link_a = $('<a target="_blank" href="'+obj.website+'">相关网页：'+obj.website+'</a>');
+            link_a = $('<a target="_blank" href="'+obj.website+'">'+Page.dealWebsite(obj.website)+'</a>');
+            link_mes = $('<span style="color:#666;font-size: 12px;"> - '+obj.mescount+'条评价</span>');
         link_a.appendTo(link);
+        link_mes.appendTo(link);
 
         content_ = Page.pageContent(obj.content);
-        var newstr = content_.replace(reg,"<font style='color:#CC0000;'>"+keywords+"</font>");
+        var newstr = divDate+content_.replace(reg,"<font style='color:#CC0000;'>"+keywords+"</font>");
         p.html(newstr);
         p.appendTo(right);
 
@@ -197,9 +201,9 @@ var Page = {
             left_a.appendTo(left);
             left.appendTo(row);
         }
-
+        link.appendTo(right);
         right.appendTo(row);
-        link.appendTo(row);
+
         return row;
 
         /*var $li = $("<li></li>");
@@ -423,6 +427,15 @@ var Page = {
         //     }
         //     $("#"+divId).append($rowDiv);
         // }
+    },
+    dealWebsite : function(url){
+        var res = url.substr(url.indexOf("//")+2,url.length);
+
+        if(res.length > 23){
+            return res.substr(0,23)+"...";
+        }
+
+        return res;
     }
 
 }
