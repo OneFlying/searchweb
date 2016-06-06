@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.annotation.Resource;
 
 import com.yf.dao.ArticleDao;
+import com.yf.dao.MessageDao;
 import com.yf.dao.PromotionDao;
 import com.yf.dao.RelSearchDao;
 import com.yf.dao.SearchEntity;
@@ -40,6 +41,9 @@ public class ArticleController {
 	
 	@Resource
 	private WebsiteconfigDao websiteconfigDao;
+	
+	@Resource(name="messageDao")
+	private MessageDao messageDao;
 	/** 
 	 * 分页获取文章信息
 	 * @param rows 
@@ -111,8 +115,26 @@ public class ArticleController {
 			searchEntity.setOrderBy(" ORDER BY count DESC,date DESC");
 			List<Article> list = articleDao.pageArticle(searchEntity);
 			
+			//添加文章的评价数
+			for(Article article : list){
+				
+				int mescount = messageDao.getCount(article.getId());
+				
+				if(mescount != 0){
+					article.setMescount(mescount);
+				}
+			}
+			
 			List<Promotion> plist = promotionDao.getPromotionsByContent(keywords);
 			
+			for(Promotion promotion : plist){
+				int mescount = messageDao.getCount(promotion.getId());
+			
+				if(mescount != 0){
+					promotion.setMescount(mescount);
+				}
+			
+			}
 			
 			if(((plist != null)&&(plist.size()!=0))&&((list != null)&&(list.size()!=0))){
 				List<Article> newList = this.warpList(plist, list);
