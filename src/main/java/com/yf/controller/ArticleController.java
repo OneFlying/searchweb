@@ -95,19 +95,7 @@ public class ArticleController {
 		SearchEntity searchEntity = new SearchEntity(Article.class);
 		searchEntity.addResultColumn("*");
 		
-		RelSearch relSearch = relSearchDao.getRelSearchByKey(keywords);
-		//如果是第一次则添加
-		if(relSearch == null){
-			RelSearch rels = new RelSearch();
-			rels.setId(StringUtils.generateUuid());
-			rels.setKeywords(keywords);
-			rels.setCount(0);
-			
-			relSearchDao.saveKeyWords(rels);
-		}else{
-			
-			relSearchDao.updateRel(keywords, relSearch.getCount()+1);
-		}
+		
 		
 		if(StringUtils.isNotBlank(keywords)){
 			searchEntity.addSearchColumn("content", "%"+keywords+"%", " like ", false);
@@ -137,6 +125,21 @@ public class ArticleController {
 			}
 			
 			if(((plist != null)&&(plist.size()!=0))&&((list != null)&&(list.size()!=0))){
+				
+				RelSearch relSearch = relSearchDao.getRelSearchByKey(keywords);
+				//如果是第一次则添加
+				if(relSearch == null){
+					RelSearch rels = new RelSearch();
+					rels.setId(StringUtils.generateUuid());
+					rels.setKeywords(keywords);
+					rels.setCount(0);
+					
+					relSearchDao.saveKeyWords(rels);
+				}else{
+					
+					relSearchDao.updateRel(keywords, relSearch.getCount()+1);
+				}
+				
 				List<Article> newList = this.warpList(plist, list);
 				modelMap.put("list", newList);
 				modelMap.put("rows", searchEntity.getTotal());
@@ -146,6 +149,19 @@ public class ArticleController {
 				return modelMap;
 			}else if((list != null)&&(list.size()!=0)){
 				 
+				RelSearch relSearch = relSearchDao.getRelSearchByKey(keywords);
+				//如果是第一次则添加
+				if(relSearch == null){
+					RelSearch rels = new RelSearch();
+					rels.setId(StringUtils.generateUuid());
+					rels.setKeywords(keywords);
+					rels.setCount(0);
+					
+					relSearchDao.saveKeyWords(rels);
+				}else{
+					
+					relSearchDao.updateRel(keywords, relSearch.getCount()+1);
+				}
 				modelMap.put("list", list);
 				modelMap.put("rows", searchEntity.getTotal());
 				modelMap.put("promotion", false);

@@ -1,5 +1,6 @@
 package com.yf.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -26,11 +27,33 @@ public class RelSearchController {
 		
 		ModelMap modelMap = new ModelMap();
 		
-		List<RelSearch> list = relSearchDao.getRelSearchs(keywords);
+		List<RelSearch> list = relSearchDao.getAllRel();
 		
+		List<RelSearch> resList = new ArrayList<RelSearch>();
 		if(list != null){
-			modelMap.put("success", true);
-			modelMap.put("list", list);
+			
+			for(RelSearch relSearch : list){
+				
+				if(relSearch.getKeywords().length() > keywords.length()){
+					if((relSearch.getKeywords()).contains(keywords)){
+						resList.add(relSearch);
+					}
+				}else{
+					if(keywords.contains(relSearch.getKeywords())){
+						resList.add(relSearch);
+					}
+				}
+				
+				
+			}
+			
+			if(resList.size() != 0){
+				modelMap.put("success", true);
+				modelMap.put("list", resList);
+			}else {
+				modelMap.put("success", false);
+			}
+			
 		}else{
 			modelMap.put("success", false);
 		}
