@@ -50,7 +50,7 @@ public class RelSearchDao extends DaoAdapter{
 		
 		try {
 			
-			String sql = "select * from relsearch where keywords=?";
+			String sql = "select * from relsearch where keywords = ?";
 			
 			return super.getJdbcTemplate().queryForObject(sql, relSearchRowMapper,keyword);
 			
@@ -96,4 +96,22 @@ public class RelSearchDao extends DaoAdapter{
 			return 0;
 		}
 	}
+	
+	/**
+	 * 获取所有的香瓜搜索信息
+	 * @return
+	 */
+	public List<RelSearch> getAllRel(){
+		try {
+			
+			String sql = "select * from relsearch";
+			return super.getJdbcTemplate().query(sql,relSearchRowMapper);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			return null;
+		}
+	}
+	
+	
 }
