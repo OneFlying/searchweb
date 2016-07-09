@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -20,9 +22,12 @@ import com.yf.utils.RowMapperUtil;
 @Repository("articleDao")
 public class ArticleDao extends DaoAdapter{
 	
+	
+	
 	private static RowMapper<Article> articleRowMapper;
 	
 	static {
+		
 		articleRowMapper = new RowMapper<Article>() {
 
 			public Article mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -35,6 +40,7 @@ public class ArticleDao extends DaoAdapter{
 //				article.setImgids(rs.getString("imgids"));
 //				article.setKeywords(rs.getString("keywords"));
 //				return article;
+				
 				Article article = (Article)RowMapperUtil.getRowMapper(Article.class, rs, "");
 			
 				return article;
