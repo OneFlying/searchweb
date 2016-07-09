@@ -84,8 +84,26 @@ public class UserDao extends DaoAdapter{
 	 * 查询用户
 	 * @return
 	 */
-	public List<User> searchUser(){
-		return null;
+	public List<User> pageUser(SearchEntity searchEntity){
+		try {
+			
+			String sql = searchEntity.toSql();
+			String totleSql = searchEntity.toPageTotalSql();
+			int total = 0;
+			if(searchEntity.getPageTotalSearchValues().size()<= 0){
+				total = super.getJdbcTemplate().queryForInt(totleSql);
+			}else{
+				
+				total = super.getJdbcTemplate().queryForInt(totleSql,searchEntity.getPageTotalSearchValues().toArray());
+			}
+			searchEntity.setTotal(total);
+			return super.getJdbcTemplate().query(sql, searchEntity.getSearchValues().toArray(),userRowMapper);
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			return null;
+		}
 	}
 	
 	/**

@@ -26,6 +26,7 @@ public class WebsiteconfigDao extends DaoAdapter{
 				websitconfig.setTitle(rs.getString("title"));
 				websitconfig.setBeianhao(rs.getString("beianhao"));
 				websitconfig.setKeywords(rs.getString("keywords"));
+				websitconfig.setContent(rs.getString("content"));
 				return websitconfig;
 			}
 		};
@@ -40,9 +41,9 @@ public class WebsiteconfigDao extends DaoAdapter{
 		
 		try {
 			
-			String sql = "insert into websitconfig values(?,?,?,?,?,?)";
+			String sql = "insert into websitconfig values(?,?,?,?,?,?,?)";
 			
-			return super.getJdbcTemplate().update(sql,websitconfig.getId(),websitconfig.getTitle(),websitconfig.getLogourl(),websitconfig.getKeywords(),websitconfig.getBeianhao(),websitconfig.getQitalogo());
+			return super.getJdbcTemplate().update(sql,websitconfig.getId(),websitconfig.getTitle(),websitconfig.getLogourl(),websitconfig.getKeywords(),websitconfig.getBeianhao(),websitconfig.getQitalogo(),websitconfig.getContent());
 			
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -59,8 +60,8 @@ public class WebsiteconfigDao extends DaoAdapter{
 		
 		try {
 			
-			String sql = "update websitconfig set title=?,logourl=?,keywords=?,beianhao=?,qitalogo=? where id=?";
-			return super.getJdbcTemplate().update(sql,websitconfig.getTitle(),websitconfig.getLogourl(),websitconfig.getKeywords(),websitconfig.getBeianhao(),websitconfig.getQitalogo(),websitconfig.getId());
+			String sql = "update websitconfig set title=?,logourl=?,keywords=?,beianhao=?,qitalogo=?,content=? where id=?";
+			return super.getJdbcTemplate().update(sql,websitconfig.getTitle(),websitconfig.getLogourl(),websitconfig.getKeywords(),websitconfig.getBeianhao(),websitconfig.getQitalogo(),websitconfig.getContent(),websitconfig.getId());
 			
 		} catch (Exception e) {
 			// TODO: handle exception
