@@ -13,11 +13,11 @@ public class KeyWordUtil {
 		return keyWordUtil;
 	}
 	
-	public String getContent(){
+	public Websitconfig getContent(){
 		WebsiteconfigDao websiteconfigDao = (WebsiteconfigDao)SpringBeanUtils.getObject("websiteConfigDao");
 		Websitconfig websitconfig = websiteconfigDao.getWebsitconfig();
 	
-		return websitconfig.getKeywords();
+		return websitconfig;
 	}
 	
 	
