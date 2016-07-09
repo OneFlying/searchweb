@@ -1,5 +1,7 @@
 package com.yf.model;
 
+import javax.swing.text.AbstractDocument.Content;
+
 import com.yf.annotation.Column;
 import com.yf.annotation.Table;
 
@@ -17,6 +19,16 @@ public class Websitconfig {
 	private String keywords;//关键字
 	private String beianhao;//备案号
 	private String qitalogo;
+	
+	private String content;//网站cotent
+	
+	@Column(name="content")
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
 	@Column(name="qitalogo")
 	public String getQitalogo() {
 		return qitalogo;
