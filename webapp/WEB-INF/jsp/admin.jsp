@@ -41,6 +41,8 @@
 		src="${RESOUCE_STATIC_URL}/js/promotion.js"></script>
     <script type="text/javascript"
 		src="${RESOUCE_STATIC_URL}/js/advert.js"></script>
+	<script type="text/javascript"
+		src="${RESOUCE_STATIC_URL}/js/user.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$.ajaxSetup ({
@@ -108,7 +110,13 @@
                     url : "",
                     type : 'GGGL'
                 }
-            }
+            },{
+                text : "账号管理",
+                attributes : {
+                    url : "",
+                    type : 'ZHGL'
+                }
+              }
 	       ]
        }];
 
@@ -184,6 +192,17 @@
 										content : '<div id="ggglgrid" style="height:auto;"></div>'
 									});
 					GgglManager.loadgrid();
+					break;
+                case 'ZHGL':
+                    $('#tabs')
+							.tabs(
+									'add',
+									{
+										title : text,
+										closable : true,
+										content : '<div id="zhglgrid" style="height:auto;"></div>'
+									});
+					ZhglManager.loadgrid();
 					break;
 				case 'LOGOUT':
 					$.get('${RESOUCE_SYSTEM_URL}/logout', function(data) {
@@ -277,7 +296,8 @@
 	<%@ include file="/manager/webconfig.jsp"%>
 	<%@ include file="/manager/websiteconfig.jsp"%>
     <%@ include file="/manager/upload.jsp"%>
-     <%@ include file="/manager/webconfigforqita.jsp"%>
+    <%@ include file="/manager/webconfigforqita.jsp"%>
+    <%@ include file="/manager/user.jsp"%>
 
 </body>
 </html>

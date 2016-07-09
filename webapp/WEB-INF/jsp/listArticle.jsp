@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html>
-<%@page import="com.yf.utils.KeyWordUtil"%>
+<%@page import="com.yf.utils.KeyWordUtil,com.yf.model.Websitconfig"%>
 <%
     KeyWordUtil keyUtil = KeyWordUtil.getInstance();
-    String keywordsContent = keyUtil.getContent();
+	Websitconfig  websitconfig = keyUtil.getContent();
 %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -11,7 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <meta name="renderer" content="webkit" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1, user-scalable=no">
-    <meta name="keywords" content="<%=keywordsContent%>"/>
+    <meta name="keywords" content="<%=websitconfig.getKeywords()%>"/>
+    <meta name="description" content="<%=websitconfig.getContent()%>" />
     <title>剑三搜索</title>
     <%@ include file="/resource.jsp" %>
     <%
