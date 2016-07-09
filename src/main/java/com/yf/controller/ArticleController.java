@@ -67,7 +67,7 @@ public class ArticleController {
 			searchEntity.addSearchColumn("keywords", "%"+keywords+"%", " like ", false);
 		}
 		searchEntity.setPage(page, rows);
-		
+		searchEntity.setOrderBy(" order by date desc");
 		List<Article> list = articleDao.pageArticle(searchEntity);
 		
 		if(list != null){
@@ -100,7 +100,7 @@ public class ArticleController {
 		if(StringUtils.isNotBlank(keywords)){
 			searchEntity.addSearchColumn("content", "%"+keywords+"%", " like ", false);
 			searchEntity.setPage(page, rows);
-			searchEntity.setOrderBy(" ORDER BY count DESC,date DESC");
+			searchEntity.setOrderBy(" ORDER BY count,date DESC");
 			List<Article> list = articleDao.pageArticle(searchEntity);
 			
 			//添加文章的评价数
@@ -141,8 +141,8 @@ public class ArticleController {
 				}
 				
 				List<Article> newList = this.warpList(plist, list);
-				modelMap.put("list", newList);
-				modelMap.put("rows", searchEntity.getTotal());
+				modelMap.put("rows", newList);
+				modelMap.put("total", searchEntity.getTotal());
 				modelMap.put("promotion", true);
 				modelMap.put("size", plist.size());
 				
@@ -162,8 +162,8 @@ public class ArticleController {
 					
 					relSearchDao.updateRel(keywords, relSearch.getCount()+1);
 				}
-				modelMap.put("list", list);
-				modelMap.put("rows", searchEntity.getTotal());
+				modelMap.put("rows", list);
+				modelMap.put("total", searchEntity.getTotal());
 				modelMap.put("promotion", false);
 			}
 		}

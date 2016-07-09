@@ -49,7 +49,7 @@ public class IndexController {
 	
 	@RequestMapping(value="/indexinfo",method=RequestMethod.GET)
 	@ResponseBody
-	public ResponseEntity<Map<String, Object>> getIndexInfo(int rows,int page,HttpServletResponse response){
+	public ModelMap getIndexInfo(int rows,int page,HttpServletResponse response){
 		ModelMap modelMap = new ModelMap();
 		
 		SearchEntity searchEntity = new SearchEntity(Article.class);
@@ -64,10 +64,7 @@ public class IndexController {
 			modelMap.put("total", searchEntity.getTotal());
 		}
 		
-		HttpHeaders headers = new HttpHeaders();
-		response.setContentType("text/html;charset=UTF-8"); 
-		headers.setContentType(MediaType.TEXT_PLAIN);
-		return new ResponseEntity<Map<String,Object>>(modelMap, headers, HttpStatus.OK);
+		return modelMap;
 		
 	}
 	

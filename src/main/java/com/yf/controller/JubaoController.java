@@ -82,6 +82,7 @@ public class JubaoController {
 			searchEntity.addSearchColumn("datetime", "%"+operatime+"%" , " LIKE ", false);
 		}
 		searchEntity.setPage(page, rows);
+		searchEntity.setOrderBy(" order by datetime desc");
 		List<Jubao> list = jubaoDao.getPageJubao(searchEntity);
 		/*List<Jubao> listJson = new ArrayList<Jubao>();
 		//将文章ID转化为标题

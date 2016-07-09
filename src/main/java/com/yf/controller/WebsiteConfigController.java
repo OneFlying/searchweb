@@ -73,6 +73,7 @@ public class WebsiteConfigController {
 		websitconfig1.setTitle(websitconfig.getTitle());
 		websitconfig1.setKeywords(websitconfig.getKeywords());
 		websitconfig1.setBeianhao(websitconfig.getBeianhao());
+		websitconfig1.setContent(websitconfig.getContent());
 		int res = websiteConfigDao.updateWebsiteConfig(websitconfig1);
 		if(res != 0){
 			modelMap.put("success", true);
