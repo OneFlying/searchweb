@@ -76,6 +76,10 @@ input::-ms-reveal {
     content: "\e003";
 }
 
+#wrapper_wrapper {
+	margin-top: 92px;
+}
+
 #wrapper {
     width: 100%;
     height: 100%;
@@ -199,6 +203,8 @@ input::-ms-reveal {
     border-bottom: 1px solid #ebebeb;
     -webkit-transform: translateZ(0);
     box-shadow: 0 0 2px #333;
+    position: fixed;
+    top: 0;
 }
 
 #head.s_down {
@@ -243,6 +249,7 @@ input::-ms-reveal {
     float: none;
     zoom: 1;
     display: none;
+    margin-top: 92px;
 }
 
 .s_tab > a {

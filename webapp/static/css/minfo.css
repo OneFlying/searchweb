@@ -96,6 +96,10 @@ input::-ms-reveal {
     padding-bottom: 10px;
     padding-top: 20px;
     border-bottom: 1px solid #EEEEEE;
+    position: fixed;
+    z-index: 10;
+    background: #fff;
+    top: 0;
 }
 
 .head .top-search-box {
@@ -131,19 +135,26 @@ input::-ms-reveal {
     line-height: 1.6;
 }
 
-.box .s-input {
-    border: 1px solid #b8b8b8;
+.box .left_box {
+	border: 1px solid #b8b8b8;
     height: 45px;
+    margin: 0 0;
+    position: absolute;
+    display: block;
+    left: 10px;
+    right: 90px;
+}
+
+.box .s-input {
+    display: block;
+    width: 100%;
+    height: 100%;
     padding: 0 5px;
     outline: none !important;
     -webkit-appearance: none;
     -webkit-border-radius:0 !important;
     -moz-border-radius:0 !important;
     border-radius:0 !important;
-    margin: 0 0;
-    position: absolute;
-    left: 10px;
-    right: 90px;
     font-size: 18px;
 }
 
@@ -151,20 +162,27 @@ input::-ms-reveal {
     border-color: #999999;
 }
 
-.s-btn {
-    width: 80px;
+.box .right_box {
+	width: 80px;
     height: 45px;
-    color: #ffffff;
-    outline: 0;
-    padding: 0 0;
-    cursor: pointer;
-    background: #3385ff;
-    border: 1px solid #2d78f4;
     position: absolute;
     right: 10px;
+   	padding: 0 0;
+    border: 1px solid #2d78f4;
+    background: #3385ff;
 }
 
-.s-btn:hover {
+.s-btn {
+    width: 100%;
+    height: 100%;
+    display: block;
+    color: #ffffff;
+    outline: 0;
+    cursor: pointer;
+    background: transparent;
+}
+
+.right_box:hover {
     background: #317ef3;
     border-bottom: 1px solid #2868c8;
     *border-bottom: 0;
@@ -173,7 +191,6 @@ input::-ms-reveal {
 
 .s-btn > span {
     font-size: 18px;
-
 }
 
 .search-box-tools {
@@ -195,6 +212,7 @@ input::-ms-reveal {
 .navbar {
     height: 34px;
     width: 100%;
+    margin-top: 151px;
     background: #f8f8f8;
     border-bottom: 1px solid #EEEEEE;
 }
@@ -391,24 +409,141 @@ input::-ms-reveal {
 #scrollTop {
     position: fixed;
     width: 50px;
-    height: 45px;
+    height: 48px;
     line-height: 50px;
-    background: rgba(0,0,0,.25);
+    background: rgba(0,0,0,.75);
     z-index: 999;
     bottom: 80px;
     right: 10px;
-    color: #333333;
+    color: #ffffff;
     text-align: center;
     font-size: 24px;
     display: none;
 }
 
 #jbBtn {
-    display: none;
+    position: fixed;
+    width: 50px;
+    height: 46px;
+    background: rgba(0,0,0,.75);
+    color: #ffffff;
+    z-index: 999;
+    bottom: 135px;
+    right: 10px;
+    text-align: center;
+    font-size: 14px;
+    padding-top: 4px;
+    vertical-align: middle;
+    text-decoration: none;
 }
 
 .jbFrame {
+    position: fixed;
+    left: 10px;
+    right: 10px;
+    height: 450px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 1001;
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    -webkit-box-shadow: 0 0 30px rgba(0, 0, 0, .95);
+    -moz-box-shadow: 0 0 30px rgba(0, 0, 0, .95);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .95);
     display: none;
+}
+
+.jbFrame .f_title {
+    background: #f7f7f7;
+    padding: 0 15px;
+    overflow: hidden;
+    border-bottom: 1px solid #dddddd;
+    height: 50px;
+}
+.f_title > span {
+    float: left;
+    color: #666666;
+    font-size: 18px;
+    line-height: 50px;
+}
+
+.f_title > a {
+    float: right;
+    font-size: 24px;
+    color: #999;
+    font-family: Arial,sans-serif;
+    display: block;
+    height: 50px;
+    width: 50px;
+    line-height: 55px;
+    vertical-align: middle;
+}
+
+.f_title > a >span {
+	width: 17px;
+	height: 17px;
+	margin-top: 16px;
+	margin-left: 33px;
+	display: block;
+	background: url(../img/1111.png) -71px -47px;
+}
+
+.f_title > a:active > span {
+    background: url(../img/1111.png) -55px -47px;
+}
+
+.f_content {
+    width: 100%;
+}
+
+.f_content > textarea {
+    width: 96%;
+    border: none;
+    display: block;
+    outline: none;
+    -webkit-appearance: none !important;
+    height: 200px;
+    font-size: 14px;
+    line-height: 24px;
+    margin-left: 1.5%;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.jbFrame .f_content {
+    background: #ffffff;
+}
+
+.jbFrame > span {
+    display: block;
+    padding-left: 15px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.jbFrame > button {
+    height: 50px;
+    margin-top: 10px;
+    margin-left: 1%;
+    margin-bottom: 15px;
+    background: #3385ff;
+    font-size: 16px;
+    color: #ffffff;
+    cursor: pointer;
+    width: 98%;
+}
+
+.jbFrame > button:hover {
+    background: #317ef3;
+    border-bottom: 1px solid #2868c8;
+    *border-bottom: 0;
+    box-shadow: 1px 1px 1px #ccc
+}
+
+.jbFrame > .f_bottom {
+    border-top: 1px solid #dddddd;
+    padding-left: 10px;
+    line-height: 30px;
 }
 
 .right_box {

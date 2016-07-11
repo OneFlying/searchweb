@@ -123,10 +123,9 @@ PageNation.prototype = {
             //加载导航条
             $("#"+opts.pageId).children().remove();
             if(data.rows != undefined){
-                $("#"+opts.pageId).append($ul);
+            	$("#"+opts.pageId).append($ul);
             }
             //console.log(data);
-
             var contenthtml = Page.initContent(data.rows,data.promotion,data.size,param.keywords,options.catory);
 
             $("#"+opts.contentId).children().remove();

@@ -91,11 +91,16 @@ input::-ms-reveal {
 
 .head {
     width: 100%;
+    top: 0;
+    left: 0;
     margin: 0;
     height: 57px;
-    padding-bottom: 10px;
     padding-top: 20px;
+    padding-bottom: 10px;
     border-bottom: 1px solid #EEEEEE;
+    position: fixed;
+    z-index: 10;
+    background: #ffffff;
 }
 
 .head .top-search-box {
@@ -133,31 +138,43 @@ input {
     outline: medium;
 }
 
-.box .s-input {
-    border: 1px solid #b8b8b8;
+.box .left_box {
+	border: 1px solid #b8b8b8;
     width: 508px;
     height: 32px;
+    float: left;
+}
+
+.box .s-input {
+    display: block;
+    width: 100%;
+    height: 100%;
     padding: 0 5px;
     margin:  0 0;
     outline: none !important;
     -webkit-appearance: none;
-    float: left;
 }
 
-.s-input:focus,.s-input:hover {
+.left_box:focus,.left_box:hover {
     border-color: #999999;
 }
 
+.box .right_box {
+	width: 100px;
+    height: 34px;
+    float: left;
+    padding: 0 0;
+}
 .s-btn {
-    width: 100px;
-    height: 32px;
     color: #ffffff;
     outline: 0;
     padding: 0 0;
     cursor: pointer;
-    margin-left: -4px;
     background: #3385ff;
     border: 1px solid #2d78f4;
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
 .s-btn:hover {
@@ -188,6 +205,7 @@ input {
 }
 
 .navbar {
+	margin-top: 88px;
     height: 34px;
     width: 100%;
     background: #f8f8f8;
@@ -510,8 +528,18 @@ input {
     vertical-align: middle;
 }
 
-.f_title > a:hover {
-    color: #555555;
+.f_title > a >span {
+	width: 17px;
+	height: 17px;
+	margin-top: 16px;
+	margin-left: 33px;
+	display: block;
+	background: url(../img/1111.png) -55px -47px;
+}
+
+.f_title > a:hover > span,
+.f_title > a:active > span {
+    background: url(../img/1111.png) -71px -47px;
 }
 
 .f_content {
