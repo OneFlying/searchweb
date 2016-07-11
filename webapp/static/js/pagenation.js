@@ -127,7 +127,7 @@ PageNation.prototype = {
             }
             //console.log(data);
 
-            var contenthtml = Page.initContent(data.rows,data.promotion,data.size,param.keywords);
+            var contenthtml = Page.initContent(data.rows,data.promotion,data.size,param.keywords,options.catory);
 
             $("#"+opts.contentId).children().remove();
             //$("#"+opts.contentId).append(contenthtml);

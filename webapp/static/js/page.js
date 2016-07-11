@@ -10,7 +10,7 @@ var Page = {
         };
         var pageNation = PageNation(opts);
     },
-    initContent:function(data,promotion,size,keywords){
+    initContent:function(data,promotion,size,keywords,catory){
 
         //var $ul = $("<ul></ul>");
         //$ul.addClass('article');
@@ -24,7 +24,7 @@ var Page = {
                 li = Page.renderProtion(item,keywords);
                 li.appendTo(div1);
             }else{
-                li = Page.renderPage(item,keywords);
+                li = Page.renderPage(item,keywords,catory);
                 li.appendTo(div2);
             }
             //$ul.append(li);
@@ -36,8 +36,13 @@ var Page = {
         //return $ul;
         return obj;
     },
-    clickTitle : function(id){
-        window.open("info?id="+id);
+    clickTitle : function(id,catory){
+        if(catory == "index"){
+           window.open("article/info?id="+id); 
+        }else{
+            window.open("info?id="+id);
+        }
+        
     },
     //渲染推广
     renderProtion:function(obj,keywords){
@@ -162,7 +167,7 @@ var Page = {
         //return $li;
     },
     //渲染搜索结果
-    renderPage:function(obj,keywords){
+    renderPage:function(obj,keywords,catory){
         var content_ = Page.pageContent(obj.title,true);
         var reg=new RegExp("("+keywords+")","g");
         var title = content_.replace(reg,"<font style='color:#CC0000'>"+keywords+"</font>");
@@ -177,7 +182,7 @@ var Page = {
         h_a.bind('click',function (event) {
             event.preventDefault();
             h_a.addClass('active');
-            Page.clickTitle(h_a.data("id"));
+            Page.clickTitle(h_a.data("id"),catory);
         });
 
         var right = $('<div class="c_col_r"></div>'),
