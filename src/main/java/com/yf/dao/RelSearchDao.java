@@ -61,7 +61,7 @@ public class RelSearchDao extends DaoAdapter{
 	}
 	
 	/**
-	 * 返回
+	 * 返回,相关搜索
 	 * @param keyword
 	 * @return
 	 */
