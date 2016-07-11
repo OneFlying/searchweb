@@ -66,6 +66,12 @@ loadgrid : function(){
 				      }
 		          },
 		          {
+		          	field:'content',title:'<font color="black" size="2px">网站Content</font>',width:20,align:'center',sortable:true,
+		          	formatter : function(value,row,index){
+				        return '<font color="black" size="2px" >'+value+'</font>';
+				      }
+			      },
+		          {
 		          	field:'beianhao',title:'<font color="black" size="2px">备案号</font>',width:40,align:'center',sortable:true,
 		          	formatter : function(value,row,index){
 				        return '<font color="black" size="2px" >'+value+'</font>';

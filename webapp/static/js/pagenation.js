@@ -98,15 +98,13 @@ PageNation.prototype = {
 
         var param = $.extend(exetramParam,opts.page,opts.rows);
         $.get(opts.url,param,function(data){
-
-            if(data.rows != undefined){
-                $(".nums").text("共为您搜索到 "+data.rows+" 条相关数据");
-            }else{
-                $(".nums").text("共为您搜索到 0 条相关数据");
-            }
+        	if(data.total == undefined || data.total == null) {
+        		data.total = 0;
+        	}
+        	$(".nums").text("共为您搜索到 "+data.total+" 条相关数据");
 
             //获取总页数
-            var total_page = Math.ceil(data.rows/opts.rows);//也总页数
+            var total_page = Math.ceil(data.total/opts.rows);//也总页数
             //获取渲染后的对象
             var $ul="";
              if(system.win||system.mac){//如果是电脑
@@ -129,7 +127,7 @@ PageNation.prototype = {
             }
             //console.log(data);
 
-            var contenthtml = Page.initContent(data.list,data.promotion,data.size,param.keywords);
+            var contenthtml = Page.initContent(data.rows,data.promotion,data.size,param.keywords);
 
             $("#"+opts.contentId).children().remove();
             //$("#"+opts.contentId).append(contenthtml);
