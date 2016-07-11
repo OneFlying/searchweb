@@ -252,7 +252,8 @@
                 page_total:10,
                 url:RESOUCE_SYSTEM_URL_JS+"/indexinfo",
                 pageId:'page',
-                contentId:'content_left'
+                contentId:'content_left',
+                catory:'index'
             };
 
         var param = {page:'1',rows:'10'};
