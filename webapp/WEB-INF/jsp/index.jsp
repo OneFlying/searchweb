@@ -11,6 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <meta name="renderer" content="webkit" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1, user-scalable=no">
+
     <meta name="keywords" content="<%=websitconfig.getKeywords()%>"/>
     <meta name="description" content="<%=websitconfig.getContent()%>" />
     <title>剑三搜索</title>
@@ -196,23 +197,26 @@
 
     $(document).keydown(function(event) {
         if (event.keyCode == 13) {
-            var keywords = $("#kw").val();
-            window.location.href="${RESOUCE_SYSTEM_URL}/article/list?keywords="+keywords;
+            var keywords = $("#kw").val().trim();
+            if(keywords.length > 0)
+            	window.location.href="${RESOUCE_SYSTEM_URL}/article/list?keywords="+keywords;
             return false;
         }
     });
 
     $("#su").bind('click',function(event) {
         /* Act on the event */
-        var keywords = $("#kw").val();
-        window.location.href="${RESOUCE_SYSTEM_URL}/article/list?keywords="+keywords;
+        var keywords = $("#kw").val().trim();
+        if(keywords.length > 0)
+        	window.location.href="${RESOUCE_SYSTEM_URL}/article/list?keywords="+keywords;
         return false;
     });
 
     $("#su1").bind('click',function(event) {
         /* Act on the event */
-        var keywords = $("#kw1").val();
-        window.location.href="${RESOUCE_SYSTEM_URL}/article/list?keywords="+keywords;
+        var keywords = $("#kw1").val().trim();
+        if(keywords.length > 0)
+        	window.location.href="${RESOUCE_SYSTEM_URL}/article/list?keywords="+keywords;
         return false;
     });
 

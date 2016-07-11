@@ -314,7 +314,8 @@
         keywords = $("#kw").val();
         $("title").text(keywords);
         param.keywords = keywords;
-        pageNation.initPage(opts,param);
+        //pageNation.initPage(opts,param);
+        pageNation = new PageNation(opts,param);
         Page.getRelSearchData(keywords);
         Page.getAdertInfo(keywords,"content_right");
     });
@@ -329,7 +330,8 @@
         keywords = $("#kw1").val();
         $("title").text(keywords);
         param.keywords = keywords;
-        pageNation.initPage(opts,param);
+        //pageNation.initPage(opts,param);
+        pageNation = new PageNation(opts,param);
         Page.getRelSearchData(keywords);
         Page.getAdertInfo(keywords,"content_right");
     });
@@ -356,17 +358,12 @@
 
         $.get(url,function(data){
             var obj = data.wc;
-            $("meta[name='keywords']").attr("content",obj.keywords);
-            <%--$.ajax({ //获取logo--%>
-                <%--type: 'get',--%>
-                <%--url: '${RESOUCE_STATIC_URL}'+obj.logourl,--%>
-                <%--success: function(){--%>
-                    <%--$("#result_logo>img").attr("src","${RESOUCE_STATIC_URL}"+obj.qitalogourl);--%>
-                <%--},--%>
-                <%--error: function(){--%>
-                    <%--$('#result_logo>img').attr({'src':'${RESOUCE_STATIC_URL}/img/plus_logo.png'});--%>
-                <%--}--%>
-            <%--});--%>
+          //获取logo
+            if(obj.qitalogourl == undefined || obj.qitalogourl == null) {
+            	$('#result_logo>img').attr({'src':'${RESOUCE_STATIC_URL}/img/plus_logo.png'});
+            } else {
+            	$("#result_logo>img").attr("src","${RESOUCE_STATIC_URL}"+obj.qitalogourl);
+            }
         });
     });
 

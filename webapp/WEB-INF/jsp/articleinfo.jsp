@@ -51,8 +51,12 @@
                 <div class="search-box-form">
                     <form method="" id="form1" class="f" action="" onsubmit="return false;">
                         <div class="box">
-                            <input type="text" id="kw" name="kw" class="s-input" value="">
-                            <button id="su" class="s-btn"><span class="glyphicon glyphicon-search"></span></button>
+                        	<div class="left_box">
+                        		<input type="text" id="kw" name="kw" class="s-input" value="">
+                        	</div>
+                            <div class="right_box">
+                            	<button id="su" class="s-btn"><span class="glyphicon glyphicon-search"></span></button>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -110,7 +114,7 @@
                     </div>
                 </div>
                 <div class="s_content_right">
-                    <div id="inline1" class="fancybox-decoration right_box">
+                    <div id="inline1" class="fancybox-decoration right_box" style="display:none;">
                         <h2>我要举报</h2>
                         <textarea name="jubao_content" title="" maxLength="200"></textarea>
                         <div id="jbNum">还可输入200字</div>
@@ -141,7 +145,7 @@
     <div class="jbFrame">
         <div class="f_title">
             <span>我要举报</span>
-            <a href="#" onclick="$('.jbFrame').fadeOut(500);"><span class="glyphicon glyphicon-remove"></span></a>
+            <a href="#" onclick="$('.jbFrame').fadeOut(500);"><span></span></a>
         </div>
         <div class="f_content">
             <textarea name="jbMessage" maxLength="200"></textarea>
