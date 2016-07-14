@@ -293,14 +293,25 @@
             var keywords = $("#kw").val();
             if(keywords.trim() == '') {
                 window.location.href = RESOUCE_SYSTEM_URL_JS + '/';
+                return false;
             }
             $("#kw").val(keywords);
             keywords = $("#kw").val();
-            $("title").text(keywords);
-            param.keywords = keywords;
-            pageNation.initPage(opts,param);
+            /* $("title").text(keywords);
+            //pageNation.initPage(opts,param);
+            opts = {
+		        page:1,
+		        rows:10,
+		        page_total:10,
+		        url:RESOUCE_SYSTEM_URL_JS+"/article/search",
+		        pageId:'page',
+		        contentId:'content_left'
+		    };
+    		param = {page:'1',rows:'10',keywords:keywords};
+            pageNation = new PageNation(opts,param);
             Page.getRelSearchData(keywords);
-            Page.getAdertInfo(keywords,"content_right");
+            Page.getAdertInfo(keywords,"content_right"); */
+            window.self.location.href = "${RESOUCE_SYSTEM_URL}/article/list?keywords="+keywords;
         }
     });
 
@@ -309,15 +320,25 @@
         var keywords = $("#kw").val();
         if(keywords.trim() == '') {
             window.location.href = RESOUCE_SYSTEM_URL_JS + '/';
+            return false;
         }
         $("#kw").val(keywords);
         keywords = $("#kw").val();
         $("title").text(keywords);
-        param.keywords = keywords;
         //pageNation.initPage(opts,param);
+        /* opts = {
+			page:1,
+		    rows:10,
+		    page_total:10,
+		    url:RESOUCE_SYSTEM_URL_JS+"/article/search",
+		    pageId:'page',
+		    contentId:'content_left'
+		};
+    	param = {page:'1',rows:'10',keywords:keywords};
         pageNation = new PageNation(opts,param);
         Page.getRelSearchData(keywords);
-        Page.getAdertInfo(keywords,"content_right");
+        Page.getAdertInfo(keywords,"content_right"); */
+        window.self.location.href = "${RESOUCE_SYSTEM_URL}/article/list?keywords="+keywords;
     });
 
     $("#su1").bind('click',function(event) {
@@ -325,15 +346,25 @@
         var keywords = $("#kw1").val();
         if(keywords.trim() == '') {
             window.location.href = RESOUCE_SYSTEM_URL_JS + '/';
+            return false;
         }
         $("#kw1").val(keywords);
         keywords = $("#kw1").val();
-        $("title").text(keywords);
-        param.keywords = keywords;
+        /* $("title").text(keywords);
+        opts = {
+		        page:1,
+		        rows:10,
+		        page_total:10,
+		        url:RESOUCE_SYSTEM_URL_JS+"/article/search",
+		        pageId:'page',
+		        contentId:'content_left'
+		    };
+    		param = {page:'1',rows:'10',keywords:keywords};
         //pageNation.initPage(opts,param);
         pageNation = new PageNation(opts,param);
         Page.getRelSearchData(keywords);
-        Page.getAdertInfo(keywords,"content_right");
+        Page.getAdertInfo(keywords,"content_right"); */
+        window.self.location.href = "${RESOUCE_SYSTEM_URL}/article/list?keywords="+keywords;
     });
 
     //修正页面
