@@ -314,7 +314,7 @@ input::-ms-reveal {
 
 .tools {
     /*display: inline-block;*/
-    margin:10px 9px 5px 5px;
+    margin:0 9px 5px 5px;
     padding: 0;
     position: fixed;
     right: 0;
