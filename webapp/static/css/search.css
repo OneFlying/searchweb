@@ -596,7 +596,9 @@ input::-ms-reveal {
 
 .form-group {
     width: 100%;
-    margin: 10px auto;
+    margin: 10px 0;
+    max-width: 840px;
+    text-align: left;
 }
 
 .form-group label {
