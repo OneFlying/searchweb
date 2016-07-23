@@ -23,11 +23,13 @@
             system.win = p.indexOf("Win") == 0; 
             system.mac = p.indexOf("Mac") == 0; 
             system.x11 = (p == "X11") || (p.indexOf("Linux") == 0);    
+        var isDesktop = false;
         var head = document.getElementsByTagName('head')[0];
         var link = document.createElement('link');
         link.rel = 'stylesheet';
         link.type = 'text/css';
         if(system.win||system.mac){//如果是电脑
+        	isDesktop = true;
             link.href = '${RESOUCE_STATIC_URL}/css/search.css';
         }else{  //如果是手机
             link.href = '${RESOUCE_STATIC_URL}/css/msearch.css';
@@ -89,7 +91,7 @@
                                 </div>
                                 <div class="form-group">
                                     <!--style给定宽度可以影响编辑器的最终宽度-->
-                                    <script type="text/plain" id="myEditor" name="content" style="width:840px;height:500px;" ></script>
+                                    <script type="text/plain" id="myEditor" name="content" style="width:100%;height:500px;" ></script>
                                 </div>
                                 <div id="contentNum" style="margin-bottom:10px;">还可输入 <span>5000</span> 字</div>
                                 <input type="hidden" id="img" name="imageurl" value=""/>
