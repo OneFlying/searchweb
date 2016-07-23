@@ -319,6 +319,7 @@ input::-ms-reveal {
     position: fixed;
     right: 0;
     top: 0;
+    border: 1px solid red;
 }
 
 .tools > a {
