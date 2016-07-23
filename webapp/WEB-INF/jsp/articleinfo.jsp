@@ -33,9 +33,9 @@
             link.type = 'text/css';
         if(system.win||system.mac){//如果是电脑
             isDesktop = true;
-            link.href = '${RESOUCE_STATIC_URL}/css/info.css';
+            link.href = '${RESOUCE_STATIC_URL}/css/info.css?v=1.0';
         }else{  //如果是手机
-            link.href = '${RESOUCE_STATIC_URL}/css/minfo.css';
+            link.href = '${RESOUCE_STATIC_URL}/css/minfo.css?v=1.0';
         }
         head.appendChild(link);
     </script>

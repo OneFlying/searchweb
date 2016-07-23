@@ -27,9 +27,9 @@
             link.rel = 'stylesheet';
             link.type = 'text/css';
         if(system.win||system.mac){//如果是电脑
-            link.href = '${RESOUCE_STATIC_URL}/css/search.css';
+            link.href = '${RESOUCE_STATIC_URL}/css/search.css?v=1.0';
         }else{  //如果是手机
-            link.href = '${RESOUCE_STATIC_URL}/css/msearch.css';
+            link.href = '${RESOUCE_STATIC_URL}/css/msearch.css?v=1.0';
         }
         head.appendChild(link);
     </script>

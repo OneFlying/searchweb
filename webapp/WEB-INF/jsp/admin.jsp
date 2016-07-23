@@ -24,7 +24,7 @@
 	<link rel="stylesheet" type="text/css"
 		href="${RESOUCE_STATIC_URL}/lib/jquery-easyui-1.3.5/themes/icon.css" />
 	<link rel="stylesheet" type="text/css"
-		href="${RESOUCE_STATIC_URL}/css/manager.css" />
+		href="${RESOUCE_STATIC_URL}/css/manager.css?v=1.0" />
 	<script type="text/javascript"
 		src="${RESOUCE_STATIC_URL}/lib/jquery-easyui-1.3.5/jquery.easyui.min.js"></script>
 	<script type="text/javascript"

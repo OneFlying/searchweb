@@ -10,7 +10,7 @@
     <title>网站系统</title>
     <%@ include file="/resource.jsp"%>
     <link rel="stylesheet" href="${RESOUCE_STATIC_URL}/lib/bootstrap-3.0.3-dist/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="${RESOUCE_STATIC_URL}/css/style_new.css" />
+    <link rel="stylesheet" type="text/css" href="${RESOUCE_STATIC_URL}/css/style_new.css?v=1.0" />
 </head>
 <body>
     <div class="login">

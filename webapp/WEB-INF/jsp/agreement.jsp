@@ -11,7 +11,7 @@
 <%@ include file="/resource.jsp" %>
 
 <link rel="stylesheet" href="${RESOUCE_STATIC_URL}/lib/bootstrap-3.3.5-dist/css/bootstrap.css">
-<link rel="stylesheet" href="${RESOUCE_STATIC_URL}/css/style.css">
+<link rel="stylesheet" href="${RESOUCE_STATIC_URL}/css/style.css?v=1.0">
 </head>
 <body>
 
