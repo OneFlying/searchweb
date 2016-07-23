@@ -64,6 +64,9 @@
                         </form>
                     </div>
                 </div>
+                <div class="s_tools">
+                	<a href="${RESOUCE_SYSTEM_URL}/article/index" style="text-decoration:none;">上传你的文章</a>
+                </div>
             </div>
         </div><!-- /head -->
 
