@@ -313,16 +313,19 @@ input::-ms-reveal {
 }
 
 .tools {
+	display: none;
+}
+
+.s_tools {
     /*display: inline-block;*/
-    margin:0 9px 5px 5px;
+    margin:5px 9px 5px 5px;
     padding: 0;
     position: fixed;
     right: 0;
     top: 0;
-    border: 1px solid red;
 }
 
-.tools > a {
+.s_tools > a {
     color: #333333;
     font-size: 14px;
     text-decoration: underline;

@@ -224,6 +224,10 @@ input::-ms-reveal {
     box-shadow: 1px 1px 1px #ccc
 }
 
+.s_tools {
+	display: none;
+}
+
 .tools {
     display: inline-block;
     margin:7px 9px 5px 5px;
